@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 const materials = [
   { materialID: "0001", materialName: "Material 1" },
   { materialID: "0002", materialName: "Material 2" },
@@ -6,7 +8,18 @@ const materials = [
   { materialID: "0005", materialName: "Material 5" },
 ];
 
-export function MaterialForm() {
+const MaterialForm: React.FC = () => {
+  const [selectedMaterials, setSelectedMaterials] = useState<string[]>([]);
+
+  const handleMaterialChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const materialId = event.target.value;
+    if (selectedMaterials.includes(materialId)) {
+      setSelectedMaterials(selectedMaterials.filter((id) => id !== materialId));
+    } else {
+      setSelectedMaterials([...selectedMaterials, materialId]);
+    }
+  };
+
   return (
     <div className="flex flex-col justify-center items-center bg-cyan-200 p-5 pt-2 space-y-2">
       <h2 className="text-black text-center font-bold text-xl p-1">Material</h2>
@@ -19,9 +32,9 @@ export function MaterialForm() {
                   type="checkbox"
                   id={material.materialID}
                   value={material.materialID}
-                  //   onChange={}
+                  onChange={handleMaterialChange}
                   className="mr-2"
-                  //   checked={selectedMaterials.includes(material.materialID)}
+                  checked={selectedMaterials.includes(material.materialID)}
                 />
                 {`${material.materialID} - ${material.materialName}`}
               </label>
@@ -31,4 +44,6 @@ export function MaterialForm() {
       </div>
     </div>
   );
-}
+};
+
+export default MaterialForm;

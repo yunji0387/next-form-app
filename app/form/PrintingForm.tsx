@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 
-const JobInfoForm: React.FC = () => {
+const PrintingForm: React.FC = () => {
   const [jobName, setJobName] = useState("");
-  const [customerName, setCustomerName] = useState("");
+  const [printType, setPrintType] = useState("");
 
   const handleJobNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setJobName(event.target.value);
   };
 
-  const handleCustomerNameChange = (
+  const handlePrintTypeChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    setCustomerName(event.target.value);
+    setPrintType(event.target.value);
   };
 
   const handleSubmit = () => {
     const formData = {
       jobName: jobName,
-      customerName: customerName,
+      printType: printType,
     };
     console.log(JSON.stringify(formData));
   };
@@ -44,9 +44,9 @@ const JobInfoForm: React.FC = () => {
           Customer Name:
         </label>
         <select
-          id="customerName"
-          value={customerName}
-          onChange={handleCustomerNameChange}
+          id="printType"
+          value={printType}
+          onChange={handlePrintTypeChange}
           className="w-80 p-1 border border-black bg-light-gray text-black"
         >
           <option value="customer1">Customer 1</option>
@@ -65,4 +65,4 @@ const JobInfoForm: React.FC = () => {
   );
 };
 
-export default JobInfoForm;
+export default PrintingForm;
