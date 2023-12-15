@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { JobInfoForm } from "./JobInfoForm";
 import { MaterialForm } from "./MaterialForm";
 import { PrintingForm } from "./PrintingForm";
+import { NotesForm } from "./NotesForm";
 import { useMultiStepForm } from "../hooks/useMutiStepForm";
 
 // interface FormProps {
@@ -57,6 +58,7 @@ export default function BoxDesignForm() {
       <JobInfoForm key="jobInfoForm" />,
       <MaterialForm key="materialForm" />,
       <PrintingForm key="printingForm" />,
+      <NotesForm key="notesForm" />,
     ]);
 
   return (
