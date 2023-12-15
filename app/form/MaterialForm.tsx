@@ -1,68 +1,103 @@
 import React, { useState } from "react";
 
 const MaterialForm: React.FC = () => {
-  const [jobName, setJobName] = useState("");
-  const [customerName, setCustomerName] = useState("");
+    const [jobName, setJobName] = useState("");
+    const [customerName, setCustomerName] = useState("");
+    const [selectedMaterials, setSelectedMaterials] = useState<string[]>([]);
 
-  const handleJobNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setJobName(event.target.value);
-  };
-
-  const handleCustomerNameChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setCustomerName(event.target.value);
-  };
-
-  const handleSubmit = () => {
-    const formData = {
-      jobName: jobName,
-      customerName: customerName,
+    const handleJobNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setJobName(event.target.value);
     };
-    console.log(JSON.stringify(formData));
-  };
 
-  return (
-    <div className="flex flex-col justify-center items-center bg-cyan-200 p-5 pt-2 space-y-2">
-      <h2 className="text-black text-center font-bold text-xl p-1">Job Info</h2>
+    const handleCustomerNameChange = (
+        event: React.ChangeEvent<HTMLSelectElement>
+    ) => {
+        setCustomerName(event.target.value);
+    };
 
-      <div className="w-80 flex flex-col justify-center">
-        <label htmlFor="jobName" className="text-black text-left w-full">
-          Job Name:
-        </label>
-        <input
-          type="text"
-          id="jobName"
-          value={jobName}
-          onChange={handleJobNameChange}
-          className="w-80 border border-black bg-light-gray text-black p-1 pl-2"
-        />
-      </div>
+    const handleMaterialChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const materialId = event.target.value;
+        if (selectedMaterials.includes(materialId)) {
+            setSelectedMaterials(selectedMaterials.filter((id) => id !== materialId));
+        } else {
+            setSelectedMaterials([...selectedMaterials, materialId]);
+        }
+    };
 
-      <div className="w-80 flex flex-col justify-center">
-        <label htmlFor="customerName" className="text-black text-left w-full">
-          Customer Name:
-        </label>
-        <select
-          id="customerName"
-          value={customerName}
-          onChange={handleCustomerNameChange}
-          className="w-80 p-1 border border-black bg-light-gray text-black"
-        >
-          <option value="customer1">Customer 1</option>
-          <option value="customer2">Customer 2</option>
-          <option value="customer3">Customer 3</option>
-        </select>
-      </div>
+    const handleSubmit = () => {
+        const formData = {
+            jobName: jobName,
+            customerName: customerName,
+            selectedMaterials: selectedMaterials,
+        };
+        console.log(JSON.stringify(formData));
+    };
 
-      {/* <button
-        onClick={handleSubmit}
-        className="w-80 p-2 bg-blue-500 text-white"
-      >
-        Submit
-      </button> */}
-    </div>
-  );
+    return (
+        <div className="flex flex-col justify-center items-center bg-cyan-200 p-5 pt-2 space-y-2">
+            <h2 className="text-black text-center font-bold text-xl p-1">Material</h2>
+
+            <div className="w-80 flex flex-col justify-center">
+                <ul>
+                    <li>
+                        <label htmlFor="material1">
+                            <input
+                                type="checkbox"
+                                id="material1"
+                                value="material1"
+                                onChange={handleMaterialChange}
+                            />
+                            Material 1
+                        </label>
+                    </li>
+                    <li>
+                        <label htmlFor="material2">
+                            <input
+                                type="checkbox"
+                                id="material2"
+                                value="material2"
+                                onChange={handleMaterialChange}
+                            />
+                            Material 2
+                        </label>
+                    </li>
+                    <li>
+                        <label htmlFor="material3">
+                            <input
+                                type="checkbox"
+                                id="material3"
+                                value="material3"
+                                onChange={handleMaterialChange}
+                            />
+                            Material 3
+                        </label>
+                    </li>
+                    <li>
+                        <label htmlFor="material4">
+                            <input
+                                type="checkbox"
+                                id="material4"
+                                value="material4"
+                                onChange={handleMaterialChange}
+                            />
+                            Material 4
+                        </label>
+                    </li>
+                    <li>
+                        <label htmlFor="material5">
+                            <input
+                                type="checkbox"
+                                id="material5"
+                                value="material5"
+                                onChange={handleMaterialChange}
+                            />
+                            Material 5
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    );
 };
 
 export default MaterialForm;
