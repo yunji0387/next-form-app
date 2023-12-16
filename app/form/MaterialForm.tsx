@@ -8,7 +8,7 @@ const materials = [
 
 export function MaterialForm() {
   return (
-    <div className="flex flex-col justify-center items-center bg-cyan-200 p-5 pt-2 space-y-2">
+    <div className="custom-form-container">
       <h2 className="text-black text-center font-bold text-xl p-1">Material</h2>
       <div className="w-80 flex flex-col justify-center">
         <ul className="text-black">

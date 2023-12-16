@@ -25,3 +25,7 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.custom-form-container {
+  @apply flex flex-col justify-center items-center bg-cyan-200 p-5 pt-2 space-y-2;
+}
