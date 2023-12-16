@@ -63,7 +63,7 @@ export default function BoxDesignForm() {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center">
-      <div className="flex flex-col items-center justify-around bg-white w-[25rem] min-h-[30rem] h-auto rounded-lg p-5">
+      <div className="flex flex-col items-center justify-around bg-white w-[25rem] min-h-[30rem] max-h-[45rem] h-auto rounded-lg p-5">
         <h1 className="w-96 text-black text-center font-bold text-3xl bg-lime-100 rounded-lg p-2">
           Box Design Form
         </h1>
