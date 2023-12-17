@@ -13,7 +13,7 @@ export function JobInfoForm() {
           //   value={}
           //   onChange={}
           placeholder="Enter job name..."
-          className="w-80 border border-black bg-white text-black p-1 pl-2"
+          className="custom-form-text-field"
         />
       </div>
 
@@ -25,8 +25,9 @@ export function JobInfoForm() {
           id="customerName"
           //   value={}
           //   onChange={}
-          className="w-80 p-1 border border-black bg-light-gray text-black"
+          className="custom-form-text-field"
         >
+          <option value="emptyCustomer">Please select an option.</option>
           <option value="customer1">Customer 1</option>
           <option value="customer2">Customer 2</option>
           <option value="customer3">Customer 3</option>

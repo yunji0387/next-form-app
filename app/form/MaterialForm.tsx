@@ -13,16 +13,24 @@ export function MaterialForm() {
       <div className="w-80 flex flex-col justify-center">
         <ul className="text-black">
           {materials.map((material) => (
-            <li key={material.materialID} className="flex flex-row border border-gray-300">
-              <label htmlFor={material.materialID} className=" w-full grid grid-cols-6">
-                <input
-                  type="checkbox"
-                  id={material.materialID}
-                  value={material.materialID}
-                  //   onChange={}
-                  className="m-2 col-span-1"
-                  //   checked={selectedMaterials.includes(material.materialID)}
-                />
+            <li
+              key={material.materialID}
+              className="flex flex-row border border-gray-300"
+            >
+              <label
+                htmlFor={material.materialID}
+                className=" w-full grid grid-cols-6 p-1 bg-white"
+              >
+                <div className="flex items-center justify-center col-span-1">
+                  <input
+                    type="checkbox"
+                    id={material.materialID}
+                    value={material.materialID}
+                    //   onChange={}
+                    className="custom-form-checkbox"
+                    //   checked={selectedMaterials.includes(material.materialID)}
+                  />
+                </div>
                 {/* {`${material.materialID} - ${material.materialName}`} */}
                 <p className="text-center border-l border-gray-300 col-span-2">{`${material.materialID}`}</p>
                 <p className="text-center border-l border-gray-300 col-span-3">{`${material.materialName}`}</p>

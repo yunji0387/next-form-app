@@ -27,5 +27,17 @@ body {
 }
 
 .custom-form-container {
-  @apply flex flex-col justify-center items-center bg-white p-5 pt-2 space-y-2;
+  @apply flex flex-col items-center min-h-[18rem] bg-cyan-100 p-5 pt-2 space-y-2;
+}
+
+.custom-form-text-field {
+  @apply w-full border border-black rounded-md bg-white text-black p-1 pl-2;
+}
+
+.custom-form-checkbox {
+  @apply bg-gray-100 border-gray-300 rounded focus:ring-blue-500;
+}
+
+.custom-form-text-area {
+  @apply block p-2.5 w-full text-sm text-black bg-gray-50 rounded-md border border-gray-500 focus:ring-blue-500 focus:border-blue-500 ;
 }

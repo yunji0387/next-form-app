@@ -8,13 +8,14 @@ export function NotesForm() {
                     Design Notes:
                 </label>
 
-                <div className="w-80 border border-black bg-light-gray text-black p-1 max-h-[25rem] overflow-auto">
+                <div className="w-80 max-h-[25rem] overflow-auto">
                     <textarea
                         id="designNotes"
                         //   value={}
                         //   onChange={}
                         placeholder="Write your design notes here..."
-                        className="w-full h-full p-2 mt-1"
+                        // className="w-full h-full p-2 mt-1 custom-form-text-area"
+                        className="custom-form-text-area"
                     />
                 </div>
             </div>

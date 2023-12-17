@@ -27,7 +27,7 @@ export function PrintingForm() {
             id="customerName"
             //   value={}
             //   onChange={}
-            className="w-80 p-1 border border-black bg-light-gray text-black"
+            className="custom-form-text-field"
           >
             <option value="printType1">Print Type 1</option>
             <option value="printType2">Print Type 2</option>
@@ -37,14 +37,14 @@ export function PrintingForm() {
 
         <label
           htmlFor="printCustomerName"
-          className="text-black text-left w-full"
+          className="w-full"
         >
           <input
             type="checkbox"
             id="printCustomerName"
             // value={}
             //   onChange={}
-            className="mr-2 border border-blue bg-light-gray text-black p-1 pl-2"
+            className="custom-form-checkbox mr-2"
           />
           Print Customer Name
         </label>
@@ -58,7 +58,7 @@ export function PrintingForm() {
             id="printCustomText"
             checked={isCustomTextEnabled}
             onChange={handleCustomTextCheckboxChange}
-            className="mr-2 border border-blue bg-light-gray text-black p-1 pl-2"
+            className="custom-form-checkbox mr-2"
           />
           Print Custom Text:
           <input
@@ -68,7 +68,7 @@ export function PrintingForm() {
             placeholder={isCustomTextEnabled ? "Enter custom text..." : ""}
             className={`w-80 p-1 pl-2 border ${
               isCustomTextEnabled
-                ? "border-black bg-white"
+                ? "custom-form-text-field"
                 : "border-gray-300 bg-gray-100"
             } text-black`}
             disabled={!isCustomTextEnabled}
