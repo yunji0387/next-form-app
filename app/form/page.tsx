@@ -31,21 +31,6 @@ import { useMultiStepForm } from "../hooks/useMutiStepForm";
   };
 
 export default function BoxDesignForm() {
-  //const [currStep, setCurrStep] = useState<number>(1);
-
-  // const initialFormData = {
-  //     jobName: '',
-  //     customerName: '',
-  //     materialID: [],
-  //     materialName: [''],
-  //     printType: '',
-  //     printCustomerName: false,
-  //     printCustomText: '',
-  //     designNotes: '',
-  //     agreeToTerms: false
-  // };
-  // const [formData, setFormData] = useState(initialFormData);
-
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM_DATA);
   const { steps, currStep, step, isFirstStep, isLastStep, prevStep, nextStep } =
     useMultiStepForm([
@@ -90,7 +75,6 @@ export default function BoxDesignForm() {
             )}
             <button
               type="submit"
-              // onClick={nextStep}
               className="w-40 p-2 bg-dark-blue text-white rounded-lg"
             >
               {isLastStep ? "Finish" : "Next"}
