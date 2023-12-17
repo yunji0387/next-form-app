@@ -1,4 +1,9 @@
-export function JobInfoForm() {
+type JobInfoFormProps = {
+  jobName: string;
+  customerName: string;
+};
+
+export function JobInfoForm({ jobName, customerName }: JobInfoFormProps) {
   return (
     <div className="custom-form-container">
       <h2 className="text-black text-center font-bold text-xl p-1">Job Info</h2>

@@ -8,7 +8,12 @@ const materials = [
   { materialID: "0005", materialName: "Material 5" },
 ];
 
-export function MaterialForm() {
+type MaterialFormProps = {
+  materialID: string[];
+  materialName: string[];
+};
+
+export function MaterialForm({ materialID, materialName }: MaterialFormProps) {
   const [selectedMaterials, setSelectedMaterials] = useState(new Set());
 
   const handleCheckboxChange = (materialID: string) => {

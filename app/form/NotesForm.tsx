@@ -1,4 +1,8 @@
-export function NotesForm() {
+type DesignNotesFormProps = {
+    designNotes: string;
+};
+
+export function NotesForm({designNotes}: DesignNotesFormProps) {
     return (
         <div className="custom-form-container">
             <h2 className="text-black text-center font-bold text-xl p-1">Notes</h2>

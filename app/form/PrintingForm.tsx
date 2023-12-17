@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 
-export function PrintingForm() {
+type PrintingFormProps = {
+  printType: string;
+  printCustomerName: boolean;
+  printCustomText: string;
+};
+
+export function PrintingForm({printType, printCustomerName, printCustomText}: PrintingFormProps) {
   const [isCustomTextEnabled, setIsCustomTextEnabled] = useState(false);
   const [customText, setCustomText] = useState("");
 
