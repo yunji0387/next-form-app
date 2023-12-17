@@ -13,7 +13,8 @@ import { useMultiStepForm } from "../hooks/useMutiStepForm";
     materialName: string[];
     printType: string;
     printCustomerName: boolean;
-    printCustomText: string;
+    printCustomText: boolean;
+    customText: string;
     designNotes: string;
     finalCheck: boolean;
   };
@@ -25,7 +26,8 @@ import { useMultiStepForm } from "../hooks/useMutiStepForm";
       materialName: [''],
       printType: '',
       printCustomerName: false,
-      printCustomText: '',
+      printCustomText: false,
+      customText: '',
       designNotes: '',
       finalCheck: false
   };

@@ -9,25 +9,40 @@ const materials = [
 ];
 
 type MaterialInfoData = {
-    materialID: string[];
-    materialName: string[];
-    };
-
-type MaterialFormProps = MaterialInfoData & {
-    updateForm: (fields: Partial<MaterialInfoData>) => void;
+  materialID: string[];
+  materialName: string[];
 };
 
-export function MaterialForm({ materialID, materialName, updateForm }: MaterialFormProps) {
-  const [selectedMaterials, setSelectedMaterials] = useState(new Set());
+type MaterialFormProps = MaterialInfoData & {
+  updateForm: (fields: Partial<MaterialInfoData>) => void;
+};
 
-  const handleCheckboxChange = (materialID: string) => {
+export function MaterialForm({
+  materialID,
+  materialName,
+  updateForm,
+}: MaterialFormProps) {
+  const [selectedMaterials, setSelectedMaterials] = useState(
+    new Set(materialID)
+  );
+
+  const handleCheckboxChange = (changedMaterialID: string) => {
     setSelectedMaterials((prevSelected) => {
       const newSelected = new Set(prevSelected);
-      if (newSelected.has(materialID)) {
-        newSelected.delete(materialID);
+
+      if (newSelected.has(changedMaterialID)) {
+        newSelected.delete(changedMaterialID);
       } else {
-        newSelected.add(materialID);
+        newSelected.add(changedMaterialID);
       }
+
+      // Convert the Set back to an array for the parent component's state.
+      const selectedIDs = Array.from(newSelected);
+      updateForm({
+        materialID: selectedIDs,
+        // For materialName, we don't need to update it here since it's derived from materialID
+      });
+
       return newSelected;
     });
   };
