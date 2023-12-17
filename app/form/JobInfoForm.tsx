@@ -1,9 +1,17 @@
-type JobInfoFormProps = {
-  jobName: string;
-  customerName: string;
+type JobInfoData = {
+    jobName: string;
+    customerName: string;
+    };
+
+type JobInfoFormProps = JobInfoData & {
+  updateForm: (fields: Partial<JobInfoData>) => void;
 };
 
-export function JobInfoForm({ jobName, customerName }: JobInfoFormProps) {
+export function JobInfoForm({
+  jobName,
+  customerName,
+  updateForm,
+}: JobInfoFormProps) {
   return (
     <div className="custom-form-container">
       <h2 className="text-black text-center font-bold text-xl p-1">Job Info</h2>
@@ -15,8 +23,8 @@ export function JobInfoForm({ jobName, customerName }: JobInfoFormProps) {
         <input
           type="text"
           id="jobName"
-          //   value={}
-          //   onChange={}
+          value={jobName}
+          onChange={e => updateForm({jobName :  e.target.value})}
           placeholder="Enter job name..."
           className="custom-form-text-field"
         />
@@ -28,8 +36,8 @@ export function JobInfoForm({ jobName, customerName }: JobInfoFormProps) {
         </label>
         <select
           id="customerName"
-          //   value={}
-          //   onChange={}
+          value={customerName}
+          onChange={e => updateForm({customerName :  e.target.value})}
           className="custom-form-text-field"
         >
           <option value="emptyCustomer">Please select an option.</option>

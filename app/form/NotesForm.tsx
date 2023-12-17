@@ -1,28 +1,31 @@
-type DesignNotesFormProps = {
-    designNotes: string;
+type DesignNotesData = {
+  designNotes: string;
 };
 
-export function NotesForm({designNotes}: DesignNotesFormProps) {
-    return (
-        <div className="custom-form-container">
-            <h2 className="text-black text-center font-bold text-xl p-1">Notes</h2>
+type DesignNotesFormProps = DesignNotesData & {
+  updateForm: (fields: Partial<DesignNotesData>) => void;
+};
 
-            <div className="w-80 flex flex-col justify-center">
-                <label htmlFor="designNotes" className="text-black text-left w-full">
-                    Design Notes:
-                </label>
+export function NotesForm({ designNotes, updateForm }: DesignNotesFormProps) {
+  return (
+    <div className="custom-form-container">
+      <h2 className="text-black text-center font-bold text-xl p-1">Notes</h2>
 
-                <div className="w-80 max-h-[25rem] overflow-auto">
-                    <textarea
-                        id="designNotes"
-                        //   value={}
-                        //   onChange={}
-                        placeholder="Write your design notes here..."
-                        // className="w-full h-full p-2 mt-1 custom-form-text-area"
-                        className="custom-form-text-area"
-                    />
-                </div>
-            </div>
+      <div className="w-80 flex flex-col justify-center">
+        <label htmlFor="designNotes" className="text-black text-left w-full">
+          Design Notes:
+        </label>
+
+        <div className="w-80 max-h-[25rem] overflow-auto">
+          <textarea
+            id="designNotes"
+            value={designNotes}
+            onChange={e => updateForm({designNotes :  e.target.value})}
+            placeholder="Write your design notes here..."
+            className="custom-form-text-area"
+          />
         </div>
-    );
+      </div>
+    </div>
+  );
 }

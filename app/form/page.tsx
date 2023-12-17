@@ -49,11 +49,15 @@ export default function BoxDesignForm() {
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM_DATA);
   const { steps, currStep, step, isFirstStep, isLastStep, prevStep, nextStep } =
     useMultiStepForm([
-      <JobInfoForm key="jobInfoForm"  {...formData} />,
-      <MaterialForm key="materialForm" {...formData} />,
-      <PrintingForm key="printingForm" {...formData} />,
-      <NotesForm key="notesForm" {...formData} />,
+      <JobInfoForm key="jobInfoForm" {...formData} updateForm={updateForm} />,
+      <MaterialForm key="materialForm" {...formData} updateForm={updateForm} />,
+      <PrintingForm key="printingForm" {...formData} updateForm={updateForm} />,
+      <NotesForm key="notesForm" {...formData} updateForm={updateForm} />,
     ]);
+
+    function updateForm(fields: Partial<FormData>) {
+        setFormData((prev) => ({ ...prev, ...fields }));
+    }
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();

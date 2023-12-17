@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 
-type PrintingFormProps = {
+type PrintingData = {
   printType: string;
   printCustomerName: boolean;
   printCustomText: string;
 };
 
-export function PrintingForm({printType, printCustomerName, printCustomText}: PrintingFormProps) {
+type PrintingFormProps = PrintingData & {
+  updateForm: (fields: Partial<PrintingData>) => void;
+};
+
+export function PrintingForm({printType, printCustomerName, printCustomText, updateForm}: PrintingFormProps) {
   const [isCustomTextEnabled, setIsCustomTextEnabled] = useState(false);
   const [customText, setCustomText] = useState("");
 
@@ -30,9 +34,9 @@ export function PrintingForm({printType, printCustomerName, printCustomText}: Pr
           Print Type:
           {/* </label> */}
           <select
-            id="customerName"
-            //   value={}
-            //   onChange={}
+            id="printType"
+            value={printType}
+            onChange={e => updateForm({printType :  e.target.value})}
             className="custom-form-text-field"
           >
             <option value="printType1">Print Type 1</option>
