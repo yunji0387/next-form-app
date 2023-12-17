@@ -12,7 +12,8 @@ export function JobInfoForm() {
           id="jobName"
           //   value={}
           //   onChange={}
-          className="w-80 border border-black bg-light-gray text-black p-1 pl-2"
+          placeholder="Enter job name..."
+          className="w-80 border border-black bg-white text-black p-1 pl-2"
         />
       </div>
 
