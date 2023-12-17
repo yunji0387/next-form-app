@@ -27,7 +27,7 @@ body {
 }
 
 .custom-form-container {
-  @apply flex flex-col items-center min-h-[18rem] bg-cyan-100 p-5 pt-2 space-y-2;
+  @apply flex flex-col items-center min-h-[18rem]  p-5 pt-2 space-y-2;
 }
 
 .custom-form-text-field {
@@ -39,5 +39,5 @@ body {
 }
 
 .custom-form-text-area {
-  @apply block p-2.5 w-full text-sm text-black bg-gray-50 rounded-md border border-gray-500 focus:ring-blue-500 focus:border-blue-500 ;
+  @apply block p-2.5 w-full min-h-[10rem] text-black bg-gray-50 rounded-md border border-gray-500 focus:ring-blue-500 focus:border-blue-500 ;
 }

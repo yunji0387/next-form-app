@@ -69,7 +69,7 @@ export function PrintingForm() {
             className={`w-80 p-1 pl-2 border ${
               isCustomTextEnabled
                 ? "custom-form-text-field"
-                : "border-gray-300 bg-gray-100"
+                : ""
             } text-black`}
             disabled={!isCustomTextEnabled}
           />

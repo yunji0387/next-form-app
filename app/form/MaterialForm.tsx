@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 const materials = [
   { materialID: "0001", materialName: "Material 1" },
   { materialID: "0002", materialName: "Material 2" },
@@ -7,6 +9,20 @@ const materials = [
 ];
 
 export function MaterialForm() {
+  const [selectedMaterials, setSelectedMaterials] = useState(new Set());
+
+  const handleCheckboxChange = (materialID: string) => {
+    setSelectedMaterials((prevSelected) => {
+      const newSelected = new Set(prevSelected);
+      if (newSelected.has(materialID)) {
+        newSelected.delete(materialID);
+      } else {
+        newSelected.add(materialID);
+      }
+      return newSelected;
+    });
+  };
+
   return (
     <div className="custom-form-container">
       <h2 className="text-black text-center font-bold text-xl p-1">Material</h2>
@@ -15,25 +31,31 @@ export function MaterialForm() {
           {materials.map((material) => (
             <li
               key={material.materialID}
-              className="flex flex-row border border-gray-300"
+              className={`flex flex-row border border-gray-300 ${
+                selectedMaterials.has(material.materialID)
+                  ? "bg-gray-100"
+                  : "bg-white"
+              }`}
             >
               <label
                 htmlFor={material.materialID}
-                className=" w-full grid grid-cols-6 p-1 bg-white"
+                className="w-full grid grid-cols-6 p-1"
               >
                 <div className="flex items-center justify-center col-span-1">
                   <input
                     type="checkbox"
                     id={material.materialID}
-                    value={material.materialID}
-                    //   onChange={}
+                    checked={selectedMaterials.has(material.materialID)}
+                    onChange={() => handleCheckboxChange(material.materialID)}
                     className="custom-form-checkbox"
-                    //   checked={selectedMaterials.includes(material.materialID)}
                   />
                 </div>
-                {/* {`${material.materialID} - ${material.materialName}`} */}
-                <p className="text-center border-l border-gray-300 col-span-2">{`${material.materialID}`}</p>
-                <p className="text-center border-l border-gray-300 col-span-3">{`${material.materialName}`}</p>
+                <p className="text-center border-l border-gray-300 col-span-2">
+                  {material.materialID}
+                </p>
+                <p className="text-center border-l border-gray-300 col-span-3">
+                  {material.materialName}
+                </p>
               </label>
             </li>
           ))}
@@ -42,3 +64,40 @@ export function MaterialForm() {
     </div>
   );
 }
+
+// export function MaterialForm() {
+//   return (
+//     <div className="custom-form-container">
+//       <h2 className="text-black text-center font-bold text-xl p-1">Material</h2>
+//       <div className="w-80 flex flex-col justify-center">
+//         <ul className="text-black">
+//           {materials.map((material) => (
+//             <li
+//               key={material.materialID}
+//               className="flex flex-row border border-gray-300"
+//             >
+//               <label
+//                 htmlFor={material.materialID}
+//                 className=" w-full grid grid-cols-6 p-1 bg-white"
+//               >
+//                 <div className="flex items-center justify-center col-span-1">
+//                   <input
+//                     type="checkbox"
+//                     id={material.materialID}
+//                     value={material.materialID}
+//                     //   onChange={}
+//                     className="custom-form-checkbox"
+//                     //   checked={selectedMaterials.includes(material.materialID)}
+//                   />
+//                 </div>
+//                 {/* {`${material.materialID} - ${material.materialName}`} */}
+//                 <p className="text-center border-l border-gray-300 col-span-2">{`${material.materialID}`}</p>
+//                 <p className="text-center border-l border-gray-300 col-span-3">{`${material.materialName}`}</p>
+//               </label>
+//             </li>
+//           ))}
+//         </ul>
+//       </div>
+//     </div>
+//   );
+// }
