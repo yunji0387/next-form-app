@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 
 const materials = [
   { materialID: "0001", materialName: "Material 1" },
@@ -17,14 +17,16 @@ type MaterialFormProps = MaterialInfoData & {
   updateForm: (fields: Partial<MaterialInfoData>) => void;
 };
 
-export function MaterialForm({
-  materialID,
-  materialName,
-  updateForm,
-}: MaterialFormProps) {
+export function MaterialForm({ materialID, updateForm }: MaterialFormProps) {
   const [selectedMaterials, setSelectedMaterials] = useState(
     new Set(materialID)
   );
+
+  // Function to get material name by ID
+  const getMaterialNameById = (id: string) => {
+    const material = materials.find((material) => material.materialID === id);
+    return material ? material.materialName : "";
+  };
 
   const handleCheckboxChange = (changedMaterialID: string) => {
     setSelectedMaterials((prevSelected) => {
@@ -38,8 +40,10 @@ export function MaterialForm({
 
       // Convert the Set back to an array for the parent component's state.
       const selectedIDs = Array.from(newSelected);
+      const selectedNames = selectedIDs.map((id) => getMaterialNameById(id));
       updateForm({
         materialID: selectedIDs,
+        materialName: selectedNames,
         // For materialName, we don't need to update it here since it's derived from materialID
       });
 
