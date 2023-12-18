@@ -22,24 +22,46 @@ export function PrintingForm({
   const [customTextField, setCustomTextField] = useState(customText);
 
   // Handle change for the 'Print Customer Name' checkbox
-  const handlePrintCustomerNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePrintCustomerNameChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     updateForm({ printCustomerName: event.target.checked });
   };
 
   // Handle change for the 'Print Custom Text' checkbox
-  const handleCustomTextCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCustomTextCheckboxChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const checked = event.target.checked;
     setIsCustomTextEnabled(checked);
     updateForm({ printCustomText: checked });
     // If the checkbox is unchecked, also clear the custom text field
     if (!checked) {
-      setCustomTextField('');
-      updateForm({ customText: '' });
+      setCustomTextField("");
+      updateForm({ customText: "" });
+    }
+  };
+
+  // Handler for Print Type dropdown
+  const handlePrintTypeChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    event.target.setCustomValidity("");
+    updateForm({ printType: event.target.value });
+  };
+
+  const handleSelectInvalid = (event: React.FormEvent<HTMLSelectElement>) => {
+    if (event.currentTarget.value === "") {
+      event.currentTarget.setCustomValidity('Please select a print type');
+    } else {
+      event.currentTarget.setCustomValidity('');
     }
   };
 
   // Handle change for the custom text input field
-  const handleCustomTextInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCustomTextInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const text = event.target.value;
     setCustomTextField(text);
     updateForm({ customText: text });
@@ -54,10 +76,13 @@ export function PrintingForm({
           <select
             id="printType"
             value={printType}
-            onChange={(e) => updateForm({ printType: e.target.value })}
+            // onChange={(e) => updateForm({ printType: e.target.value })}
+            onChange={handlePrintTypeChange}
+            onInvalid={handleSelectInvalid}
             className="custom-form-text-field"
+            required
           >
-            <option value="emptyCustomer">Please select an option.</option>
+            <option value="">Please select an option.</option>
             <option value="printType1">Print Type 1</option>
             <option value="printType2">Print Type 2</option>
             <option value="printType3">Print Type 3</option>
@@ -75,7 +100,10 @@ export function PrintingForm({
           Print Customer Name
         </label>
 
-        <label htmlFor="printCustomText" className="text-black text-left w-full">
+        <label
+          htmlFor="printCustomText"
+          className="text-black text-left w-full"
+        >
           <input
             type="checkbox"
             id="printCustomText"
@@ -89,7 +117,9 @@ export function PrintingForm({
             value={customTextField}
             onChange={handleCustomTextInputChange}
             placeholder={isCustomTextEnabled ? "Enter custom text..." : ""}
-            className={`w-80 p-1 pl-2 border ${isCustomTextEnabled ? "custom-form-text-field" : "bg-gray-200"} text-black`}
+            className={`w-80 p-1 pl-2 border ${
+              isCustomTextEnabled ? "custom-form-text-field" : "bg-gray-200"
+            } text-black`}
             disabled={!isCustomTextEnabled}
           />
         </label>
