@@ -92,38 +92,6 @@ export default function BoxDesignForm() {
         alert("Please fill in the form correctly before proceeding.");
       }
     }
-
-    //   await fetch(endpoint, {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(formData),
-    //   })
-    //     .then((response) =>  console.log(response))
-    //     .then((data) => {
-    //       console.log("Success:", data);
-    //       alert("Successfully Account Creation: " + JSON.stringify(formData));
-    //       // Additional logic after successful submission
-    //     })
-    //     .catch((error) => {
-    //       // Log the error object to see if it has more details
-    //       console.error("Error object:", error);
-
-    //       // Check if the error object has a message property and log it
-    //       if (error.message) {
-    //         console.error("Error message:", error.message);
-    //       }
-
-    //       alert("Error submitting form. Check console for details.");
-    //     });
-    // } else {
-    //   if (isCurrentFormValid) {
-    //     nextStep();
-    //   } else {
-    //     alert("Please fill in the form correctly before proceeding.");
-    //   }
-    // }
   }
 
   return (
@@ -136,7 +104,7 @@ export default function BoxDesignForm() {
           <LoadingScreen />
         ) : (
           <>
-            <p className="w-80 text-black text-md p-3 text-justify">
+            <p className="bg-gray-100 rounded-lg w-80 text-gray-500 text-md p-3 text-justify">
               Please complete the form below and move to next step.
             </p>
             <form onSubmit={onSubmit}>
@@ -149,14 +117,14 @@ export default function BoxDesignForm() {
                   <button
                     type="button"
                     onClick={prevStep}
-                    className="w-40 p-2 bg-dark-blue text-white rounded-lg"
+                    className="w-40 p-2 bg-dark-blue text-white rounded-lg hover:bg-blue-700"
                   >
                     Prev
                   </button>
                 )}
                 <button
                   type="submit"
-                  className="w-40 p-2 bg-dark-blue text-white rounded-lg"
+                  className="w-40 p-2 bg-dark-blue text-white rounded-lg hover:bg-blue-700"
                 >
                   {isLastStep ? "Finish" : "Next"}
                 </button>
