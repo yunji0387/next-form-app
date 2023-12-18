@@ -34,12 +34,13 @@ import { useMultiStepForm } from "../hooks/useMutiStepForm";
 
 export default function BoxDesignForm() {
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM_DATA);
+  const [isCurrentFormValid, setIsCurrentFormValid] = useState<boolean>(false);
   const { steps, currStep, step, isFirstStep, isLastStep, prevStep, nextStep } =
     useMultiStepForm([
-      <JobInfoForm key="jobInfoForm" {...formData} updateForm={updateForm} />,
-      <MaterialForm key="materialForm" {...formData} updateForm={updateForm} />,
-      <PrintingForm key="printingForm" {...formData} updateForm={updateForm} />,
-      <NotesForm key="notesForm" {...formData} updateForm={updateForm} />,
+      <JobInfoForm key="jobInfoForm" {...formData} updateForm={updateForm} setIsFormValid={setIsCurrentFormValid} />,
+      <MaterialForm key="materialForm" {...formData} updateForm={updateForm}  />,
+      <PrintingForm key="printingForm" {...formData} updateForm={updateForm}  />,
+      <NotesForm key="notesForm" {...formData} updateForm={updateForm}  />,
     ]);
 
     function updateForm(fields: Partial<FormData>) {
@@ -48,8 +49,18 @@ export default function BoxDesignForm() {
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    nextStep();
-    // console.log("Form submitted!");
+    if(!isLastStep) return nextStep();
+    alert("Successfully Account Creation.")
+    if (isLastStep) {
+      // Form submission logic here
+      alert("Successfully Account Creation.")
+    } else {
+      if (isCurrentFormValid) {
+        nextStep();
+      } else {
+        alert("Please fill in the form correctly before proceeding.");
+      }
+    }
   }
   return (
     <div className="fixed inset-0 flex items-center justify-center">
