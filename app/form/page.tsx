@@ -17,7 +17,6 @@ type FormData = {
   printCustomText: boolean;
   customText: string;
   designNotes: string;
-  finalCheck: boolean;
 };
 
 const INITIAL_FORM_DATA: FormData = {
@@ -30,7 +29,6 @@ const INITIAL_FORM_DATA: FormData = {
   printCustomText: false,
   customText: "",
   designNotes: "",
-  finalCheck: false,
 };
 
 export default function BoxDesignForm() {
@@ -85,7 +83,7 @@ export default function BoxDesignForm() {
       } catch (error) {
         console.error("Error:", error);
         setIsLoading(false);
-        alert("Data submission failed, please try again.");
+        alert("Form data submission failed, please try again.");
       }
     } else {
       if (isCurrentFormValid) {
