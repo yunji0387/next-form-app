@@ -57,6 +57,7 @@ export function PrintingForm({
             onChange={(e) => updateForm({ printType: e.target.value })}
             className="custom-form-text-field"
           >
+            <option value="emptyCustomer">Please select an option.</option>
             <option value="printType1">Print Type 1</option>
             <option value="printType2">Print Type 2</option>
             <option value="printType3">Print Type 3</option>
