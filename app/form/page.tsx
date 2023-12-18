@@ -66,18 +66,18 @@ export default function BoxDesignForm() {
   return (
     <div className="fixed inset-0 flex items-center justify-center">
       <div className="flex flex-col items-center justify-around bg-white w-[25rem] min-h-[30rem] max-h-[45rem] h-auto rounded-lg p-2">
-        <h1 className="w-full text-black text-center font-bold text-3xl bg-lime-100 p-2">
+        <h1 className="w-full text-black text-center font-bold text-3xl p-2">
           Box Design Form
         </h1>
-        <p className="w-full text-black text-md p-3 text-justify bg-pink-100">
+        <p className="w-80 text-black text-md p-3 text-justify">
           Please complete the form below and move to next step.
         </p>
         <form onSubmit={onSubmit}>
-          <div className="text-center bg-cyan-100 w-full p-2">
-            {currStep + 1} / {steps.length}
+          <div className="text-center w-full p-2">
+            Page {currStep + 1} of {steps.length}
           </div>
           {step}
-          <div className="w-96 flex flex-row justify-around items-center mt-2">
+          <div className="w-full flex flex-row justify-around items-center mt-2 mb-2">
             {!isFirstStep && (
               <button
                 type="button"
