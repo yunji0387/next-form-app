@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 180, 150, 190;
+  --background-end-rgb: 200, 200, 200;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 33, 33, 33;
+    --background-end-rgb: 25, 40, 65;
   }
 }
 
@@ -27,7 +27,7 @@ body {
 }
 
 .custom-form-container {
-  @apply flex flex-col items-center min-h-[18rem]  p-5 pt-2 space-y-2;
+  @apply flex flex-col items-center min-h-[18rem] p-1 space-y-2;
 }
 
 .custom-form-text-field {
@@ -39,5 +39,29 @@ body {
 }
 
 .custom-form-text-area {
-  @apply block p-2.5 w-full min-h-[10rem] text-black bg-gray-50 rounded-md border border-gray-500 focus:ring-blue-500 focus:border-blue-500 ;
+  @apply block p-2.5 w-full min-h-[10rem] text-black bg-white rounded-md border border-gray-500 focus:ring-blue-500 focus:border-blue-500;
 }
+
+
+/* Scrollbar style below
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+/* Scrollbar style above */
