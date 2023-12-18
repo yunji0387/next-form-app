@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { JobInfoForm } from "./JobInfoForm";
 import { MaterialForm } from "./MaterialForm";
 import { PrintingForm } from "./PrintingForm";
@@ -53,7 +53,8 @@ export default function BoxDesignForm() {
     alert("Successfully Account Creation.")
     if (isLastStep) {
       // Form submission logic here
-      alert("Successfully Account Creation.")
+      alert("Successfully Account Creation.");
+      console.log(formData);
     } else {
       if (isCurrentFormValid) {
         nextStep();
