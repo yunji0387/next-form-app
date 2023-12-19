@@ -81,6 +81,7 @@ export default function BoxDesignForm() {
         // On success, reset form (optional) and redirect to home
         setFormData(INITIAL_FORM_DATA);
         setIsLoading(false);
+        alert("Form data submission succefully.");
         window.location.href = "/"; // Redirect to home page
       } catch (error) {
         console.error("Error:", error);
