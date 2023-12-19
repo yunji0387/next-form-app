@@ -1,5 +1,13 @@
 import React, { useState } from "react";
 
+const printTypes = [
+  "Offset Lithography",
+  "Flexography",
+  "Digital Printing",
+  "Screen Printing",
+  "Gravure Printing",
+];
+
 type PrintingData = {
   printType: string;
   printCustomerName: boolean;
@@ -18,7 +26,8 @@ export function PrintingForm({
   customText,
   updateForm,
 }: PrintingFormProps) {
-  const [isCustomTextEnabled, setIsCustomTextEnabled] = useState(printCustomText);
+  const [isCustomTextEnabled, setIsCustomTextEnabled] =
+    useState(printCustomText);
   const [customTextField, setCustomTextField] = useState(customText);
 
   // Handle change for the 'Print Customer Name' checkbox
@@ -52,9 +61,9 @@ export function PrintingForm({
 
   const handleSelectInvalid = (event: React.FormEvent<HTMLSelectElement>) => {
     if (event.currentTarget.value === "") {
-      event.currentTarget.setCustomValidity('Please select a print type');
+      event.currentTarget.setCustomValidity("Please select a print type");
     } else {
-      event.currentTarget.setCustomValidity('');
+      event.currentTarget.setCustomValidity("");
     }
   };
 
@@ -83,9 +92,11 @@ export function PrintingForm({
             required
           >
             <option value="">Please select an option.</option>
-            <option value="printType1">Print Type 1</option>
-            <option value="printType2">Print Type 2</option>
-            <option value="printType3">Print Type 3</option>
+            {printTypes.map((type, index) => (
+              <option key={index} value={type}>
+                {type}
+              </option>
+            ))}
           </select>
         </label>
 

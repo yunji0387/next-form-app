@@ -4,6 +4,7 @@ import { JobInfoForm } from "./JobInfoForm";
 import { MaterialForm } from "./MaterialForm";
 import { PrintingForm } from "./PrintingForm";
 import { NotesForm } from "./NotesForm";
+import { FinalCheckForm } from "./FinalCheckForm";
 import { useMultiStepForm } from "../hooks/useMutiStepForm";
 import { LoadingScreen } from "../components/LoadingScreen";
 
@@ -47,6 +48,7 @@ export default function BoxDesignForm() {
       <MaterialForm key="materialForm" {...formData} updateForm={updateForm} />,
       <PrintingForm key="printingForm" {...formData} updateForm={updateForm} />,
       <NotesForm key="notesForm" {...formData} updateForm={updateForm} />,
+      <FinalCheckForm key="finalCheckForm" {...formData} />,
     ]);
 
   function updateForm(fields: Partial<FormData>) {
@@ -96,7 +98,7 @@ export default function BoxDesignForm() {
 
   return (
     <div className="w-screen h-screen flex items-center justify-center">
-      <div className="flex flex-col items-center bg-white w-[25rem] min-h-[30rem] max-h-[45rem] h-auto rounded-lg p-2">
+      <div className="flex flex-col items-center bg-white border border-black border-2 w-[25rem] min-h-[30rem] max-h-[45rem] h-auto rounded-lg p-2">
         <h1 className="w-full text-black text-center font-bold text-3xl p-2">
           Box Design Form
         </h1>
@@ -104,8 +106,8 @@ export default function BoxDesignForm() {
           <LoadingScreen />
         ) : (
           <>
-            <p className="bg-gray-100 rounded-lg w-80 text-gray-500 text-md p-3 text-justify">
-              Please complete the form below and move to next step.
+            <p className="bg-gray-100 rounded-md w-80 text-gray-500 text-md p-3 text-justify">
+              {isLastStep ? "Please make sure you have enter the correct information." : "Please complete the form below and move to next step." }
             </p>
             <form onSubmit={onSubmit}>
               <div className="text-center w-full p-2">
@@ -117,14 +119,14 @@ export default function BoxDesignForm() {
                   <button
                     type="button"
                     onClick={prevStep}
-                    className="w-40 p-2 bg-dark-blue text-white rounded-lg hover:bg-blue-700"
+                    className="w-40 p-2 m-2 bg-dark-blue text-white rounded-lg hover:bg-blue-700"
                   >
                     Prev
                   </button>
                 )}
                 <button
                   type="submit"
-                  className="w-40 p-2 bg-dark-blue text-white rounded-lg hover:bg-blue-700"
+                  className="w-40 p-2 m-2 bg-dark-blue text-white rounded-lg hover:bg-blue-700"
                 >
                   {isLastStep ? "Finish" : "Next"}
                 </button>

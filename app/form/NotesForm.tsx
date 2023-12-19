@@ -16,7 +16,7 @@ export function NotesForm({ designNotes, updateForm }: DesignNotesFormProps) {
           Design Notes:
         </label>
 
-        <div className="w-80 max-h-[25rem] overflow-auto">
+        <div className="w-80 max-h-[22rem] overflow-auto pr-1">
           <textarea
             id="designNotes"
             value={designNotes}
