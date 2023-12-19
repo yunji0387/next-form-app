@@ -78,7 +78,7 @@ export function JobInfoForm({
         >
           <option value="">Please select an option.</option>
           {customerNames.map((name, index) => (
-            <option key={index} value={`customer${index + 1}`}>
+            <option key={index} value={name}>
               {name}
             </option>
           ))}

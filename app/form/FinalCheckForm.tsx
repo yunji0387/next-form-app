@@ -14,31 +14,76 @@ export function FinalCheckForm(props: FinalFormDataProps) {
   // Convert the props object into an array of key-value pairs
   const formDataEntries = Object.entries(props);
 
+  // Function to render Material IDs as a list
+  const renderMaterialIDsList = (materialIDs: string[]) => {
+    return (
+      <ul className="list-disc list-inside">
+        {materialIDs.map((id, index) => (
+          <li key={index} className="text-sm">
+            {id}
+          </li>
+        ))}
+      </ul>
+    );
+  };
+
+  // Function to render the Material Names as a list
+  const renderMaterialNamesList = (materialNames: string[]) => {
+    return (
+      <ul className="list-disc list-inside">
+        {materialNames.map((name, index) => (
+          <li key={index} className="text-sm">
+            {name}
+          </li>
+        ))}
+      </ul>
+    );
+  };
+
   return (
     <div className="custom-form-container">
       <h2 className="text-black text-center font-bold text-xl p-1">
-        Form Final Check
+        Final Check
       </h2>
 
-      <div className="w-full bg-gray-100 flex flex-col max-h-[22rem] overflow-auto pr-1">
-        {formDataEntries.map(([key, value], index) => {
-          // Check if the value is an array to handle it differently
-          let displayValue = Array.isArray(value)
-            ? value.join(", ")
-            : value.toString();
-
+      <div className="w-80 bg-gray-100 flex flex-col max-h-[20rem] overflow-auto pr-1">
+      {formDataEntries.map(([key, value], index) => {
+          // Determine how to display the value based on its type
+          const displayElement = Array.isArray(value)
+            ? (key === 'materialName'
+              ? renderMaterialNamesList(value) // Returns JSX.Element for names
+              : renderMaterialIDsList(value))  // Returns JSX.Element for IDs
+            : (typeof value === 'boolean' ? (value ? "Yes" : "No") : value.toString());
           // Replace camelCase keys with space-separated words for display
           let displayKey = key
             .replace(/(?<![A-Z])([A-Z])/g, " $1")
             .replace(/^./, (str) => str.toUpperCase());
 
+        //   // Check if the key is 'materialName' to render it differently
+        //   let content;
+        //   if (key === "materialName" && Array.isArray(value)) {
+        //     content = renderMaterialNamesList(value);
+        //   } else {
+        //     content = <p className="text-sm text-justify">{displayValue}</p>;
+        //   }
+
           return (
-            <div key={index} className="flex flex-row justify-between items-center p-2">
+            <div
+              key={index}
+              className="flex flex-row justify-between items-center p-2"
+            >
               <p className="w-[40%] text-sm">{displayKey}:</p>
+              {/* <div className="w-[60%] p-3 bg-gray-200 rounded-md">
+                <p className="text-sm text-justify">{displayValue}</p>
+              </div> */}
+              {/* <div className="w-[60%] p-3 bg-gray-200 rounded-md">
+                {content}
+              </div> */}
               <div className="w-[60%] p-3 bg-gray-200 rounded-md">
-                <p className="text-sm text-justify">
-                  {displayValue}
-                </p>
+                {typeof displayElement === 'string'
+                  ? <p className="text-sm text-justify">{displayElement}</p>
+                  : displayElement // This will be the JSX element for the list
+                }
               </div>
             </div>
           );
@@ -47,39 +92,3 @@ export function FinalCheckForm(props: FinalFormDataProps) {
     </div>
   );
 }
-
-// export function FinalCheckForm({
-//   jobName,
-//   customerName,
-//   materialID,
-//   materialName,
-//   printType,
-//   printCustomerName,
-//   printCustomText,
-//   customText,
-//   designNotes,
-// }: FinalFormDataProps) {
-//   return (
-//     <div className="custom-form-container">
-//       <h2 className="text-black text-center font-bold text-xl p-1">
-//         Form Final Check
-//       </h2>
-
-//       <div className="w-full bg-gray-100 flex flex-col">
-//         <div className="flex flex-row justify-between">
-//              {/* map function here */}
-//           <p className="bg-cyan-100">Job Name</p>
-//           <p className="bg-pink-100">{jobName}</p>
-//         </div>
-//         {/* <p>Customer Name: {customerName}</p>
-//         <p>Material ID: {materialID}</p>
-//         <p>Material Name: {materialName}</p>
-//         <p>Print Type: {printType}</p>
-//         <p>Print Customer Name: {printCustomerName}</p>
-//         <p>Print Custom Text: {printCustomText}</p>
-//         <p>Custom Text: {customText}</p>
-//         <p>Design Notes: {designNotes}</p> */}
-//       </div>
-//     </div>
-//   );
-// }

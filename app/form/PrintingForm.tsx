@@ -93,7 +93,7 @@ export function PrintingForm({
           >
             <option value="">Please select an option.</option>
             {printTypes.map((type, index) => (
-              <option key={index} value={`printType${index + 1}`}>
+              <option key={index} value={type}>
                 {type}
               </option>
             ))}

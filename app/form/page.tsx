@@ -107,7 +107,7 @@ export default function BoxDesignForm() {
         ) : (
           <>
             <p className="bg-gray-100 rounded-md w-80 text-gray-500 text-md p-3 text-justify">
-              Please complete the form below and move to next step.
+              {isLastStep ? "Please make sure you have enter the correct information." : "Please complete the form below and move to next step." }
             </p>
             <form onSubmit={onSubmit}>
               <div className="text-center w-full p-2">
