@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useMemo } from "react";
 
 const materials = [
-  { materialID: "0001", materialName: "Material 1" },
-  { materialID: "0002", materialName: "Material 2" },
-  { materialID: "0003", materialName: "Material 3" },
-  { materialID: "0004", materialName: "Material 4" },
-  { materialID: "0005", materialName: "Material 5" },
+  { materialID: "0001", materialName: "Polyethylene Terephthalate (PET)" },
+  { materialID: "0002", materialName: "High-Density Polyethylene (HDPE)" },
+  { materialID: "0003", materialName: "Polyvinyl Chloride (PVC)" },
+  { materialID: "0004", materialName: "Low-Density Polyethylene (LDPE)" },
+  { materialID: "0005", materialName: "Polypropylene (PP)" },
 ];
 
 type MaterialInfoData = {
@@ -67,7 +67,7 @@ export function MaterialForm({ materialID, updateForm }: MaterialFormProps) {
             >
               <label
                 htmlFor={material.materialID}
-                className="w-full grid grid-cols-6 p-1"
+                className="w-full h-[2.5rem] grid grid-cols-12 items-center"
               >
                 <div className="flex items-center justify-center col-span-1">
                   <input
@@ -78,10 +78,10 @@ export function MaterialForm({ materialID, updateForm }: MaterialFormProps) {
                     className="custom-form-checkbox"
                   />
                 </div>
-                <p className="text-center border-l border-gray col-span-2">
+                <p className="text-center text-sm border-l border-gray col-span-2">
                   {material.materialID}
                 </p>
-                <p className="text-center border-l border-gray col-span-3">
+                <p className="text-center text-sm border-l border-gray col-span-9">
                   {material.materialName}
                 </p>
               </label>

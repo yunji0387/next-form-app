@@ -1,5 +1,14 @@
 import React from "react";
 
+const customerNames = [
+  "Acme Corporation",
+  "Globex Industries",
+  "Soylent Corp",
+  "Initech",
+  "Vandelay Industries",
+];
+
+
 type JobInfoData = {
   jobName: string;
   customerName: string;
@@ -68,9 +77,11 @@ export function JobInfoForm({
           required
         >
           <option value="">Please select an option.</option>
-          <option value="customer1">Customer 1</option>
-          <option value="customer2">Customer 2</option>
-          <option value="customer3">Customer 3</option>
+          {customerNames.map((name, index) => (
+            <option key={index} value={`customer${index + 1}`}>
+              {name}
+            </option>
+          ))}
         </select>
       </div>
     </div>

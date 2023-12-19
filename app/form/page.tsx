@@ -48,7 +48,7 @@ export default function BoxDesignForm() {
       <MaterialForm key="materialForm" {...formData} updateForm={updateForm} />,
       <PrintingForm key="printingForm" {...formData} updateForm={updateForm} />,
       <NotesForm key="notesForm" {...formData} updateForm={updateForm} />,
-      <FinalCheckForm key="finalCheckForm" {...formData} updateForm={updateForm} />,
+      <FinalCheckForm key="finalCheckForm" {...formData} />,
     ]);
 
   function updateForm(fields: Partial<FormData>) {
@@ -106,7 +106,7 @@ export default function BoxDesignForm() {
           <LoadingScreen />
         ) : (
           <>
-            <p className="bg-light-blue rounded-lg w-80 text-gray-500 text-md p-3 text-justify">
+            <p className="bg-gray-100 rounded-md w-80 text-gray-500 text-md p-3 text-justify">
               Please complete the form below and move to next step.
             </p>
             <form onSubmit={onSubmit}>
