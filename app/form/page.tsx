@@ -7,6 +7,8 @@ import { NotesForm } from "./NotesForm";
 import { FinalCheckForm } from "./FinalCheckForm";
 import { useMultiStepForm } from "../hooks/useMutiStepForm";
 import { LoadingScreen } from "../components/LoadingScreen";
+import { SubmissionErrorContent } from "../components/SubmissionErrorContent";
+import { SubmissionSuccessContent } from "../components/SubmissionSuccessContent";
 
 type FormData = {
   jobName: string;
@@ -35,7 +37,10 @@ const INITIAL_FORM_DATA: FormData = {
 export default function BoxDesignForm() {
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM_DATA);
   const [isCurrentFormValid, setIsCurrentFormValid] = useState<boolean>(false);
+  const [isEditing, setIsEditing] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [submitError, setSubmitError] = useState<boolean>(false);
+  const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
 
   const { steps, currStep, step, isFirstStep, isLastStep, prevStep, nextStep } =
     useMultiStepForm([
@@ -55,11 +60,16 @@ export default function BoxDesignForm() {
     setFormData((prev) => ({ ...prev, ...fields }));
   }
 
+  const backToHomePage = () => {
+    window.location.href = "/";
+  };
+
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!isLastStep) return nextStep();
 
     if (isLastStep) {
+      setIsEditing(false);
       setIsLoading(true);
 
       const endpoint =
@@ -78,14 +88,13 @@ export default function BoxDesignForm() {
           throw new Error("Failed to submit data");
         }
 
-        // On success, reset form (optional) and redirect to home
-        setFormData(INITIAL_FORM_DATA);
+        setFormData(INITIAL_FORM_DATA); //reset form data
         setIsLoading(false);
-        alert("Form data submission succefully.");
-        window.location.href = "/"; // Redirect to home page
+        setSubmitSuccess(true);
       } catch (error) {
         console.error("Error:", error);
         setIsLoading(false);
+        setSubmitError(true);
         alert("Form data submission failed, please try again.");
       }
     } else {
@@ -99,16 +108,16 @@ export default function BoxDesignForm() {
 
   return (
     <div className="w-screen h-screen flex items-center justify-center">
-      <div className="flex flex-col items-center bg-white border border-black border-2 w-[25rem] min-h-[30rem] max-h-[45rem] h-auto rounded-lg p-2">
-        <h1 className="w-full text-black text-center font-bold text-3xl p-2">
+      <div className="flex flex-col items-center bg-white border-black border-2 w-[25rem] min-h-[30rem] max-h-[45rem] h-auto rounded-lg p-2">
+        <h1 className="w-full text-black text-center font-extrabold text-3xl p-2">
           Box Design Form
         </h1>
-        {isLoading ? (
-          <LoadingScreen />
-        ) : (
+        {isEditing && (
           <>
             <p className="bg-gray-100 rounded-md w-80 text-gray-500 text-md p-3 text-justify">
-              {isLastStep ? "Please make sure you have enter the correct information." : "Please complete the form below and move to next step." }
+              {isLastStep
+                ? "Please make sure you have enter the correct information."
+                : "Please complete the form below and move to next step."}
             </p>
             <form onSubmit={onSubmit}>
               <div className="text-center w-full p-2">
@@ -134,6 +143,24 @@ export default function BoxDesignForm() {
               </div>
             </form>
           </>
+        )}
+        {isLoading && <LoadingScreen text="Submitting Form..." />}
+        {submitError && (
+          <SubmissionErrorContent
+            headerText="Submission Error"
+            contentText="An error occurred while submitting your form data. Please try again."
+            onRetry={() => {
+              setSubmitError(false);
+              setIsEditing(true);
+            }}
+          />
+        )}
+        {submitSuccess && (
+          <SubmissionSuccessContent
+            headerText="Submission Successful!"
+            contentText="Your form data has been successfully submitted."
+            onBackToHome={backToHomePage}
+          />
         )}
       </div>
     </div>
