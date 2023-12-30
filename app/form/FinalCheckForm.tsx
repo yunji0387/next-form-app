@@ -59,27 +59,13 @@ export function FinalCheckForm(props: FinalFormDataProps) {
             .replace(/(?<![A-Z])([A-Z])/g, " $1")
             .replace(/^./, (str) => str.toUpperCase());
 
-        //   // Check if the key is 'materialName' to render it differently
-        //   let content;
-        //   if (key === "materialName" && Array.isArray(value)) {
-        //     content = renderMaterialNamesList(value);
-        //   } else {
-        //     content = <p className="text-sm text-justify">{displayValue}</p>;
-        //   }
-
           return (
             <div
               key={index}
               className="flex flex-row justify-between items-center p-2"
             >
               <p className="w-[40%] text-sm">{displayKey}:</p>
-              {/* <div className="w-[60%] p-3 bg-gray-200 rounded-md">
-                <p className="text-sm text-justify">{displayValue}</p>
-              </div> */}
-              {/* <div className="w-[60%] p-3 bg-gray-200 rounded-md">
-                {content}
-              </div> */}
-              <div className="w-[60%] p-3 bg-gray-200 rounded-md">
+              <div className="w-[60%] p-3 bg-gray-200 rounded-md overflow-y-auto horizontal-scrollbar">
                 {typeof displayElement === 'string'
                   ? <p className="text-sm text-justify">{displayElement}</p>
                   : displayElement // This will be the JSX element for the list
