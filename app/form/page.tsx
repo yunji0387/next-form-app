@@ -9,6 +9,7 @@ import { useMultiStepForm } from "../hooks/useMutiStepForm";
 import { LoadingScreen } from "../components/LoadingScreen";
 import { SubmissionErrorContent } from "../components/SubmissionErrorContent";
 import { SubmissionSuccessContent } from "../components/SubmissionSuccessContent";
+import { StepsIndication } from "./StepsIndication";
 
 type FormData = {
   jobName: string;
@@ -114,15 +115,19 @@ export default function BoxDesignForm() {
         </h1>
         {isEditing && (
           <>
-            <p className="bg-gray-100 rounded-md w-80 text-gray-500 text-md p-3 text-justify">
+            <StepsIndication
+              currentStep={currStep + 1}
+              totalSteps={steps.length}
+            />
+            <p className="bg-gray-100 rounded-md w-80 text-gray-500 text-sm mt-2 p-2 text-justify">
               {isLastStep
                 ? "Please make sure you have enter the correct information."
                 : "Please complete the form below and move to next step."}
             </p>
             <form onSubmit={onSubmit}>
-              <div className="text-center w-full p-2">
+              {/* <div className="text-center w-full p-2">
                 Page {currStep + 1} of {steps.length}
-              </div>
+              </div> */}
               {step}
               <div className="w-full flex flex-row justify-around items-center mt-2 mb-2">
                 {!isFirstStep && (
