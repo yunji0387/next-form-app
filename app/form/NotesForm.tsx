@@ -11,12 +11,12 @@ export function NotesForm({ designNotes, updateForm }: DesignNotesFormProps) {
     <div className="custom-form-container">
       <h2 className="text-black text-center font-bold text-xl p-1">Notes</h2>
 
-      <div className="w-80 flex flex-col justify-center">
+      <div className="w-full flex flex-col justify-center">
         <label htmlFor="designNotes" className="text-black text-left w-full">
           Design Notes:
         </label>
 
-        <div className="w-80 max-h-[22rem] overflow-auto pr-1">
+        <div className="w-full max-h-[22rem] overflow-auto pr-1">
           <textarea
             id="designNotes"
             value={designNotes}

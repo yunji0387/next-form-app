@@ -54,12 +54,12 @@ export function MaterialForm({ materialID, updateForm }: MaterialFormProps) {
   return (
     <div className="custom-form-container">
       <h2 className="text-black text-center font-bold text-xl p-1">Material</h2>
-      <div className="w-80 flex flex-col justify-center">
-        <ul className="text-black">
+      <div className="w-full flex flex-col items-center justify-center">
+        <ul className="w-full text-black">
           {materials.map((material) => (
             <li
               key={material.materialID}
-              className={`flex flex-row border border-gray-300 ${
+              className={`w-full flex flex-row border border-gray-300 ${
                 selectedMaterials.has(material.materialID)
                   ? "bg-gray-100"
                   : "bg-white"

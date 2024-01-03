@@ -4,32 +4,15 @@ type StepsIndicationProps = {
 };
 
 export function StepsIndication({ currentStep, totalSteps }: StepsIndicationProps) {
-
-  // return (
-  //   <div className="flex flex-row justify-center items-center w-full h-full">
-  //     <div className="flex justify-center items-center w-12 h-12 rounded-full bg-gray-200 mr-3">
-  //       <p className="text-gray-600 font-bold">{currentStep}</p>
-  //     </div>
-  //     <div className="flex justify-center items-center w-12 h-12 rounded-full bg-gray-200 mr-3">
-  //       <p className="text-gray-600 font-bold">{currentStep}</p>
-  //     </div>
-  //     <div className="flex flex-col">
-  //       <p className="text-gray-600 font-bold">Step</p>
-  //       <p className="text-gray-400">
-  //         {currentStep} of {totalSteps}
-  //       </p>
-  //     </div>
-  //   </div>
-  // );
   return (
     <div className="flex flex-col justify-center items-center w-full h-full">
       <div className="flex flex-row">
         <p className="text-gray-600 font-bold">Step</p>
-        <p className="ml-2 text-gray-400">
+        <p className="ml-2 text-gray-500">
           {currentStep} of {totalSteps}
         </p>
       </div>
-      
+
       <div className="flex flex-row justify-center items-center w-[85%] h-full">
       {Array.from({ length: totalSteps }, (_, index) => {
         const step = index + 1;

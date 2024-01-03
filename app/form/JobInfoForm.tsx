@@ -47,7 +47,7 @@ export function JobInfoForm({
     <div className="custom-form-container">
       <h2 className="text-black text-center font-bold text-xl p-1">Job Info</h2>
 
-      <div className="w-80 flex flex-col justify-center">
+      <div className="w-full flex flex-col justify-center">
         <label htmlFor="jobName" className="text-black text-left w-full">
           Job Name:
         </label>
@@ -64,7 +64,7 @@ export function JobInfoForm({
         />
       </div>
 
-      <div className="w-80 flex flex-col justify-center">
+      <div className="w-full flex flex-col justify-center">
         <label htmlFor="customerName" className="text-black text-left w-full">
           Customer Name:
         </label>
