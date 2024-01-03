@@ -43,20 +43,7 @@ export default function BoxDesignForm() {
   const [submitError, setSubmitError] = useState<boolean>(false);
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
 
-  const { steps, currStep, step, isFirstStep, isLastStep, prevStep, nextStep, getFormNameByStep } =
-    // useMultiStepForm([
-    //   <JobInfoForm
-    //     key="jobInfoForm"
-    //     {...formData}
-    //     updateForm={updateForm}
-    //     setIsFormValid={setIsCurrentFormValid}
-    //   />,
-    //   <MaterialForm key="materialForm" {...formData} updateForm={updateForm} />,
-    //   <PrintingForm key="printingForm" {...formData} updateForm={updateForm} />,
-    //   <NotesForm key="notesForm" {...formData} updateForm={updateForm} />,
-    //   <FinalCheckForm key="finalCheckForm" {...formData} />,
-    // ]);
-
+  const { steps, currStep, step, isFirstStep, isLastStep, prevStep, nextStep, getFormNameByStep, goToStep } =
     useMultiStepForm([
       { name: "Job Info", component: <JobInfoForm key="jobInfoForm" {...formData} updateForm={updateForm} setIsFormValid={setIsCurrentFormValid} /> },
       { name: "Material", component: <MaterialForm key="materialForm" {...formData} updateForm={updateForm} /> },
@@ -123,14 +110,11 @@ export default function BoxDesignForm() {
         </h1>
         {isEditing && (
           <>
-            {/* <StepsIndication
-              currentStep={currStep + 1}
-              totalSteps={steps.length}
-            /> */}
             <StepsIndication
               currentStep={currStep + 1}
               totalSteps={steps.length}
               getFormNameByStep={getFormNameByStep}
+              goToStep={goToStep}
             />
             <p className="bg-gray-100 rounded-md text-gray-500 text-sm md:text-base mt-2 p-2 text-center w-[85%]">
               {isLastStep

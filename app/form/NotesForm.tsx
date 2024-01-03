@@ -13,7 +13,7 @@ export function NotesForm({ designNotes, updateForm }: DesignNotesFormProps) {
 
       <div className="w-full flex flex-col justify-center">
         <label htmlFor="designNotes" className="text-black text-left w-full">
-          Design Notes:
+          Design Notes <span className="text-sm text-gray-600">(optional)</span>:
         </label>
 
         <div className="w-full max-h-[22rem] overflow-auto pr-1">
