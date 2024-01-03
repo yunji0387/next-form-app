@@ -78,10 +78,10 @@ export function MaterialForm({ materialID, updateForm }: MaterialFormProps) {
                     className="custom-form-checkbox"
                   />
                 </div>
-                <p className="text-center text-sm border-l border-gray col-span-2">
+                <p className="text-center text-sm lg:text-base border-l border-gray col-span-2">
                   {material.materialID}
                 </p>
-                <p className="text-center text-sm border-l border-gray col-span-9">
+                <p className="text-center text-sm lg:text-base border-l border-gray col-span-9">
                   {material.materialName}
                 </p>
               </label>

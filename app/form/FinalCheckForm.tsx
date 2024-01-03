@@ -19,7 +19,7 @@ export function FinalCheckForm(props: FinalFormDataProps) {
     return (
       <ul className="list-disc list-inside">
         {materialIDs.map((id, index) => (
-          <li key={index} className="text-sm">
+          <li key={index} className="text-sm lg:text-base">
             {id}
           </li>
         ))}
@@ -32,7 +32,7 @@ export function FinalCheckForm(props: FinalFormDataProps) {
     return (
       <ul className="list-disc list-inside">
         {materialNames.map((name, index) => (
-          <li key={index} className="text-sm">
+          <li key={index} className="text-sm lg:text-base">
             {name}
           </li>
         ))}
@@ -64,10 +64,10 @@ export function FinalCheckForm(props: FinalFormDataProps) {
               key={index}
               className="flex flex-row justify-between items-center p-2"
             >
-              <p className="w-[40%] text-sm">{displayKey}:</p>
-              <div className="w-[60%] p-3 bg-gray-200 rounded-md overflow-y-auto horizontal-scrollbar">
+              <p className="w-[40%] lg:w-[30%] text-sm lg:text-base">{displayKey}:</p>
+              <div className="w-[60%] lg:w-[70%] p-3 bg-gray-200 rounded-md overflow-y-auto horizontal-scrollbar">
                 {typeof displayElement === 'string'
-                  ? <p className="text-sm text-justify">{displayElement}</p>
+                  ? <p className="text-sm lg:text-base text-justify">{displayElement}</p>
                   : displayElement // This will be the JSX element for the list
                 }
               </div>
