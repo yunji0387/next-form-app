@@ -79,7 +79,7 @@ export function PrintingForm({
   return (
     <div className="custom-form-container">
       <h2 className="text-black text-center font-bold text-xl p-1">Printing</h2>
-      <div className="w-80 flex flex-col justify-center gap-5">
+      <div className="w-full flex flex-col justify-center gap-5">
         <label htmlFor="printType" className="text-black text-left w-full">
           Print Type:
           <select
@@ -128,8 +128,8 @@ export function PrintingForm({
             value={customTextField}
             onChange={handleCustomTextInputChange}
             placeholder={isCustomTextEnabled ? "Enter custom text..." : ""}
-            className={`w-80 p-1 pl-2 border ${
-              isCustomTextEnabled ? "custom-form-text-field" : "bg-gray-200"
+            className={`w-full p-1 pl-2 border ${
+              isCustomTextEnabled ? "custom-form-text-field" : "bg-gray-50 border-gray-50"
             } text-black`}
             disabled={!isCustomTextEnabled}
           />

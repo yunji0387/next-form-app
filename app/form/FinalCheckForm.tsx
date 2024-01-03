@@ -19,7 +19,7 @@ export function FinalCheckForm(props: FinalFormDataProps) {
     return (
       <ul className="list-disc list-inside">
         {materialIDs.map((id, index) => (
-          <li key={index} className="text-sm">
+          <li key={index} className="text-sm lg:text-base">
             {id}
           </li>
         ))}
@@ -32,7 +32,7 @@ export function FinalCheckForm(props: FinalFormDataProps) {
     return (
       <ul className="list-disc list-inside">
         {materialNames.map((name, index) => (
-          <li key={index} className="text-sm">
+          <li key={index} className="text-sm lg:text-base">
             {name}
           </li>
         ))}
@@ -46,7 +46,7 @@ export function FinalCheckForm(props: FinalFormDataProps) {
         Final Check
       </h2>
 
-      <div className="w-80 bg-gray-100 flex flex-col max-h-[20rem] overflow-auto">
+      <div className="w-full bg-gray-100 flex flex-col max-h-[20rem] overflow-auto">
       {formDataEntries.map(([key, value], index) => {
           // Determine how to display the value based on its type
           const displayElement = Array.isArray(value)
@@ -59,29 +59,15 @@ export function FinalCheckForm(props: FinalFormDataProps) {
             .replace(/(?<![A-Z])([A-Z])/g, " $1")
             .replace(/^./, (str) => str.toUpperCase());
 
-        //   // Check if the key is 'materialName' to render it differently
-        //   let content;
-        //   if (key === "materialName" && Array.isArray(value)) {
-        //     content = renderMaterialNamesList(value);
-        //   } else {
-        //     content = <p className="text-sm text-justify">{displayValue}</p>;
-        //   }
-
           return (
             <div
               key={index}
               className="flex flex-row justify-between items-center p-2"
             >
-              <p className="w-[40%] text-sm">{displayKey}:</p>
-              {/* <div className="w-[60%] p-3 bg-gray-200 rounded-md">
-                <p className="text-sm text-justify">{displayValue}</p>
-              </div> */}
-              {/* <div className="w-[60%] p-3 bg-gray-200 rounded-md">
-                {content}
-              </div> */}
-              <div className="w-[60%] p-3 bg-gray-200 rounded-md">
+              <p className="w-[40%] lg:w-[30%] text-sm lg:text-base">{displayKey}:</p>
+              <div className="w-[60%] lg:w-[70%] p-3 bg-gray-200 rounded-md overflow-y-auto horizontal-scrollbar">
                 {typeof displayElement === 'string'
-                  ? <p className="text-sm text-justify">{displayElement}</p>
+                  ? <p className="text-sm lg:text-base text-justify">{displayElement}</p>
                   : displayElement // This will be the JSX element for the list
                 }
               </div>
