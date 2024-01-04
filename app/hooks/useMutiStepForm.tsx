@@ -1,9 +1,12 @@
 import { ReactElement, useState } from "react";
 
 export function useMultiStepForm(
-  steps: { name: string; component: ReactElement }[]
+  steps: { name: string; component: ReactElement; }[]
 ) {
   const [currStep, setCurrStep] = useState<number>(0);
+  const [completionStatuses, setCompletionStatuses] = useState<boolean[]>(
+    new Array(steps.length).fill(false)
+  );
 
   function nextStep() {
     setCurrStep((i) => {
@@ -30,6 +33,18 @@ export function useMultiStepForm(
     return steps[step].name;
   }
 
+  const isStepComplete = (step: number): boolean => {
+    return step >= 0 && step < completionStatuses.length && completionStatuses[step];
+  };
+
+  const setStepComplete = (step: number) => {
+    if (step >= 0 && step < steps.length) {
+      const newCompletionStatuses = [...completionStatuses];
+      newCompletionStatuses[step] = true;
+      setCompletionStatuses(newCompletionStatuses);
+    }
+  };
+
   return {
     currStep,
     step: steps[currStep],
@@ -40,5 +55,7 @@ export function useMultiStepForm(
     isFirstStep: currStep === 0,
     isLastStep: currStep === steps.length - 1,
     getFormNameByStep,
+    isStepComplete,
+    setStepComplete,
   };
 }

@@ -37,18 +37,17 @@ const INITIAL_FORM_DATA: FormData = {
 
 export default function BoxDesignForm() {
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM_DATA);
-  const [isCurrentFormValid, setIsCurrentFormValid] = useState<boolean>(false);
   const [isEditing, setIsEditing] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [submitError, setSubmitError] = useState<boolean>(false);
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
 
-  const { steps, currStep, step, isFirstStep, isLastStep, prevStep, nextStep, getFormNameByStep, goToStep } =
+  const { steps, currStep, step, isFirstStep, isLastStep, prevStep, nextStep, getFormNameByStep, goToStep, isStepComplete, setStepComplete } =
     useMultiStepForm([
-      { name: "Job Info", component: <JobInfoForm key="jobInfoForm" {...formData} updateForm={updateForm} setIsFormValid={setIsCurrentFormValid} /> },
+      { name: "Job Info", component: <JobInfoForm key="jobInfoForm" {...formData} updateForm={updateForm} /> },
       { name: "Material", component: <MaterialForm key="materialForm" {...formData} updateForm={updateForm} /> },
       { name: "Printing", component: <PrintingForm key="printingForm" {...formData} updateForm={updateForm} /> },
-      { name: "Notes", component: <NotesForm key="notesForm" {...formData} updateForm={updateForm} />},
+      { name: "Design Notes", component: <NotesForm key="notesForm" {...formData} updateForm={updateForm} />},
       { name: "Final Check", component: <FinalCheckForm key="finalCheckForm" {...formData} />},
     ]);
 
@@ -62,9 +61,11 @@ export default function BoxDesignForm() {
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!isLastStep) return nextStep();
 
-    if (isLastStep) {
+    if(!isLastStep){
+      setStepComplete(currStep);
+      return nextStep();
+    } else {
       setIsEditing(false);
       setIsLoading(true);
 
@@ -93,12 +94,6 @@ export default function BoxDesignForm() {
         setSubmitError(true);
         alert("Form data submission failed, please try again.");
       }
-    } else {
-      if (isCurrentFormValid) {
-        nextStep();
-      } else {
-        alert("Please fill in the form correctly before proceeding.");
-      }
     }
   }
 
@@ -115,6 +110,8 @@ export default function BoxDesignForm() {
               totalSteps={steps.length}
               getFormNameByStep={getFormNameByStep}
               goToStep={goToStep}
+              isStepComplete={isStepComplete}
+              setStepComplete={setStepComplete}
             />
             <p className="bg-gray-100 rounded-md text-gray-500 text-sm md:text-base mt-2 p-2 text-center w-[85%]">
               {isLastStep
