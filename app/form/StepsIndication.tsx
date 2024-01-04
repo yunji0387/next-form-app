@@ -40,13 +40,13 @@ export function StepsIndication({
             stepFont = "font-extrabold";
             formNameFont = "font-extrabold text-gray-600";
           }
-          let isClickable = isComplete || isStepComplete(stepNumber - 2);
+          let isClickable = isComplete || isStepComplete(index - 1);
 
           return (
             <div
               key={stepNumber}
               onClick={(isClickable) ? () => goToStep(index) : undefined}
-              className={`flex flex-col justify-center items-center w-[20%] h-12 lg:h-16 ${bgColor} border border-gray-400 border-b-8 ${isComplete ? "cursor-pointer" : ""}`}
+              className={`flex flex-col justify-center items-center w-[20%] h-12 lg:h-16 ${bgColor} border border-gray-400 border-b-8 select-none ${isClickable ? "cursor-pointer" : ""}`}
             >
               <p className={`text-gray-800 ${stepFont}`}>{stepNumber}</p>
               <div className="hidden lg:flex">
