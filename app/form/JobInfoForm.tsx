@@ -16,14 +16,12 @@ type JobInfoData = {
 
 type JobInfoFormProps = JobInfoData & {
   updateForm: (fields: Partial<JobInfoData>) => void;
-  setIsFormValid: (isValid: boolean) => void;
 };
 
 export function JobInfoForm({
   jobName,
   customerName,
   updateForm,
-  setIsFormValid,
 }: JobInfoFormProps) {
   const onSelectInvalid = (event: React.FormEvent<HTMLSelectElement>) => {
     if (event.currentTarget.value === "") {
@@ -36,11 +34,6 @@ export function JobInfoForm({
   const onSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     event.target.setCustomValidity("");
     updateForm({ customerName: event.target.value });
-
-    // Ensure the form is not null before calling checkValidity
-    if (event.currentTarget.form) {
-      setIsFormValid(event.currentTarget.form.checkValidity());
-    }
   };
 
   return (

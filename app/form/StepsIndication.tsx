@@ -3,6 +3,8 @@ type StepsIndicationProps = {
   totalSteps: number;
   getFormNameByStep: (step: number) => string;
   goToStep: (step: number) => void;
+  isStepComplete: (step: number) => boolean;
+  setStepComplete: (step: number) => void;
 };
 
 export function StepsIndication({
@@ -10,6 +12,7 @@ export function StepsIndication({
   totalSteps,
   getFormNameByStep,
   goToStep,
+  isStepComplete,
 }: StepsIndicationProps) {
   return (
     <div className="flex flex-col justify-center items-center w-full h-full">
@@ -26,8 +29,9 @@ export function StepsIndication({
           let bgColor = "bg-gray-200";
           let stepFont = "font-normal";
           let formNameFont = "font-normal text-gray-500";
-          let isClickable = stepNumber < currentStep;
-          if (isClickable) {
+
+          let isComplete = isStepComplete(index);
+          if(isComplete) {
             bgColor = "bg-green-50 border-b-green-800";
           }
           if (stepNumber === currentStep) {
@@ -36,17 +40,17 @@ export function StepsIndication({
             stepFont = "font-extrabold";
             formNameFont = "font-extrabold text-gray-600";
           }
-          const formName = getFormNameByStep(index);
+          let isClickable = isComplete || isStepComplete(stepNumber - 2);
 
           return (
             <div
               key={stepNumber}
-              onClick={isClickable ? () => goToStep(index) : undefined} // Only add the onClick handler if the step is clickable
-              className={`flex flex-col justify-center items-center w-[20%] h-12 lg:h-16 ${bgColor} border border-gray-400 border-b-8 ${isClickable ? "cursor-pointer" : ""}`}
+              onClick={(isClickable) ? () => goToStep(index) : undefined}
+              className={`flex flex-col justify-center items-center w-[20%] h-12 lg:h-16 ${bgColor} border border-gray-400 border-b-8 ${isComplete ? "cursor-pointer" : ""}`}
             >
               <p className={`text-gray-800 ${stepFont}`}>{stepNumber}</p>
               <div className="hidden lg:flex">
-                <p className={`ml-2 ${formNameFont}`}>{formName}</p>
+                <p className={`${formNameFont}`}>{getFormNameByStep(index)}</p>
               </div>
             </div>
           );

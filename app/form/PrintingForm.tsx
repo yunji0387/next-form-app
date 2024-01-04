@@ -85,7 +85,6 @@ export function PrintingForm({
           <select
             id="printType"
             value={printType}
-            // onChange={(e) => updateForm({ printType: e.target.value })}
             onChange={handlePrintTypeChange}
             onInvalid={handleSelectInvalid}
             className="custom-form-text-field"
