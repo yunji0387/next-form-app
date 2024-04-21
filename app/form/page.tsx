@@ -69,8 +69,15 @@ export default function BoxDesignForm() {
       setIsEditing(false);
       setIsLoading(true);
 
-      const endpoint =
-        "https://next-form-app-backend-26d460c2dfaa.herokuapp.com/submit-form";
+      const endpoint = process.env.NEXT_PUBLIC_FORM_SUBMISSION_URL;
+
+      if (!endpoint) {
+        console.error("Submission endpoint is not defined.");
+        setIsLoading(false);
+        setSubmitError(true);
+        alert("Submission endpoint is not set in the environment variables.");
+        return;
+      }
 
       try {
         const response = await fetch(endpoint, {
