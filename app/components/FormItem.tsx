@@ -46,7 +46,7 @@ export default function FormItem({ formData }: FormItemProps) {
           <p className="w-1/2 text-sm">
             <span className="font-bold">Form ID:</span> {formId}
           </p>
-          <div className="hidden group-hover:flex w-1/3 justify-end gap-2">
+          <div className="hidden group-hover:flex w-1/3 justify-end gap-2 select-none">
             <button
               className="bg-gray-100 hover:bg-white w-[40%] h-6 text-xs text-gray-800 border border-gray-700 rounded"
               onClick={(e) => {
