@@ -69,8 +69,15 @@ export default function BoxDesignForm() {
       setIsEditing(false);
       setIsLoading(true);
 
-      const endpoint =
-        "https://next-form-app-backend-26d460c2dfaa.herokuapp.com/submit-form";
+      const endpoint = process.env.NEXT_PUBLIC_FORM_SUBMISSION_URL;
+
+      if (!endpoint) {
+        console.error("Submission endpoint is not defined.");
+        setIsLoading(false);
+        setSubmitError(true);
+        alert("Submission endpoint is not set in the environment variables.");
+        return;
+      }
 
       try {
         const response = await fetch(endpoint, {
@@ -132,7 +139,7 @@ export default function BoxDesignForm() {
                 )}
                 <button
                   type="submit"
-                  className="w-40 p-2 m-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700"
+                  className={`w-40 p-2 m-2 ${isLastStep ? "bg-green-600 hover:bg-green-700" : "bg-blue-600 hover:bg-blue-700"} text-white font-bold rounded-lg`}
                 >
                   {isLastStep ? "Finish" : "Next"}
                 </button>
