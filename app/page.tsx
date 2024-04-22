@@ -56,7 +56,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-3 p-24">
+    <main className="flex w-full min-h-screen flex-col items-center justify-center gap-3 p-24">
       <div>
         <Link href="/form">
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
@@ -64,7 +64,7 @@ export default function Home() {
           </button>
         </Link>
       </div>
-      <div className="flex flex-col gap-2 bg-white w-full h-[35rem] rounded-md overflow-auto py-3">
+      <div className="flex flex-col gap-2 bg-white w-full h-[35rem] rounded-md p-3 overflow-auto">
         <p className="w-full pl-5 font-bold text-2xl">Form List</p>
         {isLoading && <LoadingScreen text="Loading Form List..." />}
         {loadError && (
