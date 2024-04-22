@@ -139,7 +139,7 @@ export default function BoxDesignForm() {
                 )}
                 <button
                   type="submit"
-                  className="w-40 p-2 m-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700"
+                  className={`w-40 p-2 m-2 ${isLastStep ? "bg-green-600 hover:bg-green-700" : "bg-blue-600 hover:bg-blue-700"} text-white font-bold rounded-lg`}
                 >
                   {isLastStep ? "Finish" : "Next"}
                 </button>
