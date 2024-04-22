@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DeleteFormPopUp from "./DeleteFormPopUp";
 
 type FormData = {
   jobName: string;
@@ -32,6 +33,7 @@ export default function FormItem({ formData }: FormItemProps) {
   } = formData;
 
   const [isExpanded, setIsExpanded] = useState(false);
+  const [showDeletePopup, setShowDeletePopup] = useState(false);
 
   return (
     <div
@@ -78,10 +80,16 @@ export default function FormItem({ formData }: FormItemProps) {
             </p>
           </>
         )}
+        {showDeletePopup && (
+          <DeleteFormPopUp
+            formId={formData.formId}
+            onClose={() => setShowDeletePopup(false)}
+          />
+        )}
       </div>
-      <div className="hidden group-hover:flex w-1/4 justify-end">
+      <div className="hidden group-hover:flex w-1/4 justify-end gap-2">
         <button
-          className="bg-gray-100 hover:bg-white w-[50%] h-6 text-xs text-gray-800 border border-gray-700 rounded"
+          className="bg-gray-100 hover:bg-white w-[40%] h-6 text-xs text-gray-800 border border-gray-700 rounded"
           onClick={(e) => {
             e.stopPropagation();
             setIsExpanded(!isExpanded);
@@ -97,16 +105,18 @@ export default function FormItem({ formData }: FormItemProps) {
           }}
         >
           Edit
-        </button>
+        </button> */}
         <button
-          className="bg-gray-100 hover:bg-white w-[30%] h-6 text-xs text-gray-800 border border-gray-700 rounded"
+          className="bg-gray-100 hover:bg-white w-[40%] h-6 text-xs text-gray-800 border border-gray-700 rounded"
           onClick={(e) => {
             e.stopPropagation();
             // onDelete(formId);
+            setShowDeletePopup(true);
+            setIsExpanded(true);
           }}
         >
           Delete
-        </button> */}
+        </button>
       </div>
     </div>
   );

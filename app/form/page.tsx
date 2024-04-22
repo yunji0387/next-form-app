@@ -42,14 +42,56 @@ export default function BoxDesignForm() {
   const [submitError, setSubmitError] = useState<boolean>(false);
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
 
-  const { steps, currStep, step, isFirstStep, isLastStep, prevStep, nextStep, getFormNameByStep, goToStep, isStepComplete, setStepComplete } =
-    useMultiStepForm([
-      { name: "Job Info", component: <JobInfoForm key="jobInfoForm" {...formData} updateForm={updateForm} /> },
-      { name: "Material", component: <MaterialForm key="materialForm" {...formData} updateForm={updateForm} /> },
-      { name: "Printing", component: <PrintingForm key="printingForm" {...formData} updateForm={updateForm} /> },
-      { name: "Design Notes", component: <NotesForm key="notesForm" {...formData} updateForm={updateForm} />},
-      { name: "Final Check", component: <FinalCheckForm key="finalCheckForm" {...formData} />},
-    ]);
+  const {
+    steps,
+    currStep,
+    step,
+    isFirstStep,
+    isLastStep,
+    prevStep,
+    nextStep,
+    getFormNameByStep,
+    goToStep,
+    isStepComplete,
+    setStepComplete,
+  } = useMultiStepForm([
+    {
+      name: "Job Info",
+      component: (
+        <JobInfoForm key="jobInfoForm" {...formData} updateForm={updateForm} />
+      ),
+    },
+    {
+      name: "Material",
+      component: (
+        <MaterialForm
+          key="materialForm"
+          {...formData}
+          updateForm={updateForm}
+        />
+      ),
+    },
+    {
+      name: "Printing",
+      component: (
+        <PrintingForm
+          key="printingForm"
+          {...formData}
+          updateForm={updateForm}
+        />
+      ),
+    },
+    {
+      name: "Design Notes",
+      component: (
+        <NotesForm key="notesForm" {...formData} updateForm={updateForm} />
+      ),
+    },
+    {
+      name: "Final Check",
+      component: <FinalCheckForm key="finalCheckForm" {...formData} />,
+    },
+  ]);
 
   function updateForm(fields: Partial<FormData>) {
     setFormData((prev) => ({ ...prev, ...fields }));
@@ -62,7 +104,7 @@ export default function BoxDesignForm() {
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if(!isLastStep){
+    if (!isLastStep) {
       setStepComplete(currStep);
       return nextStep();
     } else {
@@ -107,9 +149,17 @@ export default function BoxDesignForm() {
   return (
     <div className="w-screen h-screen flex items-center justify-center">
       <div className="flex flex-col items-center bg-white border-black border-2 w-[25rem] md:w-[35rem] lg:w-[50rem] min-h-[30rem] max-h-[45rem] h-auto rounded-lg p-2">
-        <h1 className="w-full text-black text-center font-extrabold text-3xl p-2">
-          Box Design Form
-        </h1>
+        <div className="w-full grid grid-cols-8 items-center">
+          <button
+          className="bg-gray-100 hover:bg-white col-span-1 font-bold border border-gray-400 rounded text-gray-600 h-12"
+          onClick={backToHomePage}
+          >
+            Home
+          </button>
+          <h1 className="col-span-6 w-full text-black text-center font-extrabold text-3xl p-2">
+            Box Design Form
+          </h1>
+        </div>
         {isEditing && (
           <>
             <StepsIndication
@@ -125,7 +175,10 @@ export default function BoxDesignForm() {
                 ? "Please make sure you have enter the correct information."
                 : "Please complete the form below and move to next step."}
             </p>
-            <form className="flex flex-col justify-center items-center w-full" onSubmit={onSubmit}>
+            <form
+              className="flex flex-col justify-center items-center w-full"
+              onSubmit={onSubmit}
+            >
               {step.component}
               <div className="w-full flex flex-row justify-around items-center mt-2 mb-2">
                 {!isFirstStep && (
@@ -139,7 +192,11 @@ export default function BoxDesignForm() {
                 )}
                 <button
                   type="submit"
-                  className={`w-40 p-2 m-2 ${isLastStep ? "bg-green-600 hover:bg-green-700" : "bg-blue-600 hover:bg-blue-700"} text-white font-bold rounded-lg`}
+                  className={`w-40 p-2 m-2 ${
+                    isLastStep
+                      ? "bg-green-600 hover:bg-green-700"
+                      : "bg-blue-600 hover:bg-blue-700"
+                  } text-white font-bold rounded-lg`}
                 >
                   {isLastStep ? "Finish" : "Next"}
                 </button>
