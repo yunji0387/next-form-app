@@ -114,7 +114,6 @@ export default function FormItem({ formData }: FormItemProps) {
           className="bg-gray-100 hover:bg-white w-[40%] h-6 text-xs text-gray-800 border border-gray-700 rounded"
           onClick={(e) => {
             e.stopPropagation();
-            // onDelete(formId);
             setShowDeletePopup(true);
             setIsExpanded(true);
           }}
