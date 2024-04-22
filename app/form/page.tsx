@@ -23,6 +23,7 @@ type FormData = {
   printCustomText: boolean;
   customText: string;
   designNotes: string;
+  formId?: number;
 };
 
 const INITIAL_FORM_DATA: FormData = {
@@ -129,7 +130,7 @@ export default function BoxDesignForm() {
 
       if (currentFormData != null) {
         endpoint = `${endpoint}/${currentFormData.formId}`;
-        const { formId, ...rest } = currentFormData;
+        const { formId, ...rest } = formData;
         console.log("Submitting edited form data:", rest);
         try {
           const response = await fetch(endpoint, {
