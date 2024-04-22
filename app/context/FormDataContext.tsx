@@ -1,7 +1,7 @@
 "use client";
 // context/FormDataContext.tsx
-import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { FormData } from '../types/FormDataTypes';
+import React, { createContext, useContext, useState, ReactNode } from "react";
+import { FormData } from "../types/FormDataTypes";
 
 type FormDataContextType = {
   currentFormData: FormData | null;
@@ -10,7 +10,7 @@ type FormDataContextType = {
 
 const defaultState: FormDataContextType = {
   currentFormData: null,
-  setCurrentFormData: () => {}
+  setCurrentFormData: () => {},
 };
 
 const FormDataContext = createContext<FormDataContextType>(defaultState);
@@ -30,3 +30,19 @@ export const FormDataProvider = ({ children }: FormDataProviderProps) => {
 };
 
 export const useFormData = () => useContext(FormDataContext);
+
+// const AppContext = createContext<any>(undefined);
+
+// export function AppWrapper({ children }: { children: ReactNode }) {
+//   const [currentStateData, setCurrentStateData] = useState("test");
+
+//   return (
+//     <AppContext.Provider value={{ currentStateData, setCurrentStateData }}>
+//       {children}
+//     </AppContext.Provider>
+//   );
+// }
+
+// export function useAppContext() {
+//   return useContext(AppContext);
+// }
