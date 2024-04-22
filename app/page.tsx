@@ -65,7 +65,7 @@ export default function Home() {
         </Link>
       </div>
       <div className="flex flex-col gap-2 bg-white w-full h-[35rem] rounded-md overflow-auto">
-        <p className="w-full p-3 text-center font-bold text-2xl">Form List</p>
+        <p className="w-full pt-5 pl-5 font-bold text-2xl">Form List</p>
         {isLoading && <LoadingScreen text="Loading Form List..." />}
         {loadError && (
           <SubmissionErrorContent
