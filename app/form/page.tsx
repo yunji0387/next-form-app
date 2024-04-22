@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { JobInfoForm } from "./JobInfoForm";
 import { MaterialForm } from "./MaterialForm";
 import { PrintingForm } from "./PrintingForm";
@@ -44,6 +45,7 @@ export default function BoxDesignForm() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [submitError, setSubmitError] = useState<boolean>(false);
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
+  const router = useRouter();
 
   const {
     steps,
@@ -154,8 +156,8 @@ export default function BoxDesignForm() {
       <div className="flex flex-col items-center bg-white border-black border-2 w-[25rem] md:w-[35rem] lg:w-[50rem] min-h-[30rem] max-h-[45rem] h-auto rounded-lg p-2">
         <div className="w-full grid grid-cols-8 items-center">
           <button
-          className="bg-gray-100 hover:bg-white col-span-1 font-bold border border-gray-400 rounded text-gray-600 h-10"
-          onClick={backToHomePage}
+            className="bg-gray-100 hover:bg-white col-span-1 font-bold border border-gray-400 rounded text-gray-600 h-10"
+            onClick={() => router.push('/')}
           >
             Home
           </button>

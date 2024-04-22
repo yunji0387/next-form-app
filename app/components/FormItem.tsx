@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/router";
 import DeleteFormPopUp from "./DeleteFormPopUp";
-import { useFormData } from '../context/FormDataContext';
+import { useFormData } from "../context/FormDataContext";
 
 type FormData = {
   jobName: string;
@@ -41,17 +41,24 @@ export default function FormItem({ formData }: FormItemProps) {
   const router = useRouter();
 
   const handleEdit = () => {
-    setCurrentFormData(formData);  // Set the current form data to be edited
-    // console.log("Current form data (FormItem):", currentFormData);
-    // router.push('/form');
-    // window.location.href = "/form";
+    console.log(
+      "Before setting current form data (FormItem):",
+      currentFormData
+    );
+    setCurrentFormData(formData); // Set the current form data to be edited
+    console.log("After setting current form data (FormItem):", currentFormData);
   };
 
   useEffect(() => {
+    console.log(
+      "Checking if currentFormData is set in useEffect",
+      currentFormData
+    );
     if (currentFormData) {
-      router.push('/form');
+      console.log("Current form data exists, navigating to /form");
+      router.push("/form"); // Perform navigation once the context data is updated
     }
-  }, [currentFormData, router]);
+  }, [currentFormData, formData, router]);
 
   return (
     <div className={`${isDeleted ? "hidden" : "flex flex-col"} w-full`}>
