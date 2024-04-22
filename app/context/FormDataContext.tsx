@@ -21,7 +21,7 @@ type FormDataProviderProps = {
 
 export const FormDataProvider = ({ children }: FormDataProviderProps) => {
   const [currentFormData, setCurrentFormData] = useState<null | FormData>(null);
-  console.log("Current form data (Context):", currentFormData);
+  // console.log("Current form data (Context):", currentFormData);
   return (
     <FormDataContext.Provider value={{ currentFormData, setCurrentFormData }}>
       {children}

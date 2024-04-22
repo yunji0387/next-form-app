@@ -11,7 +11,7 @@ import { LoadingScreen } from "../components/LoadingScreen";
 import { SubmissionErrorContent } from "../components/SubmissionErrorContent";
 import { SubmissionSuccessContent } from "../components/SubmissionSuccessContent";
 import { StepsIndication } from "./StepsIndication";
-import { useFormData } from '../context/FormDataContext';
+import { useFormData } from "../context/FormDataContext";
 
 type FormData = {
   jobName: string;
@@ -38,9 +38,10 @@ const INITIAL_FORM_DATA: FormData = {
 };
 
 export default function BoxDesignForm() {
-  const { currentFormData } = useFormData();
-  console.log("Current form data:", currentFormData);
-  const [formData, setFormData] = useState<FormData>(currentFormData  || INITIAL_FORM_DATA);
+  const { currentFormData, setCurrentFormData } = useFormData();
+  const [formData, setFormData] = useState<FormData>(
+    currentFormData || INITIAL_FORM_DATA
+  );
   const [isEditing, setIsEditing] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [submitError, setSubmitError] = useState<boolean>(false);
@@ -116,7 +117,7 @@ export default function BoxDesignForm() {
       setIsEditing(false);
       setIsLoading(true);
 
-      const endpoint = process.env.NEXT_PUBLIC_FORM_SUBMISSION_URL;
+      let endpoint = process.env.NEXT_PUBLIC_FORM_SUBMISSION_URL;
 
       if (!endpoint) {
         console.error("Submission endpoint is not defined.");
@@ -126,28 +127,57 @@ export default function BoxDesignForm() {
         return;
       }
 
-      try {
-        const response = await fetch(endpoint, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        });
+      if (currentFormData != null) {
+        endpoint = `${endpoint}/${currentFormData.formId}`;
+        const { formId, ...rest } = currentFormData;
+        console.log("Submitting edited form data:", rest);
+        try {
+          const response = await fetch(endpoint, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(rest),
+          });
 
-        if (!response.ok) {
-          throw new Error("Failed to submit data");
+          if (!response.ok) {
+            throw new Error("Failed to submit data");
+          }
+
+          setFormData(INITIAL_FORM_DATA); //reset form data
+          setIsLoading(false);
+          setSubmitSuccess(true);
+        } catch (error) {
+          console.error("Error:", error);
+          setIsLoading(false);
+          setSubmitError(true);
+          alert("Form data submission failed, please try again.");
         }
+      } else {
+        try {
+          const response = await fetch(endpoint, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          });
 
-        setFormData(INITIAL_FORM_DATA); //reset form data
-        setIsLoading(false);
-        setSubmitSuccess(true);
-      } catch (error) {
-        console.error("Error:", error);
-        setIsLoading(false);
-        setSubmitError(true);
-        alert("Form data submission failed, please try again.");
+          if (!response.ok) {
+            throw new Error("Failed to submit data");
+          }
+
+          setFormData(INITIAL_FORM_DATA); //reset form data
+          setIsLoading(false);
+          setSubmitSuccess(true);
+        } catch (error) {
+          console.error("Error:", error);
+          setIsLoading(false);
+          setSubmitError(true);
+          alert("Form data submission failed, please try again.");
+        }
       }
+      setCurrentFormData(null);
     }
   }
 
@@ -157,7 +187,10 @@ export default function BoxDesignForm() {
         <div className="w-full grid grid-cols-8 items-center">
           <button
             className="bg-gray-100 hover:bg-white col-span-1 font-bold border border-gray-400 rounded text-gray-600 h-10"
-            onClick={() => router.push('/')}
+            onClick={() => {
+              router.push("/");
+              setCurrentFormData(null);
+            }}
           >
             Home
           </button>

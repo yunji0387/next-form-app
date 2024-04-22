@@ -7,7 +7,6 @@ import { SubmissionErrorContent } from "./components/SubmissionErrorContent";
 
 // Define the structure of a form data object
 type FormData = {
-  _id: string;
   jobName: string;
   customerName: string;
   materialID: string[];
