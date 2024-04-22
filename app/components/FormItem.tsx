@@ -79,9 +79,9 @@ export default function FormItem({ formData }: FormItemProps) {
           </>
         )}
       </div>
-      <div className="hidden group-hover:flex w-1/4 justify-around">
+      <div className="hidden group-hover:flex w-1/4 justify-end">
         <button
-          className="bg-gray-100 hover:bg-white w-[30%] h-6 text-xs text-gray-800 border border-gray-700 rounded"
+          className="bg-gray-100 hover:bg-white w-[50%] h-6 text-xs text-gray-800 border border-gray-700 rounded"
           onClick={(e) => {
             e.stopPropagation();
             setIsExpanded(!isExpanded);
@@ -89,7 +89,7 @@ export default function FormItem({ formData }: FormItemProps) {
         >
           {isExpanded ? "Collapse" : "Expand"}
         </button>
-        <button
+        {/* <button
           className="bg-gray-100 hover:bg-white w-[30%] h-6 text-xs text-gray-800 border border-gray-700 rounded"
           onClick={(e) => {
             e.stopPropagation();
@@ -106,7 +106,7 @@ export default function FormItem({ formData }: FormItemProps) {
           }}
         >
           Delete
-        </button>
+        </button> */}
       </div>
     </div>
   );
