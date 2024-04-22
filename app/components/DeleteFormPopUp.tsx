@@ -35,12 +35,12 @@ export default function DeleteFormPopUp({ formId, onClose, setIsDeleted  }: Dele
       <div className="flex w-3/4 items-center justify-around p-3">
         <button
           onClick={onClose}
-          className="w-1/4 bg-gray-100 border border-gray-700 rounded"
+          className="w-1/4 bg-gray-100 hover:bg-gray-50 border border-gray-700 rounded"
         >
           Cancel
         </button>
         <button
-          className="w-1/4 bg-red-500 text-white rounded"
+          className="w-1/4 bg-red-500 hover:bg-red-600 text-white rounded"
           onClick={() => deleteForm(formId, onClose, setIsDeleted)}
         >
           Delete
