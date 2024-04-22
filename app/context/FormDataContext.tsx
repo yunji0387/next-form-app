@@ -21,7 +21,6 @@ type FormDataProviderProps = {
 
 export const FormDataProvider = ({ children }: FormDataProviderProps) => {
   const [currentFormData, setCurrentFormData] = useState<null | FormData>(null);
-  // console.log("Current form data (Context):", currentFormData);
   return (
     <FormDataContext.Provider value={{ currentFormData, setCurrentFormData }}>
       {children}
@@ -30,19 +29,3 @@ export const FormDataProvider = ({ children }: FormDataProviderProps) => {
 };
 
 export const useFormData = () => useContext(FormDataContext);
-
-// const AppContext = createContext<any>(undefined);
-
-// export function AppWrapper({ children }: { children: ReactNode }) {
-//   const [currentStateData, setCurrentStateData] = useState("test");
-
-//   return (
-//     <AppContext.Provider value={{ currentStateData, setCurrentStateData }}>
-//       {children}
-//     </AppContext.Provider>
-//   );
-// }
-
-// export function useAppContext() {
-//   return useContext(AppContext);
-// }

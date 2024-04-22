@@ -46,24 +46,12 @@ export default function FormItem({ formData }: FormItemProps) {
   const router = useRouter();
 
   const handleEdit = () => {
-    // console.log(
-    //   "Before setting current form data (FormItem):",
-    //   formData
-    // );
-    // setCurrentFormData(formData); // Set the current form data to be edited
-    // console.log("After setting current form data (FormItem):", currentFormData);
-
     const { _id, __v, ...rest } = formData; // Destructure to exclude _id and __v
     setCurrentFormData(rest);
   }
 
   useEffect(() => {
-    // console.log(
-    //   "Checking if currentFormData is set in useEffect",
-    //   currentFormData
-    // );
     if (currentFormData?.formId === formData.formId) {
-      // console.log("Current form data exists, navigating to /form");
       router.push("/form"); // Perform navigation once the context data is updated
     }
   }, [currentFormData, router]);
