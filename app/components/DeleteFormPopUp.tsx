@@ -3,12 +3,31 @@ import React from "react";
 type DeleteFormPopUpProps = {
   formId: number;
   onClose: () => void;
+  setIsDeleted: (deleted: boolean) => void;
 };
 
-export default function DeleteFormPopUp({
-  formId,
-  onClose,
-}: DeleteFormPopUpProps) {
+const deleteForm = async (formId: number, onClose: () => void, setIsDeleted: (deleted: boolean) => void) => {
+  const endpoint = process.env.NEXT_PUBLIC_FORM_SUBMISSION_URL + '/' + formId;
+
+  try {
+    const response = await fetch(endpoint, {
+      method: 'DELETE'
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to delete form: ${response.statusText}`);
+    }
+
+    alert('Form deleted successfully.');
+    setIsDeleted(true);
+    onClose(); // Close the popup after successful deletion
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Failed to delete the form, please try again.');
+  }
+};
+
+export default function DeleteFormPopUp({ formId, onClose, setIsDeleted  }: DeleteFormPopUpProps) {
   return (
     <div className="bg-white w-full flex flex-col justify-center items-center m-3 p-3 cursor-auto">
       <p>Confirm Deletion (Form ID: {formId})</p>
@@ -22,11 +41,7 @@ export default function DeleteFormPopUp({
         </button>
         <button
           className="w-1/4 bg-red-500 text-white rounded"
-          onClick={() => {
-            // Assuming delete logic or function call here
-            console.log(`Deleting form with ID ${formId}`);
-            onClose(); // close the popup after deletion
-          }}
+          onClick={() => deleteForm(formId, onClose, setIsDeleted)}
         >
           Delete
         </button>
