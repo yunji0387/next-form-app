@@ -10,6 +10,7 @@ import { LoadingScreen } from "../components/LoadingScreen";
 import { SubmissionErrorContent } from "../components/SubmissionErrorContent";
 import { SubmissionSuccessContent } from "../components/SubmissionSuccessContent";
 import { StepsIndication } from "./StepsIndication";
+import { useFormData } from '../context/FormDataContext';
 
 type FormData = {
   jobName: string;
@@ -36,7 +37,9 @@ const INITIAL_FORM_DATA: FormData = {
 };
 
 export default function BoxDesignForm() {
-  const [formData, setFormData] = useState<FormData>(INITIAL_FORM_DATA);
+  const { currentFormData } = useFormData();
+  console.log("Current form data:", currentFormData);
+  const [formData, setFormData] = useState<FormData>(currentFormData  || INITIAL_FORM_DATA);
   const [isEditing, setIsEditing] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [submitError, setSubmitError] = useState<boolean>(false);
