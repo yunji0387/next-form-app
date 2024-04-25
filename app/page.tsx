@@ -1,83 +1,65 @@
 "use client";
-import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import FormItem from "./components/FormItem";
-import { LoadingScreen } from "./components/LoadingScreen";
-import { SubmissionErrorContent } from "./components/SubmissionErrorContent";
-
-// Define the structure of a form data object
-type FormData = {
-  jobName: string;
-  customerName: string;
-  materialID: string[];
-  materialName: string[];
-  printType: string;
-  printCustomerName: boolean;
-  printCustomText: boolean;
-  customText: string;
-  designNotes: string;
-  formId: number;
-};
+import React, { useState, FormEvent } from "react";
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [loadError, setLoadError] = useState(false);
-  const [forms, setForms] = useState<FormData[]>([]);
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
-  useEffect(() => {
-    fetchForms();
-  }, []); // Dependency array is empty, so this effect will run only once after the component mounts
-
-  // Function to fetch forms
-  const fetchForms = async () => {
-    const endpoint = process.env.NEXT_PUBLIC_FORM_SUBMISSION_URL;
-    if (!endpoint) {
-      console.error("Submission endpoint is not defined.");
-      setLoadError(true);
-      return;
-    }
-
-    setIsLoading(true);
-    try {
-      const response = await fetch(endpoint);
-      if (!response.ok) {
-        throw new Error(`Failed to fetch forms: ${response.statusText}`);
-      }
-      const data: FormData[] = await response.json();
-      setForms(data);
-      setLoadError(false); // Ensure error state is cleared on successful fetch
-    } catch (error) {
-      console.error("Error:", error);
-      setLoadError(true);
-    } finally {
-      setIsLoading(false);
-    }
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    // Here you would typically handle the login logic, possibly sending a request to your server
+    console.log("Login Submitted", { username, password });
   };
 
   return (
     <main className="flex w-full min-w-[50rem] min-h-screen flex-col items-center justify-center gap-3 p-16 overflow-auto">
-      <div className="flex flex-col gap-2 bg-white w-full h-[35rem] p-3 overflow-auto">
-        <div className="w-full flex items-center justify-between">
-          <p className="font-bold text-2xl">Form List</p>
-          <div>
-            <Link href="/form">
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                New Request
-              </button>
-            </Link>
+      <div className="bg-white flex flex-col gap-2 w-full max-w-md h-auto p-3 overflow-auto">
+        <h1 className="font-black text-3xl">Next Form App</h1>
+        <h2 className="text-center font-medium text-2xl">
+          Log in to your account
+        </h2>
+        <p>
+          Don&apos;t have an account?{" "}
+          <span className="text-blue-500 underline font-medium">
+            <Link href="/signup">sign up</Link>
+          </span>
+        </p>
+        <form
+          className="flex flex-col gap-2 w-full"
+          onSubmit={handleSubmit}
+        >
+          <div className="flex flex-col">
+            <label htmlFor="username" className="text-left text-sm w-full">
+              Username:
+            </label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Username"
+              className="p-2 border border-gray-300 rounded focus:outline-gray-500"
+            />
           </div>
-        </div>
-        {isLoading && <LoadingScreen text="Loading Form List..." />}
-        {loadError && (
-          <SubmissionErrorContent
-            headerText="Error Loading Form Data"
-            contentText="An error occurred while loading the form data. Please try again later."
-            onRetry={fetchForms} // Pass fetchForms to be called on retry
-          />
-        )}
-        {!isLoading &&
-          !loadError &&
-          forms.map((form) => <FormItem key={form.formId} formData={form} />)}
+          <div className="flex flex-col">
+            <label htmlFor="password" className="text-left text-sm w-full">
+              Password:
+            </label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              className="p-2 border border-gray-300 rounded focus:outline-gray-500"
+            />
+          </div>
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-600 font-bold text-white p-2 rounded mt-3"
+          >
+            Log In
+          </button>
+        </form>
       </div>
     </main>
   );
