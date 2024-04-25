@@ -56,15 +56,17 @@ export default function Home() {
 
   return (
     <main className="flex w-full min-w-[50rem] min-h-screen flex-col items-center justify-center gap-3 p-16 overflow-auto">
-      <div>
-        <Link href="/form">
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            New Request
-          </button>
-        </Link>
-      </div>
       <div className="flex flex-col gap-2 bg-white w-full h-[35rem] p-3 overflow-auto">
-        <p className="w-full pl-5 font-bold text-2xl">Form List</p>
+        <div className="w-full flex items-center justify-between">
+          <p className="font-bold text-2xl">Form List</p>
+          <div>
+            <Link href="/form">
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                New Request
+              </button>
+            </Link>
+          </div>
+        </div>
         {isLoading && <LoadingScreen text="Loading Form List..." />}
         {loadError && (
           <SubmissionErrorContent
