@@ -187,7 +187,7 @@ export default function BoxDesignForm() {
       <div className="flex flex-col items-center bg-white border-black border-2 w-[25rem] md:w-[35rem] lg:w-[50rem] min-h-[30rem] max-h-[45rem] h-auto rounded-lg p-2">
         <div className="w-full grid grid-cols-8 items-center">
           <button
-            className="bg-gray-100 hover:bg-white col-span-1 font-bold border border-gray-400 rounded text-gray-600 h-10"
+            className="hover:border-b-4 hover:border-gray-700 col-span-1 font-bold text-gray-600"
             onClick={() => {
               router.push("/");
               setCurrentFormData(null);
