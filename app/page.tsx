@@ -25,6 +25,19 @@ export default function Home() {
             <Link href="/signup">sign up</Link>
           </span>
         </p>
+
+        <div className="w-full p-2 flex items-center justify-center border border-gray-500 text-gray-700 font-bold">
+          <p>Google</p>
+        </div>
+        <div className="w-full p-2 flex items-center justify-center border border-gray-500 text-gray-700 font-bold">
+          <p>Microsoft</p>
+        </div>
+        <div className="w-full p-2 flex items-center justify-center border border-gray-500 text-gray-700 font-bold">
+          <p>Facebook</p>
+        </div>
+
+        <p className="text-center text-gray-500 text-sm">Or with email and password</p>
+
         <form
           className="flex flex-col gap-2 w-full"
           onSubmit={handleSubmit}
