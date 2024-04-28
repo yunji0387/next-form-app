@@ -13,7 +13,7 @@ export default function Login() {
   };
 
   return (
-    <main className="flex w-full min-w-[50rem] min-h-screen flex-col items-center justify-center gap-3 p-16 overflow-auto">
+    <div className="flex w-full min-w-[50rem] min-h-screen flex-col items-center justify-center gap-3 p-16 overflow-auto">
       <div className="bg-white flex flex-col gap-2 w-full max-w-md h-auto p-3 overflow-auto">
         <h1 className="font-black text-3xl">Next Form App</h1>
         <h2 className="text-center font-medium text-2xl">
@@ -22,7 +22,7 @@ export default function Login() {
         <p>
           Don&apos;t have an account?{" "}
           <span className="text-blue-500 underline font-medium">
-            <Link href="/signup">sign up</Link>
+            <Link href="/register">sign up</Link>
           </span>
         </p>
 
@@ -76,6 +76,6 @@ export default function Login() {
           </button>
         </form>
       </div>
-    </main>
+    </div>
   );
 }
