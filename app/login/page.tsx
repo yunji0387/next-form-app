@@ -1,16 +1,39 @@
 "use client";
 import Link from "next/link";
 import React, { useState, FormEvent } from "react";
+import { useAuth } from "../context/AuthContext";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const auth = useAuth();
+  const router = useRouter();
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  if (!auth) {
+    console.error("Auth context is not available");
+    return <div>No access to Auth context</div>;
+  }
+
+  const { login, authUser } = auth;
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Here you would typically handle the login logic, possibly sending a request to your server
-    console.log("Login Submitted", { username, password });
+    // Call the login method from your AuthContext
+    const result = await login({ email: username, password: password });
+    if (result) {
+      console.log("Login Successful");
+      router.push("/");
+    } else {
+      console.error("Login Failed");
+    }
   };
+
+  // const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  //   // Here you would typically handle the login logic, possibly sending a request to your server
+  //   console.log("Login Submitted", { username, password });
+  // };
 
   return (
     <div className="flex w-full min-w-[50rem] min-h-screen flex-col items-center justify-center gap-3 p-16 overflow-auto">
