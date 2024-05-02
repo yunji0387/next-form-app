@@ -69,7 +69,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         // Since the response was not ok, we attempt to parse it as JSON to get the error message
         const errorResponse = await response.json(); // Parse the response as JSON
         // Assuming the error structure is as you mentioned { error: { undefined: "Error message" } }
-        const errorMessage = errorResponse.error.undefined;
+        const errorMessage = errorResponse.error.message;
+        console.error("Test Error:", errorResponse);
         throw new Error(
           errorMessage || `HTTP error! Status: ${response.status}`
         ); // Use a generic error message if specific message isn't available

@@ -50,14 +50,8 @@ export default function Login() {
       return;
     }
 
-    // Call the login method from your AuthContext
     const result = await login({ email: username, password: password });
-    // if (result) {
-    //   console.log("Login Successful");
-    //   router.push("/");
-    // } else {
-    //   console.error("Login Failed");
-    // }
+
     if (result) {
       router.push("/");
     }
