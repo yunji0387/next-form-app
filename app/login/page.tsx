@@ -4,11 +4,13 @@ import React, { useState, FormEvent } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useRouter } from "next/navigation";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [errors, setErrors] = useState({ username: "", password: "" });
+
   const auth = useAuth();
   const router = useRouter();
 
@@ -19,15 +21,45 @@ export default function Login() {
 
   const { login, authUser } = auth;
 
+  const validateForm = () => {
+    let valid = true;
+    let newErrors = { username: "", password: "" };
+
+    if (!username) {
+      newErrors.username = "Username is required";
+      valid = false;
+    } else if (!/^[^@]+@[^@]+\.[^@]+$/.test(username)) {
+      newErrors.username = "Enter a valid email address";
+      valid = false;
+    }
+
+    if (!password) {
+      newErrors.password = "Password is required";
+      valid = false;
+    }
+
+    setErrors(newErrors);
+    return valid;
+  };
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (!validateForm()) {
+      console.error("Validation failed.");
+      return;
+    }
+
     // Call the login method from your AuthContext
     const result = await login({ email: username, password: password });
+    // if (result) {
+    //   console.log("Login Successful");
+    //   router.push("/");
+    // } else {
+    //   console.error("Login Failed");
+    // }
     if (result) {
-      console.log("Login Successful");
       router.push("/");
-    } else {
-      console.error("Login Failed");
     }
   };
 
@@ -72,6 +104,9 @@ export default function Login() {
               placeholder="Username"
               className="p-2 border border-gray-300 rounded focus:outline-gray-500"
             />
+            {errors.username && (
+              <div className="text-red-500 text-sm">{errors.username}</div>
+            )}
           </div>
           <div className="flex flex-col">
             <label htmlFor="password" className="text-left text-sm w-full">
@@ -84,6 +119,9 @@ export default function Login() {
               placeholder="Password"
               className="p-2 border border-gray-300 rounded focus:outline-gray-500"
             />
+            {errors.password && (
+              <div className="text-red-500 text-sm">{errors.password}</div>
+            )}
           </div>
           <p className="text-blue-500 underline font-medium text-right">
             <Link href="/signup">Forgot you pasword?</Link>
