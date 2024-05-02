@@ -128,13 +128,13 @@ export default function Register() {
           </span>
         </p>
 
-        <div className="w-full p-2 flex items-center justify-center border border-gray-500 text-gray-700 font-bold">
+        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 text-gray-700 font-bold">
           <p>Google</p>
         </div>
-        <div className="w-full p-2 flex items-center justify-center border border-gray-500 text-gray-700 font-bold">
+        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 text-gray-700 font-bold">
           <p>Microsoft</p>
         </div>
-        <div className="w-full p-2 flex items-center justify-center border border-gray-500 text-gray-700 font-bold">
+        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 text-gray-700 font-bold">
           <p>Facebook</p>
         </div>
 
