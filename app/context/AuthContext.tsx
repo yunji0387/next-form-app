@@ -1,6 +1,6 @@
 "use client";
 import { useState, createContext, useContext } from "react";
-import axios, { AxiosError } from "axios";
+// import axios, { AxiosError } from "axios";
 import { User, UserData } from "../types/Auth";
 import { toast } from "react-toastify";
 
@@ -34,10 +34,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return;
   }
 
-  const axiosInstance = axios.create({
-    withCredentials: true,
-    baseURL: endpoint,
-  });
+  // const axiosInstance = axios.create({
+  //   withCredentials: true,
+  //   baseURL: endpoint,
+  // });
 
   // const register = async (userData: UserData) => {
   //   try {
