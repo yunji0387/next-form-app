@@ -6,7 +6,8 @@ import { LoadingScreen } from "./components/LoadingScreen";
 import { SubmissionErrorContent } from "./components/SubmissionErrorContent";
 import { useRouter } from "next/navigation";
 import { useAuth } from "./context/AuthContext";
-// import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // Define the structure of a form data object
 type FormData = {
@@ -38,6 +39,8 @@ export default function Home() {
 
   useEffect(() => {
     if (verified) {
+      toast.success("Login Successful.");
+      toast(`Welcome, ${authUser?.first_name}.`);
       fetchForms();
     }
   }, [verified]);
@@ -85,23 +88,19 @@ export default function Home() {
 
   return (
     <main className="flex w-full min-w-[50rem] min-h-screen flex-col items-center justify-center gap-3 p-16 overflow-auto">
+      <ToastContainer />
       <div className="flex flex-col gap-2 bg-white w-full h-[35rem] p-3 overflow-auto">
         {verified && (
-          <>
-            <p className="text-xl font-medium">
-              Welcome, {authUser?.first_name}.
-            </p>
-            <div className="w-full flex items-center justify-between">
-              <p className="font-bold text-2xl">Form List</p>
-              <div>
-                <Link href="/form">
-                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    New Request
-                  </button>
-                </Link>
-              </div>
+          <div className="w-full flex items-center justify-between">
+            <p className="font-bold text-2xl">Form List</p>
+            <div>
+              <Link href="/form">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  New Request
+                </button>
+              </Link>
             </div>
-          </>
+          </div>
         )}
         {isLoading && <LoadingScreen text="Loading ..." />}
         {loadError && (

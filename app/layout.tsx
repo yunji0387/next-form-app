@@ -4,6 +4,7 @@ import "./globals.css";
 import { FormDataProvider } from "./context/FormDataContext";
 import { AuthProvider } from "./context/AuthContext";
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

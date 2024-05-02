@@ -2,6 +2,7 @@
 import { useState, createContext, useContext } from "react";
 import axios, { AxiosError } from "axios";
 import { User, UserData } from "../types/Auth";
+import { toast } from "react-toastify";
 
 interface AuthContextType {
   authUser: User | null;
@@ -43,7 +44,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const response = await axios.post(`${endpoint}/register`, userData);
       //   setAuthUser(response.data.user); // Adjust based on your API response
       return true;
-    } catch (error) {
+    } catch (error: any) {
       if (axios.isAxiosError(error)) {
         console.error(error.response);
       } else {
@@ -53,24 +54,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  //   const login = async (userData: UserData) => {
-  //     try {
-  //     //   const response = await axios.post(`${endpoint}/login`, userData);
-  //     const response = await axios.post("http://localhost:5005/auth/login", userData);
-  //       // console.log("Response: ", response.data.data[0]);
-  //       setAuthUser(response.data.data[0]); // Adjust based on your API response
-
-  //       return true;
-  //     } catch (error) {
-  //       console.log("Error: ", error);
-  //       if (axios.isAxiosError(error)) {
-  //         console.error(error.response);
-  //       } else {
-  //         console.error("An unexpected error occurred:", error);
-  //       }
-  //       return false;
-  //     }
-  //   };
   const login = async (userData: UserData) => {
     try {
       const response = await fetch(`${endpoint}/login`, {
@@ -83,7 +66,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        // Since the response was not ok, we attempt to parse it as JSON to get the error message
+        const errorResponse = await response.json(); // Parse the response as JSON
+        // Assuming the error structure is as you mentioned { error: { undefined: "Error message" } }
+        const errorMessage = errorResponse.error.undefined;
+        throw new Error(
+          errorMessage || `HTTP error! Status: ${response.status}`
+        ); // Use a generic error message if specific message isn't available
       }
 
       const responseData = await response.json(); // Assuming that the user data is in the response
@@ -91,8 +80,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       return true;
     } catch (error: any) {
-        console.log("Error: ", error.message);
-        return false;
+      console.log("Error: ", error.message);
+      toast.error(error.message || "An unexpected error occurred.");
+      return false;
     }
   };
 
@@ -111,23 +101,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  //   const verify = async () => {
-  //     try {
-  //       const response = await axios.get(`${endpoint}/verify`);
-  //     //   setAuthUser(response.data.user); // Adjust based on your API response
-  //       return true;
-  //     } catch (error) {
-  //       if (axios.isAxiosError(error)) {
-  //         console.error(error.response);
-  //       } else {
-  //         console.error("An unexpected error occurred:", error);
-  //       }
-  //       return false;
-  //     }
-  //   };
   const verify = async () => {
     try {
-        const response = await fetch(`${endpoint}/verify`, {
+      const response = await fetch(`${endpoint}/verify`, {
         method: "GET", // Specify the method explicitly
         headers: {
           "Content-Type": "application/json", // Set appropriate headers
