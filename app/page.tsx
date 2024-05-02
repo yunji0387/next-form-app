@@ -6,7 +6,6 @@ import { LoadingScreen } from "./components/LoadingScreen";
 import { SubmissionErrorContent } from "./components/SubmissionErrorContent";
 import { useRouter } from "next/navigation";
 import { useAuth } from "./context/AuthContext";
-// import { useCookies } from "react-cookie";
 // import axios from "axios";
 // import { ToastContainer, toast } from "react-toastify";
 
@@ -29,7 +28,6 @@ export default function Home() {
   const [loadError, setLoadError] = useState(false);
   const [forms, setForms] = useState<FormData[]>([]);
   const [verified, setVerified] = useState(false);
-  // const [cookies, setCookie] = useCookies();
   // const [username, setUsername] = useState("");
   // const router = useRouter();
 
