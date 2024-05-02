@@ -40,7 +40,7 @@ export default function Home() {
   useEffect(() => {
     if (verified) {
       toast.success("Login Successful.");
-      toast(`Welcome, ${authUser?.first_name}.`);
+      toast(`Welcome${authUser?.first_name ? `, ${authUser.first_name}` : ''}.`);
       fetchForms();
     }
   }, [verified]);
