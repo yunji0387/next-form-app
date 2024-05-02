@@ -1,4 +1,6 @@
 import React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 type DeleteFormPopUpProps = {
   formId: number;
@@ -17,13 +19,12 @@ const deleteForm = async (formId: number, onClose: () => void, setIsDeleted: (de
     if (!response.ok) {
       throw new Error(`Failed to delete form: ${response.statusText}`);
     }
-
-    alert('Form deleted successfully.');
+    toast.success('Form deleted successfully.');
     setIsDeleted(true);
     onClose(); // Close the popup after successful deletion
   } catch (error) {
     console.error('Error:', error);
-    alert('Failed to delete the form, please try again.');
+    toast.error('Failed to delete the form, please try again.');
   }
 };
 
