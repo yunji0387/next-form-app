@@ -10,6 +10,7 @@ export default function Login() {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [errors, setErrors] = useState({ username: "", password: "" });
+  const [isLoading, setIsLoading] = useState(false);
 
   const auth = useAuth();
   const router = useRouter();
@@ -62,16 +63,22 @@ export default function Login() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    setIsLoading(true);
+
     if (!validateForm()) {
       console.error("Validation failed.");
+      setIsLoading(false);
       return;
     }
 
     const result = await login({ email: username, password: password });
 
     if (result) {
+      setIsLoading(false);
       router.push("/");
     }
+
+    setIsLoading(false);
   };
 
   return (
@@ -140,8 +147,15 @@ export default function Login() {
           <button
             type="submit"
             className="bg-blue-500 hover:bg-blue-600 font-bold text-white p-2 rounded mt-3"
+            disabled={isLoading}
           >
-            Log In
+            {isLoading ? (
+              <div className="flex items-center justify-center">
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+              </div>
+            ) : (
+              "Login"
+            )}
           </button>
         </form>
       </div>
