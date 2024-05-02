@@ -63,8 +63,11 @@ export default function Home() {
   const verifyUser = async () => {
     const result = await verify();
     setVerified(result);
-    console.log("Verified: ", result);
     if (!result) {
+      sessionStorage.setItem(
+        "homeUnauthorizedMessage",
+        "Unauthorized Access. Please log in."
+      );
       router.push("/login");
     }
   };

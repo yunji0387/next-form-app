@@ -118,8 +118,11 @@ export default function BoxDesignForm() {
   const verifyUser = async () => {
     const result = await verify();
     setVerified(result);
-    console.log("Verified: ", result);
     if (!result) {
+      sessionStorage.setItem(
+        "formUnauthorizedMessage",
+        "Unauthorized Access. Please log in."
+      );
       router.push("/login");
     }
   };

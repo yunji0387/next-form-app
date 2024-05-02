@@ -16,8 +16,12 @@ export default function Login() {
   const router = useRouter();
 
   useEffect(() => {
-    const registrationMessage = sessionStorage.getItem("postRegistrationMessage");
+    const registrationMessage = sessionStorage.getItem(
+      "postRegistrationMessage"
+    );
     const logoutMessage = sessionStorage.getItem("postLogoutMessage");
+    const formUnauthorizedMessage = sessionStorage.getItem("formUnauthorizedMessage");
+    const homeUnauthorizedMessage = sessionStorage.getItem("homeUnauthorizedMessage");
     if (registrationMessage) {
       setTimeout(() => {
         toast.success(registrationMessage);
@@ -28,6 +32,20 @@ export default function Login() {
       setTimeout(() => {
         toast.success(logoutMessage);
         sessionStorage.removeItem("postLogoutMessage"); // Clear the message so it doesn't reappear
+      }, 100); // Delay of 100 milliseconds
+    }
+
+    if (formUnauthorizedMessage) {
+      setTimeout(() => {
+        toast.error(formUnauthorizedMessage);
+        sessionStorage.removeItem("formUnauthorizedMessage"); // Clear the message so it doesn't reappear
+      }, 100); // Delay of 100 milliseconds
+    }
+
+    if (homeUnauthorizedMessage) {
+      setTimeout(() => {
+        toast.error(homeUnauthorizedMessage);
+        sessionStorage.removeItem("homeUnauthorizedMessage"); // Clear the message so it doesn't reappear
       }, 100); // Delay of 100 milliseconds
     }
   }, []);
