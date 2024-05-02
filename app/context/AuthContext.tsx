@@ -33,10 +33,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return;
   }
 
+  const axiosInstance = axios.create({
+    withCredentials: true,
+    baseURL: endpoint,
+  });
+
   const register = async (userData: UserData) => {
     try {
       const response = await axios.post(`${endpoint}/register`, userData);
-      setAuthUser(response.data.user); // Adjust based on your API response
+      //   setAuthUser(response.data.user); // Adjust based on your API response
       return true;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -48,23 +53,46 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  //   const login = async (userData: UserData) => {
+  //     try {
+  //     //   const response = await axios.post(`${endpoint}/login`, userData);
+  //     const response = await axios.post("http://localhost:5005/auth/login", userData);
+  //       // console.log("Response: ", response.data.data[0]);
+  //       setAuthUser(response.data.data[0]); // Adjust based on your API response
+
+  //       return true;
+  //     } catch (error) {
+  //       console.log("Error: ", error);
+  //       if (axios.isAxiosError(error)) {
+  //         console.error(error.response);
+  //       } else {
+  //         console.error("An unexpected error occurred:", error);
+  //       }
+  //       return false;
+  //     }
+  //   };
   const login = async (userData: UserData) => {
     try {
-      const response = await axios.post(`${endpoint}/login`, userData);
-      // console.log("Response: ", response.data.data[0]);
-      console.log("Response: ", response.data.data[0]);
-      setAuthUser(response.data.data[0]); // Adjust based on your API response
-      console.log("AuthUser: ", authUser);
+      const response = await fetch("http://localhost:5005/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+        credentials: "include", // Important for cookies to be handled correctly
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const responseData = await response.json(); // Assuming that the user data is in the response
+      setAuthUser(responseData.data[0]); // Adjust based on actual data structure
 
       return true;
-    } catch (error) {
-        console.log("Error: ", error);
-      if (axios.isAxiosError(error)) {
-        console.error(error.response);
-      } else {
-        console.error("An unexpected error occurred:", error);
-      }
-      return false;
+    } catch (error: any) {
+        console.log("Error: ", error.message);
+        return false;
     }
   };
 
@@ -83,17 +111,38 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  //   const verify = async () => {
+  //     try {
+  //       const response = await axios.get(`${endpoint}/verify`);
+  //     //   setAuthUser(response.data.user); // Adjust based on your API response
+  //       return true;
+  //     } catch (error) {
+  //       if (axios.isAxiosError(error)) {
+  //         console.error(error.response);
+  //       } else {
+  //         console.error("An unexpected error occurred:", error);
+  //       }
+  //       return false;
+  //     }
+  //   };
   const verify = async () => {
     try {
-      const response = await axios.get(`${endpoint}/verify`);
-      setAuthUser(response.data.user); // Adjust based on your API response
-      return true;
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.error(error.response);
-      } else {
-        console.error("An unexpected error occurred:", error);
+        const response = await fetch(`${endpoint}/verify`, {
+        method: "GET", // Specify the method explicitly
+        headers: {
+          "Content-Type": "application/json", // Set appropriate headers
+          // Include more headers if needed, such as Authentication headers
+        },
+        credentials: "include", // This ensures cookies are included with the request
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`); // Check if response is okay
       }
+
+      return true;
+    } catch (error: any) {
+      console.error("Error:", error.message || "An unexpected error occurred.");
       return false;
     }
   };

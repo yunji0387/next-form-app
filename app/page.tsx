@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import FormItem from "./components/FormItem";
 import { LoadingScreen } from "./components/LoadingScreen";
@@ -28,6 +28,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [loadError, setLoadError] = useState(false);
   const [forms, setForms] = useState<FormData[]>([]);
+  const [verified, setVerified] = useState(false);
   // const [cookies, setCookie] = useCookies();
   // const [username, setUsername] = useState("");
   // const router = useRouter();
@@ -36,6 +37,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchForms();
+    verifyUser();
   }, []); // Dependency array is empty, so this effect will run only once after the component mounts
 
   if (!auth) {
@@ -43,7 +45,12 @@ export default function Home() {
     return <div>No access to Auth context</div>;
   }
 
-  const { login, authUser } = auth;
+  const { authUser, verify } = auth;
+
+  const verifyUser = async () => {
+    const result = await verify();
+    setVerified(result);
+  };
 
   // Function to fetch forms
   const fetchForms = async () => {
@@ -75,6 +82,7 @@ export default function Home() {
     <main className="flex w-full min-w-[50rem] min-h-screen flex-col items-center justify-center gap-3 p-16 overflow-auto">
       <div className="flex flex-col gap-2 bg-white w-full h-[35rem] p-3 overflow-auto">
         <p className="text-xl font-medium">Welcome, {authUser?.first_name}.</p>
+        {verified ? <p>Verified Successfully</p> : <p>Not Verified</p>}
         <div className="w-full flex items-center justify-between">
           <p className="font-bold text-2xl">Form List</p>
           <div>
