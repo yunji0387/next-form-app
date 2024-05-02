@@ -29,12 +29,6 @@ export default function Login() {
     }
   };
 
-  // const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   // Here you would typically handle the login logic, possibly sending a request to your server
-  //   console.log("Login Submitted", { username, password });
-  // };
-
   return (
     <div className="flex w-full min-w-[50rem] min-h-screen flex-col items-center justify-center gap-3 p-16 overflow-auto">
       <div className="bg-white flex flex-col gap-2 w-full max-w-md h-auto p-3 overflow-auto">

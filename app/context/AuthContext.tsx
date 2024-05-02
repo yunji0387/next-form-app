@@ -58,6 +58,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       return true;
     } catch (error) {
+        console.log("Error: ", error);
       if (axios.isAxiosError(error)) {
         console.error(error.response);
       } else {

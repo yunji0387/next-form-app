@@ -5,6 +5,7 @@ import FormItem from "./components/FormItem";
 import { LoadingScreen } from "./components/LoadingScreen";
 import { SubmissionErrorContent } from "./components/SubmissionErrorContent";
 import { useRouter } from "next/navigation";
+import { useAuth } from "./context/AuthContext";
 // import { useCookies } from "react-cookie";
 // import axios from "axios";
 // import { ToastContainer, toast } from "react-toastify";
@@ -31,9 +32,18 @@ export default function Home() {
   // const [username, setUsername] = useState("");
   // const router = useRouter();
 
+  const auth = useAuth();
+
   useEffect(() => {
     fetchForms();
   }, []); // Dependency array is empty, so this effect will run only once after the component mounts
+
+  if (!auth) {
+    console.error("Auth context is not available");
+    return <div>No access to Auth context</div>;
+  }
+
+  const { login, authUser } = auth;
 
   // Function to fetch forms
   const fetchForms = async () => {
@@ -64,6 +74,7 @@ export default function Home() {
   return (
     <main className="flex w-full min-w-[50rem] min-h-screen flex-col items-center justify-center gap-3 p-16 overflow-auto">
       <div className="flex flex-col gap-2 bg-white w-full h-[35rem] p-3 overflow-auto">
+        <p className="text-xl font-medium">Welcome, {authUser?.first_name}.</p>
         <div className="w-full flex items-center justify-between">
           <p className="font-bold text-2xl">Form List</p>
           <div>
