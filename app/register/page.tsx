@@ -217,12 +217,6 @@ export default function Register() {
               <p className="text-red-500 text-sm">{errors.confirmPassword}</p>
             )}
           </div>
-          {/* <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-600 font-bold text-white p-2 rounded mt-3"
-          >
-            Register
-          </button> */}
           <button
             type="submit"
             className="bg-blue-500 hover:bg-blue-600 font-bold text-white p-2 rounded mt-3"
