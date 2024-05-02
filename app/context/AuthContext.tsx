@@ -73,7 +73,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   //   };
   const login = async (userData: UserData) => {
     try {
-      const response = await fetch("http://localhost:5005/auth/login", {
+      const response = await fetch(`${endpoint}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

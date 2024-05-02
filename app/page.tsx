@@ -1,12 +1,11 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import Link from "next/link";
 import FormItem from "./components/FormItem";
 import { LoadingScreen } from "./components/LoadingScreen";
 import { SubmissionErrorContent } from "./components/SubmissionErrorContent";
 import { useRouter } from "next/navigation";
 import { useAuth } from "./context/AuthContext";
-// import axios from "axios";
 // import { ToastContainer, toast } from "react-toastify";
 
 // Define the structure of a form data object
@@ -24,19 +23,24 @@ type FormData = {
 };
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
   const [forms, setForms] = useState<FormData[]>([]);
   const [verified, setVerified] = useState(false);
-  // const [username, setUsername] = useState("");
-  // const router = useRouter();
+  const router = useRouter();
 
   const auth = useAuth();
 
   useEffect(() => {
-    fetchForms();
     verifyUser();
+    // fetchForms();
   }, []); // Dependency array is empty, so this effect will run only once after the component mounts
+
+  useEffect(() => {
+    if (verified) {
+      fetchForms();
+    }
+  }, [verified]);
 
   if (!auth) {
     console.error("Auth context is not available");
@@ -48,6 +52,10 @@ export default function Home() {
   const verifyUser = async () => {
     const result = await verify();
     setVerified(result);
+    console.log("Verified: ", result);
+    if (!result) {
+      router.push("/login");
+    }
   };
 
   // Function to fetch forms
@@ -59,7 +67,6 @@ export default function Home() {
       return;
     }
 
-    setIsLoading(true);
     try {
       const response = await fetch(endpoint);
       if (!response.ok) {
@@ -79,19 +86,24 @@ export default function Home() {
   return (
     <main className="flex w-full min-w-[50rem] min-h-screen flex-col items-center justify-center gap-3 p-16 overflow-auto">
       <div className="flex flex-col gap-2 bg-white w-full h-[35rem] p-3 overflow-auto">
-        <p className="text-xl font-medium">Welcome, {authUser?.first_name}.</p>
-        {verified ? <p>Verified Successfully</p> : <p>Not Verified</p>}
-        <div className="w-full flex items-center justify-between">
-          <p className="font-bold text-2xl">Form List</p>
-          <div>
-            <Link href="/form">
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                New Request
-              </button>
-            </Link>
-          </div>
-        </div>
-        {isLoading && <LoadingScreen text="Loading Form List..." />}
+        {verified && (
+          <>
+            <p className="text-xl font-medium">
+              Welcome, {authUser?.first_name}.
+            </p>
+            <div className="w-full flex items-center justify-between">
+              <p className="font-bold text-2xl">Form List</p>
+              <div>
+                <Link href="/form">
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    New Request
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </>
+        )}
+        {isLoading && <LoadingScreen text="Loading ..." />}
         {loadError && (
           <SubmissionErrorContent
             headerText="Error Loading Form Data"
