@@ -74,6 +74,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       const responseData = await response.json(); // Assuming that the user data is in the response
       setAuthUser(responseData.user); // Adjust based on your API response
+
+      toast.success("Registration successful.");
       return true;
     } catch (error: any) {
       console.log("Error: ", error.message);
