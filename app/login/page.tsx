@@ -7,9 +7,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
-  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [errors, setErrors] = useState({ username: "", password: "" });
+  const [errors, setErrors] = useState({ email: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
 
   const auth = useAuth();
@@ -59,13 +59,13 @@ export default function Login() {
 
   const validateForm = () => {
     let valid = true;
-    let newErrors = { username: "", password: "" };
+    let newErrors = { email: "", password: "" };
 
-    if (!username) {
-      newErrors.username = "Username is required";
+    if (!email) {
+      newErrors.email = "Email is required";
       valid = false;
-    } else if (!/^[^@]+@[^@]+\.[^@]+$/.test(username)) {
-      newErrors.username = "Enter a valid email address";
+    } else if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+      newErrors.email = "Please enter a valid email address";
       valid = false;
     }
 
@@ -89,7 +89,7 @@ export default function Login() {
       return;
     }
 
-    const result = await login({ email: username, password: password });
+    const result = await login({ email: email, password: password });
 
     if (result) {
       setIsLoading(false);
@@ -130,18 +130,18 @@ export default function Login() {
 
         <form className="flex flex-col gap-2 w-full" onSubmit={handleSubmit}>
           <div className="flex flex-col">
-            <label htmlFor="username" className="text-left text-sm w-full">
-              Username:
+            <label htmlFor="email" className="text-left text-sm w-full">
+              Email:
             </label>
             <input
               type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Username"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
               className="p-2 border border-gray-300 rounded focus:outline-gray-500"
             />
-            {errors.username && (
-              <div className="text-red-500 text-sm">{errors.username}</div>
+            {errors.email && (
+              <div className="text-red-500 text-sm">{errors.email}</div>
             )}
           </div>
           <div className="flex flex-col">
