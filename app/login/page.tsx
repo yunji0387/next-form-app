@@ -15,12 +15,19 @@ export default function Login() {
   const router = useRouter();
 
   useEffect(() => {
-    const message = sessionStorage.getItem("postRegistrationMessage");
-    if (message) {
+    const registrationMessage = sessionStorage.getItem("postRegistrationMessage");
+    const logoutMessage = sessionStorage.getItem("postLogoutMessage");
+    if (registrationMessage) {
       setTimeout(() => {
-        toast.success(message);
+        toast.success(registrationMessage);
         sessionStorage.removeItem("postRegistrationMessage"); // Clear the message so it doesn't reappear
-      }, 500); // Delay of 500 milliseconds
+      }, 100); // Delay of 100 milliseconds
+    }
+    if (logoutMessage) {
+      setTimeout(() => {
+        toast.success(logoutMessage);
+        sessionStorage.removeItem("postLogoutMessage"); // Clear the message so it doesn't reappear
+      }, 100); // Delay of 100 milliseconds
     }
   }, []);
 

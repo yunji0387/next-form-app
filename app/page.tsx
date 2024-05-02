@@ -28,6 +28,7 @@ export default function Home() {
   const [loadError, setLoadError] = useState(false);
   const [forms, setForms] = useState<FormData[]>([]);
   const [verified, setVerified] = useState(false);
+  const [isLogoutLoading, setIsLogoutLoading] = useState(false);
   const router = useRouter();
 
   const auth = useAuth();
@@ -57,7 +58,7 @@ export default function Home() {
     return <div>No access to Auth context</div>;
   }
 
-  const { authUser, verify } = auth;
+  const { authUser, logout, verify } = auth;
 
   const verifyUser = async () => {
     const result = await verify();
@@ -93,13 +94,41 @@ export default function Home() {
     }
   };
 
+  const handleLogout = async () => {
+    setIsLogoutLoading(true);
+    const result = await logout();
+    if (result) {
+      sessionStorage.setItem("postLogoutMessage", "Log out successfully.");
+      setIsLogoutLoading(false);
+      router.push("/login");
+    }
+    setIsLogoutLoading(false);
+  };
+
   return (
     <main className="flex w-full min-w-[50rem] min-h-screen flex-col items-center justify-center gap-3 p-16 overflow-auto">
       <ToastContainer />
       <div className="flex flex-col gap-2 bg-white w-full h-[35rem] p-3 overflow-auto">
         {verified && (
-          <div className="w-full flex items-center justify-between">
-            <p className="font-bold text-2xl">Form List</p>
+          <div className="w-full flex flex-col">
+            <div className="w-full flex items-center justify-between">
+              <p className="font-bold text-3xl">Form List</p>
+              <div className="">
+                <button
+                  onClick={handleLogout}
+                  disabled={isLogoutLoading}
+                  className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  {isLogoutLoading ? (
+                    <div className="flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                    </div>
+                  ) : (
+                    "Log Out"
+                  )}
+                </button>
+              </div>
+            </div>
             <div>
               <Link href="/form">
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
