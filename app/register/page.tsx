@@ -106,7 +106,6 @@ export default function Register() {
 
     if (result) {
       setIsLoading(false);
-      sessionStorage.setItem('postRegistrationMessage', 'Registration successful. Please log in.');
       router.push("/login");
     }
 

@@ -55,7 +55,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const responseData = await response.json(); // Assuming that the user data is in the response
       setAuthUser(responseData.user); // Adjust based on your API response
 
-      toast.success("Registration successful.");
+      sessionStorage.setItem(
+        "postRegistrationMessage",
+        "Registration successful. Please log in."
+      );
+
       return true;
     } catch (error: any) {
       console.log("Error: ", error.message);
@@ -90,7 +94,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const responseData = await response.json(); // Assuming that the user data is in the response
       setAuthUser(responseData.data[0]); // Adjust based on actual data structure
 
-      sessionStorage.setItem('loginSuccessMessage', 'Login successfully.');
+      sessionStorage.setItem("loginSuccessMessage", "Login successfully.");
 
       return true;
     } catch (error: any) {
