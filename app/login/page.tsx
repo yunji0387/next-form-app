@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
-import React, { useState, FormEvent } from "react";
+import React, { useState, FormEvent, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useRouter } from "next/navigation";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
@@ -13,6 +13,16 @@ export default function Login() {
 
   const auth = useAuth();
   const router = useRouter();
+
+  useEffect(() => {
+    const message = sessionStorage.getItem("postRegistrationMessage");
+    if (message) {
+      setTimeout(() => {
+        toast.success(message);
+        sessionStorage.removeItem("postRegistrationMessage"); // Clear the message so it doesn't reappear
+      }, 500); // Delay of 500 milliseconds
+    }
+  }, []);
 
   if (!auth) {
     console.error("Auth context is not available");

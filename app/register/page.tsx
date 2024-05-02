@@ -93,6 +93,7 @@ export default function Register() {
 
     if (!validateForm()) {
       console.error("Validation failed.");
+      setIsLoading(false);
       return;
     }
 
@@ -105,8 +106,11 @@ export default function Register() {
 
     if (result) {
       setIsLoading(false);
+      sessionStorage.setItem('postRegistrationMessage', 'Registration successful. Please log in.');
       router.push("/login");
     }
+
+    setIsLoading(false);
   };
 
   return (

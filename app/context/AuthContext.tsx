@@ -1,6 +1,5 @@
 "use client";
 import { useState, createContext, useContext } from "react";
-// import axios, { AxiosError } from "axios";
 import { User, UserData } from "../types/Auth";
 import { toast } from "react-toastify";
 
@@ -34,25 +33,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return;
   }
 
-  // const axiosInstance = axios.create({
-  //   withCredentials: true,
-  //   baseURL: endpoint,
-  // });
-
-  // const register = async (userData: UserData) => {
-  //   try {
-  //     const response = await axios.post(`${endpoint}/register`, userData);
-  //     //   setAuthUser(response.data.user); // Adjust based on your API response
-  //     return true;
-  //   } catch (error: any) {
-  //     if (axios.isAxiosError(error)) {
-  //       console.error(error.response);
-  //     } else {
-  //       console.error("An unexpected error occurred:", error);
-  //     }
-  //     return false;
-  //   }
-  // };
   const register = async (userData: UserData) => {
     try {
       const response = await fetch(`${endpoint}/register`, {
@@ -118,20 +98,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  // const logout = async () => {
-  //   try {
-  //     await axios.get(`${endpoint}/logout`);
-  //     setAuthUser(null);
-  //     return true;
-  //   } catch (error) {
-  //     if (axios.isAxiosError(error)) {
-  //       console.error(error.response);
-  //     } else {
-  //       console.error("An unexpected error occurred:", error);
-  //     }
-  //     return false;
-  //   }
-  // };
   const logout = async () => {
     try {
       const response = await fetch(`${endpoint}/logout`, {
