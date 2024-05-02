@@ -90,6 +90,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const responseData = await response.json(); // Assuming that the user data is in the response
       setAuthUser(responseData.data[0]); // Adjust based on actual data structure
 
+      sessionStorage.setItem('loginSuccessMessage', 'Login successfully.');
+
       return true;
     } catch (error: any) {
       console.log("Error: ", error.message);
