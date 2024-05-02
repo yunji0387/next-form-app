@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { JobInfoForm } from "./JobInfoForm";
 import { MaterialForm } from "./MaterialForm";
@@ -12,6 +12,7 @@ import { SubmissionErrorContent } from "../components/SubmissionErrorContent";
 import { SubmissionSuccessContent } from "../components/SubmissionSuccessContent";
 import { StepsIndication } from "./StepsIndication";
 import { useFormData } from "../context/FormDataContext";
+import { useAuth } from "../context/AuthContext";
 
 type FormData = {
   jobName: string;
@@ -47,7 +48,14 @@ export default function BoxDesignForm() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [submitError, setSubmitError] = useState<boolean>(false);
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
+  const [verified, setVerified] = useState(false);
   const router = useRouter();
+
+  const auth = useAuth();
+
+  useEffect(() => {
+    verifyUser();
+  }, []);
 
   const {
     steps,
@@ -99,6 +107,22 @@ export default function BoxDesignForm() {
       component: <FinalCheckForm key="finalCheckForm" {...formData} />,
     },
   ]);
+
+  if (!auth) {
+    console.error("Auth context is not available");
+    return <div>No access to Auth context</div>;
+  }
+
+  const { verify } = auth;
+
+  const verifyUser = async () => {
+    const result = await verify();
+    setVerified(result);
+    console.log("Verified: ", result);
+    if (!result) {
+      router.push("/login");
+    }
+  };
 
   function updateForm(fields: Partial<FormData>) {
     setFormData((prev) => ({ ...prev, ...fields }));
