@@ -98,7 +98,6 @@ export default function Home() {
     setIsLogoutLoading(true);
     const result = await logout();
     if (result) {
-      sessionStorage.setItem("postLogoutMessage", "Log out successfully.");
       setIsLogoutLoading(false);
       router.push("/login");
     }
