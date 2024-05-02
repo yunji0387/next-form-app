@@ -39,17 +39,47 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     baseURL: endpoint,
   });
 
+  // const register = async (userData: UserData) => {
+  //   try {
+  //     const response = await axios.post(`${endpoint}/register`, userData);
+  //     //   setAuthUser(response.data.user); // Adjust based on your API response
+  //     return true;
+  //   } catch (error: any) {
+  //     if (axios.isAxiosError(error)) {
+  //       console.error(error.response);
+  //     } else {
+  //       console.error("An unexpected error occurred:", error);
+  //     }
+  //     return false;
+  //   }
+  // };
   const register = async (userData: UserData) => {
     try {
-      const response = await axios.post(`${endpoint}/register`, userData);
-      //   setAuthUser(response.data.user); // Adjust based on your API response
+      const response = await fetch(`${endpoint}/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+        credentials: "include", // Important for cookies to be handled correctly
+      });
+
+      if (!response.ok) {
+        const errorResponse = await response.json(); // Parse the response as JSON
+        const errorMessage = errorResponse.error.message;
+        throw new Error(
+          errorMessage || `HTTP error! Status: ${response.status}`
+        );
+      }
+
+      const responseData = await response.json(); // Assuming that the user data is in the response
+      setAuthUser(responseData.user); // Adjust based on your API response
       return true;
     } catch (error: any) {
-      if (axios.isAxiosError(error)) {
-        console.error(error.response);
-      } else {
-        console.error("An unexpected error occurred:", error);
-      }
+      console.log("Error: ", error.message);
+      toast.error(
+        error.message || "An unexpected error occurred during registration."
+      );
       return false;
     }
   };
@@ -86,17 +116,42 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  // const logout = async () => {
+  //   try {
+  //     await axios.get(`${endpoint}/logout`);
+  //     setAuthUser(null);
+  //     return true;
+  //   } catch (error) {
+  //     if (axios.isAxiosError(error)) {
+  //       console.error(error.response);
+  //     } else {
+  //       console.error("An unexpected error occurred:", error);
+  //     }
+  //     return false;
+  //   }
+  // };
   const logout = async () => {
     try {
-      await axios.get(`${endpoint}/logout`);
-      setAuthUser(null);
-      return true;
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.error(error.response);
-      } else {
-        console.error("An unexpected error occurred:", error);
+      const response = await fetch(`${endpoint}/logout`, {
+        method: "GET",
+        credentials: "include", // Important for cookies to be handled correctly
+      });
+
+      if (!response.ok) {
+        const errorResponse = await response.json(); // Attempt to parse JSON error response
+        const errorMessage = errorResponse.error.message;
+        throw new Error(
+          errorMessage || `HTTP error! Status: ${response.status}`
+        );
       }
+
+      setAuthUser(null); // Reset user state to null
+      return true;
+    } catch (error: any) {
+      console.log("Error: ", error.message);
+      toast.error(
+        error.message || "An unexpected error occurred during logout."
+      );
       return false;
     }
   };
