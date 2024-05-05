@@ -3,7 +3,7 @@ import SideNav from "../components/SideNav";
 
 export default function Dashboard() {
   return (
-    <main className="flex w-full min-h-screen flex-col items-center justify-start gap-3">
+    <main className="flex w-full min-h-screen items-center justify-start gap-3">
       <div className="w-full">
         <SideNav />
       </div>
