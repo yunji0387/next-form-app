@@ -110,7 +110,7 @@ export default function Home() {
   return (
     <main className="flex w-full min-w-[50rem] min-h-screen flex-col items-center justify-center gap-3 p-16 overflow-auto">
       <ToastContainer />
-      <div className="flex flex-col gap-2 bg-white w-full h-[35rem] p-3 overflow-auto">
+      <div className="flex flex-col gap-2 bg-white rounded-md w-full h-[35rem] p-3 overflow-auto">
         {verified && (
           <div className="w-full flex flex-col">
             <div className="w-full flex items-center justify-between">
