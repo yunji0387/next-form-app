@@ -7,7 +7,7 @@ export function HamburgerIcon({ isOpen, handleClick }: HamburgerIconProps) {
   return (
     <button
       onClick={handleClick}
-      className="flex flex-col justify-center items-center mt-1 mb-2 w-12 h-12 border-2 border-[#4d2800] dark:border-white rounded-md"
+      className="flex flex-col justify-center items-center w-12 h-12 border-2 border-[#4d2800] dark:border-white rounded-md"
     >
       <span
         className={`bg-[#4d2800] dark:bg-white bg-steel-500 block transition-all duration-300 ease-out

@@ -32,18 +32,18 @@ export default function SideNav() {
   };
 
   return (
-    <div className="flex flex-col bg-blue-900">
-      <div className="">
+    <div className={`flex flex-col w-full bg-blue-900`}>
+      <div className="w-full h-full flex items-center justify-center bg-cyan-500">
         <HamburgerIcon isOpen={isOpen} handleClick={handleClick} />
       </div>
       <nav
         className={`${
           isOpen
-            ? "max-h-96 opacity-100 transition-all duration-500 ease-in-out"
-            : "hidden max-h-0 opacity-0 md:max-h-full md:opacity-100"
+            ? "flex transition-all duration-500 ease-in-out"
+            : "hidden"
         }`}
       >
-        <ul className="flex flex-col items-start justify-start gap-3 p-3">
+        <ul className="bg-pink-200 flex flex-col items-start justify-start gap-3">
           <Link href="/">
             <li className="text-white list-none">Home</li>
           </Link>
