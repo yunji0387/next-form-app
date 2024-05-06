@@ -10,7 +10,7 @@ import {
 export default function Dashboard() {
   return (
     <main className="flex w-full min-h-screen items-center justify-start gap-3">
-      <div className="w-full">
+      <div className="">
         <SideBar>
             <SibebarItem icon={<LifeBuoy />} title="Dashboard" active alert />
             <SibebarItem icon={<Receipt />} title="Users" />
