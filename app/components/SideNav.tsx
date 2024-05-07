@@ -18,9 +18,16 @@ export function SideBar({ children }: SideNavProps) {
     <aside className="h-screen">
       <nav className="h-full flex flex-col bg-white border-r shadow-sm">
         <div className="p-4 pb-2 flex justify-between items-center">
-          <Image
+          {/* <Image
             src="https://img.logoipsum.com/243.svg"
             width={expanded ? 125 : 0}
+            height={25}
+            className="overflow-hidden transition-all"
+            alt="logo"
+          /> */}
+          <Image
+            src="/NextAdminLogoDark.svg"
+            width={expanded ? 200 : 0}
             height={25}
             className="overflow-hidden transition-all"
             alt="logo"
