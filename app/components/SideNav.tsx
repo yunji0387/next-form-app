@@ -2,6 +2,7 @@
 import React, { useState, createContext, useContext } from "react";
 import { ChevronLast, ChevronFirst, MoreVertical } from "lucide-react";
 import Image from "next/image";
+import { ThemeToggle } from "./ThemeToggle";
 
 type SideNavProps = {
   children: React.ReactNode;
@@ -33,9 +34,13 @@ export function SideBar({ children }: SideNavProps) {
         </div>
 
         <SideBarContext.Provider value={{ expanded }}>
-          <ul className="flex-1 px-3 bg-red-50">{children}</ul>
+          <div className="flex-1 px-3 bg-red-50">
+            <ul>{children}</ul>
+            <div className={`${expanded ? "" : "hidden"}`}>
+            <ThemeToggle />
+            </div>
+          </div>
         </SideBarContext.Provider>
-
         <div className="border-t flex p-3">
           <Image
             src="https://img.logoipsum.com/225.svg"
