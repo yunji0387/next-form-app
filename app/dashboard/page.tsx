@@ -2,8 +2,8 @@ import React from "react";
 import { SideBar, SibebarItem } from "../components/SideNav";
 import {
     LifeBuoy,
-    Receipt,
-    Boxes,
+    CircleUserRound ,
+    NotepadText,
     Settings,
 } from "lucide-react";
 
@@ -13,8 +13,8 @@ export default function Dashboard() {
       <div className="">
         <SideBar>
             <SibebarItem icon={<LifeBuoy />} title="Dashboard" active alert />
-            <SibebarItem icon={<Receipt />} title="Users" />
-            <SibebarItem icon={<Boxes />} title="Orders" alert />
+            <SibebarItem icon={<NotepadText />} title="Forms" />
+            <SibebarItem icon={<CircleUserRound />} title="Users" alert />
             <SibebarItem icon={<Settings />} title="Settings" />
         </SideBar>
       </div>
