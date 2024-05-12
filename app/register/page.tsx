@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import React, { useState, FormEvent } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useRouter } from "next/navigation";
@@ -116,7 +117,13 @@ export default function Register() {
     <div className="flex w-full min-w-[50rem] min-h-screen flex-col items-center justify-center gap-3 p-16 overflow-auto">
       <ToastContainer />
       <div className="bg-white flex flex-col gap-2 w-full max-w-md h-auto p-3 overflow-auto">
-        <h1 className="font-black text-3xl">Next Admin System</h1>
+        <Image
+          src="/NextAdminLogoDark.svg"
+          width={400}
+          height={25}
+          className="overflow-hidden transition-all"
+          alt="logo"
+        />
         <h2 className="text-center font-medium text-2xl">
           Create your account
         </h2>
