@@ -116,7 +116,7 @@ export default function Register() {
     <div className="flex w-full min-w-[50rem] min-h-screen flex-col items-center justify-center gap-3 p-16 overflow-auto">
       <ToastContainer />
       <div className="bg-white flex flex-col gap-2 w-full max-w-md h-auto p-3 overflow-auto">
-        <h1 className="font-black text-3xl">Next Form App</h1>
+        <h1 className="font-black text-3xl">Next Admin System</h1>
         <h2 className="text-center font-medium text-2xl">
           Create your account
         </h2>
@@ -222,7 +222,7 @@ export default function Register() {
           </div>
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-600 font-bold text-white p-2 rounded mt-3"
+            className="bg-indigo-500 hover:bg-indigo-600 font-bold text-white p-2 rounded mt-3"
             disabled={isLoading}
           >
             {isLoading ? (
