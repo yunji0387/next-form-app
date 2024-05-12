@@ -10,7 +10,6 @@ type SideNavProps = {
 const SideBarContext = createContext<{ expanded: boolean }>({
   expanded: false,
 });
-// const SideBarContext = createContext({});
 
 export function SideBar({ children }: SideNavProps) {
   const [expanded, setExpanded] = useState(true);
@@ -18,13 +17,6 @@ export function SideBar({ children }: SideNavProps) {
     <aside className="h-screen">
       <nav className="h-full flex flex-col bg-white border-r shadow-sm">
         <div className="p-4 pb-2 flex justify-between items-center">
-          {/* <Image
-            src="https://img.logoipsum.com/243.svg"
-            width={expanded ? 125 : 0}
-            height={25}
-            className="overflow-hidden transition-all"
-            alt="logo"
-          /> */}
           <Image
             src="/NextAdminLogoDark.svg"
             width={expanded ? 200 : 0}
@@ -75,7 +67,7 @@ export function SibebarItem({ icon, title, active, alert }: any) {
   const { expanded } = useContext(SideBarContext);
   return (
     <li
-      className={`relative flex items-center justify-start p-3 my-2 rounded-md font-medium cursor-pointer transition-colors
+      className={`relative flex items-center justify-start p-3 my-2 rounded-md font-medium cursor-pointer transition-colors group
         ${
           active
             ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
@@ -100,8 +92,10 @@ export function SibebarItem({ icon, title, active, alert }: any) {
 
       {!expanded && (
         <div
-          className={`absolute left-full rounded-md px-2 py-1 ml-6 bg-indigo-100 text-indigo-800 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0`}
-        />
+          className={`absolute left-full rounded-md px-2 py-1 ml-6 bg-white text-indigo-800 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0`}
+        >
+          {title}
+        </div>
       )}
     </li>
   );
