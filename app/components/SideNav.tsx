@@ -22,7 +22,14 @@ export function SideBar({ children }: SideNavProps) {
             src="/NextAdminLogoDark.svg"
             width={expanded ? 200 : 0}
             height={25}
-            className="overflow-hidden transition-all"
+            className="overflow-hidden transition-all hidden dark:block"
+            alt="logo"
+          />
+          <Image
+            src="/NextAdminLogoLight.svg"
+            width={expanded ? 200 : 0}
+            height={25}
+            className="overflow-hidden transition-all dark:hidden"
             alt="logo"
           />
           <button

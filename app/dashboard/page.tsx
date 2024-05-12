@@ -19,9 +19,9 @@ export default function Dashboard() {
             <SibebarItem icon={<Settings />} title="Settings" />
         </SideBar>
       </div>
-      <div className="flex w-full">
-        <h1 className="text-white">Dashboard</h1>
-        <p className="text-white">Welcome to the dashboard</p>
+      <div className="flex flex-col w-full">
+        <h1 className="text-black dark:text-white">Dashboard</h1>
+        <p className="text-black dark:text-white">Welcome to the dashboard</p>
       </div>
     </main>
   );
