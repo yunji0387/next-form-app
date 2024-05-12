@@ -20,8 +20,8 @@ export default function Dashboard() {
         </SideBar>
       </div>
       <div className="flex flex-col w-full">
-        <h1 className="text-black dark:text-white">Dashboard</h1>
-        <p className="text-black dark:text-white">Welcome to the dashboard</p>
+        <h1 className="">Dashboard</h1>
+        <p className="text-blue-500 dark:text-pink-300">Welcome to the dashboard</p>
       </div>
     </main>
   );

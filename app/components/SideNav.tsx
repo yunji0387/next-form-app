@@ -19,14 +19,14 @@ export function SideBar({ children }: SideNavProps) {
       <nav className="h-full flex flex-col bg-white border-r shadow-sm">
         <div className="p-4 pb-2 flex justify-between items-center">
           <Image
-            src="/NextAdminLogoDark.svg"
+            src="/NextAdminLogoLight.svg"
             width={expanded ? 200 : 0}
             height={25}
             className="overflow-hidden transition-all hidden dark:block"
             alt="logo"
           />
           <Image
-            src="/NextAdminLogoLight.svg"
+            src="/NextAdminLogoDark.svg"
             width={expanded ? 200 : 0}
             height={25}
             className="overflow-hidden transition-all dark:hidden"
@@ -41,10 +41,10 @@ export function SideBar({ children }: SideNavProps) {
         </div>
 
         <SideBarContext.Provider value={{ expanded }}>
-          <div className="flex-1 px-3 bg-red-50">
+          <div className="flex-1 px-3">
             <ul>{children}</ul>
-            <div className={`${expanded ? "" : "hidden"}`}>
-            <ThemeToggle />
+            <div className={`flex justify-end ${expanded ? "" : "hidden"}`}>
+              <ThemeToggle />
             </div>
           </div>
         </SideBarContext.Provider>

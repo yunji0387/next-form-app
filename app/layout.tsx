@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { FormDataProvider } from "./context/FormDataContext";
 import { AuthProvider } from "./context/AuthContext";
-import { Providers } from "./ThemeProvider";
+import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: "Next Form App",
   description:
     "A multi-step form application built with Next.js and Tailwind CSS.",
+  icons: {
+    icon: "/NextAdminLogoDark.svg",
+  },
 };
 
 export default function RootLayout({
@@ -21,11 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Providers>
-          <AuthProvider>
-            <FormDataProvider>{children}</FormDataProvider>
-          </AuthProvider>
-        </Providers>
+        <AuthProvider>
+          <FormDataProvider>
+            <Providers>{children}</Providers>
+          </FormDataProvider>
+        </AuthProvider>
       </body>
     </html>
   );
