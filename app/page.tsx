@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import FormItem from "./components/FormItem";
 import { LoadingScreen } from "./components/LoadingScreen";
@@ -108,9 +108,9 @@ export default function Home() {
   };
 
   return (
-    <main className="flex w-full min-w-[50rem] min-h-screen flex-col items-center justify-center gap-3 p-16 overflow-auto">
+    <main className="flex w-full min-w-[50rem] min-h-screen flex-col items-center justify-center overflow-auto">
       <ToastContainer />
-      <div className="flex flex-col gap-2 bg-white rounded-md w-full h-[35rem] p-3 overflow-auto">
+      <div className="flex flex-col gap-2 bg-white w-full h-[35rem] p-3 overflow-auto">
         {verified && (
           <div className="w-full flex flex-col">
             <div className="w-full flex items-center justify-between">
