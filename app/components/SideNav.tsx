@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, createContext, useContext } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { ChevronLast, ChevronFirst, MoreVertical } from "lucide-react";
 import Image from "next/image";
 import { ThemeToggle } from "./ThemeToggle";
@@ -85,13 +85,14 @@ export function SideBar({ children }: SideNavProps) {
 export function SibebarItem({ icon, title, link, active, alert }: any) {
   const { expanded } = useContext(SideBarContext);
   const router = useRouter();
+  const currentPath = usePathname();
 
   return (
     <li>
       <button
         className={`relative flex items-center justify-start p-3 my-2 rounded-md font-medium cursor-pointer transition-colors group
         ${
-          active
+          (currentPath === "/" + link)
             ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 dark:from-gray-700 dark:to-gray-800 text-indigo-800 dark:text-white"
             : "hover:bg-indigo-50 dark:hover:bg-gray-500 text-gray-600 dark:text-indigo-100"
         }
