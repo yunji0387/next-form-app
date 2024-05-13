@@ -23,7 +23,7 @@ export function ThemeToggle() {
     <div className="flex">
       <button
         onClick={toggleTheme}
-        className={`relative flex items-center px-1 w-16 h-8 rounded-full shadow border ${
+        className={`relative flex items-center w-16 h-8 rounded-full shadow border ${
           theme === "dark"
             ? "bg-gray-900 hover:bg-gray-700 border-white"
             : "bg-gray-50 hover:bg-gray-100 border-gray-300"
@@ -32,7 +32,7 @@ export function ThemeToggle() {
         <div
           className="absolute transition-transform duration-300 ease-in-out"
           style={{
-            transform: theme === "dark" ? "translateX(0px)" : "translateX(31px)",
+            transform: theme === "dark" ? "translateX(3px)" : "translateX(33px)",
           }}
         >
           <Image
