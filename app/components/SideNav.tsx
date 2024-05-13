@@ -18,7 +18,7 @@ export function SideBar({ children }: SideNavProps) {
 
   return (
     <aside className="h-screen">
-      <nav className="h-full flex flex-col bg-white dark:bg-gray-600 shadow-sm">
+      <nav className="h-full flex flex-col bg-white dark:bg-gray-700 shadow-sm">
         <div
           className={`pb-2 flex items-center ${
             expanded ? "p-4 justify-between" : "p-3"
@@ -40,7 +40,7 @@ export function SideBar({ children }: SideNavProps) {
           />
           <button
             onClick={() => setExpanded(!expanded)}
-            className="flex items-center justify-center rounded-md bg-gray-100 dark:bg-gray-500 hover:bg-gray-200 dark:hover:bg-gray-400 w-12 h-12"
+            className="flex items-center justify-center rounded-md bg-gray-100 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 w-12 h-12"
           >
             {expanded ? <ChevronFirst /> : <ChevronLast />}
           </button>
