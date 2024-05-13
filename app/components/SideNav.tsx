@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, createContext, useContext } from "react";
+import { useRouter } from "next/navigation";
 import { ChevronLast, ChevronFirst, MoreVertical } from "lucide-react";
 import Image from "next/image";
 import { ThemeToggle } from "./ThemeToggle";
@@ -14,6 +15,7 @@ const SideBarContext = createContext<{ expanded: boolean }>({
 
 export function SideBar({ children }: SideNavProps) {
   const [expanded, setExpanded] = useState(true);
+
   return (
     <aside className="h-screen">
       <nav className="h-full flex flex-col bg-white dark:bg-gray-600 shadow-sm">
@@ -38,7 +40,7 @@ export function SideBar({ children }: SideNavProps) {
           />
           <button
             onClick={() => setExpanded(!expanded)}
-            className="flex items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-500 hover:bg-gray-200 dark:hover:bg-gray-400 w-12 h-12"
+            className="flex items-center justify-center rounded-md bg-gray-100 dark:bg-gray-500 hover:bg-gray-200 dark:hover:bg-gray-400 w-12 h-12"
           >
             {expanded ? <ChevronFirst /> : <ChevronLast />}
           </button>
@@ -47,11 +49,7 @@ export function SideBar({ children }: SideNavProps) {
         <SideBarContext.Provider value={{ expanded }}>
           <div className="flex-1 px-3">
             <ul>{children}</ul>
-            <div
-              className={`flex justify-end p-3 ${
-                !expanded && "hidden"
-              }`}
-            >
+            <div className={`flex justify-end p-3 ${!expanded && "hidden"}`}>
               <div className="scale-125">
                 <ThemeToggle />
               </div>
@@ -84,11 +82,14 @@ export function SideBar({ children }: SideNavProps) {
   );
 }
 
-export function SibebarItem({ icon, title, active, alert }: any) {
+export function SibebarItem({ icon, title, link, active, alert }: any) {
   const { expanded } = useContext(SideBarContext);
+  const router = useRouter();
+
   return (
-    <li
-      className={`relative flex items-center justify-start p-3 my-2 rounded-md font-medium cursor-pointer transition-colors group
+    <li>
+      <button
+        className={`relative flex items-center justify-start p-3 my-2 rounded-md font-medium cursor-pointer transition-colors group
         ${
           active
             ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 dark:from-gray-700 dark:to-gray-800 text-indigo-800 dark:text-white"
@@ -96,30 +97,34 @@ export function SibebarItem({ icon, title, active, alert }: any) {
         }
         ${expanded ? "w-full" : "w-12"}
         `}
-    >
-      {icon}
-      <span
-        className={`overflow-hidden transition-all ${
-          expanded ? "w-52 ml-3" : "w-0"
-        }`}
+        onClick={() => {
+          router.push("/" + link);
+        }}
       >
-        {title}
-      </span>
-      {alert && (
-        <div
-          className={`absolute right-2 w-2 h-2 rounded bg-indigo-400 dark:bg-indigo-200 ${
-            expanded ? "" : "top-2"
+        {icon}
+        <span
+          className={`overflow-hidden transition-all ${
+            expanded ? "w-52 ml-3" : "w-0"
           }`}
-        />
-      )}
-
-      {!expanded && (
-        <div
-          className={`absolute left-full rounded-md px-2 py-1 ml-6 bg-white text-indigo-800 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0`}
         >
           {title}
-        </div>
-      )}
+        </span>
+        {alert && (
+          <div
+            className={`absolute right-2 w-2 h-2 rounded bg-indigo-400 dark:bg-indigo-200 ${
+              expanded ? "" : "top-2"
+            }`}
+          />
+        )}
+
+        {!expanded && (
+          <div
+            className={`absolute left-full rounded-md px-2 py-1 ml-6 bg-white text-indigo-800 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0`}
+          >
+            {title}
+          </div>
+        )}
+      </button>
     </li>
   );
 }

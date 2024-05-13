@@ -13,10 +13,10 @@ export default function Dashboard() {
     <main className="flex w-full min-h-screen items-center justify-start gap-3">
       <div className="">
         <SideBar>
-            <SibebarItem icon={<LifeBuoy />} title="Dashboard" active alert />
-            <SibebarItem icon={<NotepadText />} title="Forms" />
-            <SibebarItem icon={<CircleUserRound />} title="Users" alert />
-            <SibebarItem icon={<Settings />} title="Settings" />
+            <SibebarItem icon={<LifeBuoy />} title="Dashboard" link="dashboard" active alert />
+            <SibebarItem icon={<NotepadText />} title="Forms" link="forms" />
+            <SibebarItem icon={<CircleUserRound />} title="Users" link="users" alert />
+            <SibebarItem icon={<Settings />} title="Settings" link="settings" />
         </SideBar>
       </div>
       <div className="flex flex-col w-full">
