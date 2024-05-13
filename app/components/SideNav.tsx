@@ -16,7 +16,7 @@ export function SideBar({ children }: SideNavProps) {
   const [expanded, setExpanded] = useState(true);
   return (
     <aside className="h-screen">
-      <nav className="h-full flex flex-col bg-white border-r shadow-sm">
+      <nav className="h-full flex flex-col bg-white dark:bg-gray-600 shadow-sm">
         <div className="p-4 pb-2 flex justify-between items-center">
           <Image
             src="/NextAdminLogoLight.svg"
@@ -34,7 +34,7 @@ export function SideBar({ children }: SideNavProps) {
           />
           <button
             onClick={() => setExpanded(!expanded)}
-            className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100"
+            className="p-1.5 rounded-lg bg-gray-100 dark:bg-gray-500 hover:bg-gray-200 dark:hover:bg-gray-400"
           >
             {expanded ? <ChevronFirst /> : <ChevronLast />}
           </button>
