@@ -103,7 +103,7 @@ export function SibebarItem({ icon, title, link, active, alert }: any) {
       >
         {icon}
         <span
-          className={`overflow-hidden transition-all ${
+          className={`overflow-hidden transition-all text-left ${
             expanded ? "w-52 ml-3" : "w-0"
           }`}
         >
