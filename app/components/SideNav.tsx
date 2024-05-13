@@ -92,11 +92,10 @@ export function SibebarItem({ icon, title, link, active, alert }: any) {
       <button
         className={`relative flex items-center justify-start p-3 my-2 rounded-md font-medium cursor-pointer transition-colors group
         ${
-          (currentPath === "/" + link)
+          currentPath === "/" + link
             ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 dark:from-gray-700 dark:to-gray-800 text-indigo-800 dark:text-white"
             : "hover:bg-indigo-50 dark:hover:bg-gray-500 text-gray-600 dark:text-indigo-100"
         }
-        ${expanded ? "w-full" : "w-12"}
         `}
         onClick={() => {
           router.push("/" + link);
