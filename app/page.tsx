@@ -114,7 +114,7 @@ export default function Home() {
         {verified && (
           <div className="w-full flex flex-col">
             <div className="w-full flex items-center justify-between">
-              <p className="font-bold text-3xl">Form List</p>
+              <p className="font-bold text-3xl text-black">Form List</p>
               <div className="">
                 <button
                   onClick={handleLogout}

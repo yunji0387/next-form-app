@@ -59,7 +59,7 @@ export default function FormItem({ formData }: FormItemProps) {
   return (
     <div className={`${isDeleted ? "hidden" : "flex flex-col"} w-full`}>
       <div
-        className="w-full flex flex-col bg-gray-100 hover:bg-gray-200 cursor-pointer p-3 group"
+        className="text-black w-full flex flex-col bg-gray-100 hover:bg-gray-200 cursor-pointer p-3 group"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <div className="flex items-center justify-between h-6">

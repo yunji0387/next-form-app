@@ -46,7 +46,7 @@ export function FinalCheckForm(props: FinalFormDataProps) {
         Final Check
       </h2>
 
-      <div className="w-full bg-gray-100 flex flex-col max-h-[20rem] overflow-auto">
+      <div className="text-black w-full bg-gray-100 flex flex-col max-h-[20rem] overflow-auto">
       {formDataEntries.map(([key, value], index) => {
           // Determine how to display the value based on its type
           const displayElement = Array.isArray(value)

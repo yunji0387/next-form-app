@@ -99,7 +99,7 @@ export function PrintingForm({
           </select>
         </label>
 
-        <label htmlFor="printCustomerName" className="w-full">
+        <label htmlFor="printCustomerName" className="w-full text-black">
           <input
             type="checkbox"
             id="printCustomerName"
