@@ -124,10 +124,10 @@ export default function Register() {
           className="overflow-hidden transition-all"
           alt="logo"
         />
-        <h2 className="text-center font-medium text-2xl">
+        <h2 className="text-black text-center font-medium text-2xl">
           Create your account
         </h2>
-        <p>
+        <p className="text-black">
           Have an account?{" "}
           <span className="text-blue-500 underline font-medium">
             <Link href="/login">Log in</Link>
@@ -158,7 +158,7 @@ export default function Register() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
-              className="p-2 border border-gray-300 rounded focus:outline-gray-500"
+              className="bg-white text-black p-2 border border-gray-300 rounded focus:outline-gray-500"
             />
             {errors.email && (
               <p className="text-red-500 text-sm">{errors.email}</p>
@@ -173,7 +173,7 @@ export default function Register() {
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               placeholder="First Name"
-              className="p-2 border border-gray-300 rounded focus:outline-gray-500"
+              className="bg-white text-black p-2 border border-gray-300 rounded focus:outline-gray-500"
             />
             {errors.firstName && (
               <p className="text-red-500 text-sm">{errors.firstName}</p>
@@ -188,7 +188,7 @@ export default function Register() {
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               placeholder="Last Name"
-              className="p-2 border border-gray-300 rounded focus:outline-gray-500"
+              className="bg-white text-black p-2 border border-gray-300 rounded focus:outline-gray-500"
             />
             {errors.lastName && (
               <p className="text-red-500 text-sm">{errors.lastName}</p>
@@ -203,7 +203,7 @@ export default function Register() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
-              className="p-2 border border-gray-300 rounded focus:outline-gray-500"
+              className="bg-white text-black p-2 border border-gray-300 rounded focus:outline-gray-500"
             />
             {errors.password && (
               <p className="text-red-500 text-sm">{errors.password}</p>
@@ -221,7 +221,7 @@ export default function Register() {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="Confirm Password"
-              className="p-2 border border-gray-300 rounded focus:outline-gray-500"
+              className="bg-white text-black p-2 border border-gray-300 rounded focus:outline-gray-500"
             />
             {errors.confirmPassword && (
               <p className="text-red-500 text-sm">{errors.confirmPassword}</p>
