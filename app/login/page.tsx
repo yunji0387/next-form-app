@@ -115,10 +115,10 @@ export default function Login() {
           className="overflow-hidden transition-all"
           alt="logo"
         />
-        <h2 className="text-center font-medium text-2xl">
+        <h2 className="text-black text-center font-medium text-2xl">
           Log in to your account
         </h2>
-        <p>
+        <p className="text-black">
           Don&apos;t have an account?{" "}
           <span className="text-blue-500 underline font-medium">
             <Link href="/register">sign up</Link>
@@ -149,7 +149,7 @@ export default function Login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
-              className="p-2 border border-gray-300 rounded focus:outline-gray-500"
+              className="bg-white text-black p-2 border border-gray-300 rounded focus:outline-gray-500"
             />
             {errors.email && (
               <div className="text-red-500 text-sm">{errors.email}</div>
@@ -164,7 +164,7 @@ export default function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
-              className="p-2 border border-gray-300 rounded focus:outline-gray-500"
+              className="bg-white text-black p-2 border border-gray-300 rounded focus:outline-gray-500"
             />
             {errors.password && (
               <div className="text-red-500 text-sm">{errors.password}</div>
