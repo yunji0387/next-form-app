@@ -88,9 +88,9 @@ export function SideBar({ children }: SideNavProps) {
                 <MoreVertical size={38} />
               </button>
               {showMoreButton && (
-                <div className="absolute w-40 flex flex-col justify-around p-1 gap-1 -translate-y-24 duration-300 transition-all rounded-md">
+                <div className="absolute bg-gray-300 dark:bg-white w-36 flex flex-col justify-around gap-[1px] border-2 -translate-y-16 duration-300 transition-all rounded">
                   <button
-                    className="w-full px-3 py-1 rounded bg-gray-300 dark:bg-gray-500 hover:bg-gray-400 dark:hover:bg-gray-400"
+                    className="w-full px-3 py-1 text-sm font-medium bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500"
                     onClick={() => {
                       // Handle logout logic here
                       console.log("Logged out");
@@ -99,7 +99,7 @@ export function SideBar({ children }: SideNavProps) {
                     Logout
                   </button>
                   <button
-                    className="w-full px-3 py-1 rounded bg-gray-300 dark:bg-gray-500 hover:bg-gray-400 dark:hover:bg-gray-400"
+                    className="w-full px-3 py-1 text-sm font-medium bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500"
                     onClick={() => {
                       // Handle logout logic here
                       console.log("Logged out");
