@@ -40,7 +40,12 @@ export function SideBar({ children }: SideNavProps) {
             alt="logo"
           />
           <button
-            onClick={() => setExpanded(!expanded)}
+            onClick={() => {
+              setExpanded(!expanded);
+              if(!expanded){
+                setShowMoreButton(false);
+              }
+            }}
             className="flex items-center justify-center rounded-md bg-gray-100 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 w-12 h-12"
           >
             {expanded ? <ChevronFirst /> : <ChevronLast />}
@@ -149,7 +154,7 @@ export function SibebarItem({ icon, title, link, active, alert }: any) {
 
         {!expanded && (
           <div
-            className={`absolute left-full rounded-md px-2 py-1 ml-6 bg-white text-indigo-800 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0`}
+            className={`absolute left-full rounded-md px-2 py-1 ml-6 bg-white dark:bg-gray-500 text-indigo-800 dark:text-gray-50 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0`}
           >
             {title}
           </div>
