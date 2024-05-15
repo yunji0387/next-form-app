@@ -15,9 +15,10 @@ const SideBarContext = createContext<{ expanded: boolean }>({
 
 export function SideBar({ children }: SideNavProps) {
   const [expanded, setExpanded] = useState(true);
+  const [showMoreButton, setShowMoreButton] = useState(false);
 
   return (
-    <aside className="h-screen">
+    <aside className="z-50 h-screen">
       <nav className="h-full flex flex-col bg-white dark:bg-gray-700 shadow-sm">
         <div
           className={`pb-2 flex items-center ${
@@ -64,8 +65,8 @@ export function SideBar({ children }: SideNavProps) {
             alt="avatar"
           />
           <div
-            className={`flex items-center justify-between overflow-hidden transition-all ${
-              expanded ? "w-52 ml-3" : "w-0"
+            className={`flex items-center justify-between transition-all ${
+              expanded ? "w-52 ml-3" : "overflow-hidden w-0"
             } `}
           >
             <div className="leading-4">
@@ -74,7 +75,36 @@ export function SideBar({ children }: SideNavProps) {
                 johndoe@example.com
               </span>
             </div>
-            <MoreVertical size={24} />
+            <div className="z-50 relative flex">
+              <button
+                className="hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg"
+                onClick={() => setShowMoreButton(!showMoreButton)}
+              >
+                <MoreVertical size={38} />
+              </button>
+              {showMoreButton && (
+                <div className="absolute w-40 flex flex-col justify-around p-1 gap-1 -translate-y-24 duration-300 transition-all rounded-md">
+                  <button
+                    className="w-full px-3 py-1 rounded bg-gray-300 dark:bg-gray-500 hover:bg-gray-400 dark:hover:bg-gray-400"
+                    onClick={() => {
+                      // Handle logout logic here
+                      console.log("Logged out");
+                    }}
+                  >
+                    Logout
+                  </button>
+                  <button
+                    className="w-full px-3 py-1 rounded bg-gray-300 dark:bg-gray-500 hover:bg-gray-400 dark:hover:bg-gray-400"
+                    onClick={() => {
+                      // Handle logout logic here
+                      console.log("Logged out");
+                    }}
+                  >
+                    Profile Settings
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </nav>
