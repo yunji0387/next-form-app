@@ -1,11 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import FormItem from "./components/FormItem";
-import { LoadingScreen } from "./components/LoadingScreen";
-import { SubmissionErrorContent } from "./components/SubmissionErrorContent";
+import FormItem from "./FormItem";
+import { LoadingScreen } from "./LoadingScreen";
+import { SubmissionErrorContent } from "./SubmissionErrorContent";
 import { useRouter } from "next/navigation";
-import { useAuth } from "./context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -23,7 +23,7 @@ type FormData = {
   formId: number;
 };
 
-export default function Home() {
+export function FormList() {
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
   const [forms, setForms] = useState<FormData[]>([]);
@@ -108,7 +108,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex w-full min-w-[50rem] min-h-screen p-5 flex-col items-center justify-center overflow-auto">
+    <div className="flex w-full flex-col items-center justify-center overflow-auto">
       <ToastContainer />
       <div className="flex flex-col gap-2 bg-white w-full h-[35rem] p-3 overflow-auto">
         {verified && (
@@ -152,6 +152,6 @@ export default function Home() {
           !loadError &&
           forms.map((form) => <FormItem key={form.formId} formData={form} />)}
       </div>
-    </main>
+    </div>
   );
 }

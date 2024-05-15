@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { SideBar, SibebarItem } from "../components/SideNav";
+import { FormList } from "../components/FormList";
 import {
     LifeBuoy,
     CircleUserRound ,
@@ -22,6 +23,7 @@ export default function Dashboard() {
       <div className="flex flex-col w-full">
         <h1 className="">Dashboard</h1>
         <p className="text-blue-500 dark:text-pink-300">Welcome to the dashboard</p>
+        <FormList />
       </div>
     </main>
   );
