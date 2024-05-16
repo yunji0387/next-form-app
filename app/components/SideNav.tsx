@@ -4,6 +4,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { ChevronLast, ChevronFirst, MoreVertical } from "lucide-react";
 import Image from "next/image";
 import { ThemeToggle } from "./ThemeToggle";
+import { useAuth } from "../context/AuthContext";
 
 type SideNavProps = {
   children: React.ReactNode;
@@ -16,6 +17,27 @@ const SideBarContext = createContext<{ expanded: boolean }>({
 export function SideBar({ children }: SideNavProps) {
   const [expanded, setExpanded] = useState(true);
   const [showMoreButton, setShowMoreButton] = useState(false);
+  const [isLogoutLoading, setIsLogoutLoading] = useState(false);
+
+  const router = useRouter();
+  const auth = useAuth();
+
+  if (!auth) {
+    console.error("Auth context is not available");
+    return <div>No access to Auth context</div>;
+  }
+
+  const { logout } = auth;
+
+  const handleLogout = async () => {
+    setIsLogoutLoading(true);
+    const result = await logout();
+    if (result) {
+      setIsLogoutLoading(false);
+      router.push("/login");
+    }
+    setIsLogoutLoading(false);
+  };
 
   return (
     <aside className="z-50 h-screen">
@@ -42,7 +64,7 @@ export function SideBar({ children }: SideNavProps) {
           <button
             onClick={() => {
               setExpanded(!expanded);
-              if(!expanded){
+              if (!expanded) {
                 setShowMoreButton(false);
               }
             }}
@@ -91,18 +113,22 @@ export function SideBar({ children }: SideNavProps) {
                 <div className="absolute bg-gray-300 dark:bg-white w-36 flex flex-col justify-around gap-[1px] border-2 -translate-y-16 duration-300 transition-all rounded">
                   <button
                     className="w-full px-3 py-1 text-sm font-medium bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500"
-                    onClick={() => {
-                      // Handle logout logic here
-                      console.log("Logged out");
-                    }}
+                    onClick={handleLogout}
+                    disabled={isLogoutLoading}
                   >
-                    Logout
+                    {isLogoutLoading ? (
+                      <div className="flex items-center justify-center">
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                      </div>
+                    ) : (
+                      "Log Out"
+                    )}
                   </button>
                   <button
                     className="w-full px-3 py-1 text-sm font-medium bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500"
                     onClick={() => {
-                      // Handle logout logic here
-                      console.log("Logged out");
+                      // Handle profile settings logic here
+                      console.log("Profile settings");
                     }}
                   >
                     Profile Settings
