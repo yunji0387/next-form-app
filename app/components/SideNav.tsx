@@ -152,7 +152,7 @@ export function SideBar({ children }: SideNavProps) {
                   )}
                 </button>
                 <button
-                  className="w-full px-3 py-1 font-medium bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500"
+                  className="w-full cursor-not-allowed px-3 py-1 font-medium bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500"
                   onClick={() => {
                     // Handle profile settings logic here
                     console.log("Profile settings");
