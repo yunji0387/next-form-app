@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useAuth } from "./context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
@@ -40,9 +41,16 @@ export default function Home() {
   };
 
   return (
-    <main className="flex w-full min-w-[50rem] min-h-screen overflow-auto">
+    <main className="flex w-full min-h-screen overflow-auto">
       <ToastContainer />
-      <div className="flex w-1/2 h-screen bg-white">
+      <div className="flex items-start justify-center w-[28rem] h-screen bg-white">
+        <Image
+          src="/NextAdminLogoDark.svg"
+          width={400}
+          height={25}
+          className="overflow-hidden transition-all pt-5"
+          alt="logo"
+        />
       </div>
       <p>Hello World</p>
     </main>
