@@ -52,7 +52,6 @@ export default function Home() {
           alt="logo"
         />
       </div>
-      <p>Hello World</p>
     </main>
   );
 }
