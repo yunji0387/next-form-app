@@ -40,8 +40,10 @@ export default function Home() {
   };
 
   return (
-    <main className="flex w-full min-w-[50rem] min-h-screen p-5 flex-col items-center justify-center overflow-auto">
+    <main className="flex w-full min-w-[50rem] min-h-screen overflow-auto">
       <ToastContainer />
+      <div className="flex w-1/2 h-screen bg-white">
+      </div>
       <p>Hello World</p>
     </main>
   );
