@@ -48,7 +48,7 @@ export default function FormItem({ formData }: FormItemProps) {
   const handleEdit = () => {
     const { _id, __v, ...rest } = formData; // Destructure to exclude _id and __v
     setCurrentFormData(rest);
-  }
+  };
 
   useEffect(() => {
     if (currentFormData?.formId === formData.formId) {
