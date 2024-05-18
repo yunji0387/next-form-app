@@ -60,7 +60,7 @@ export default function Login() {
     return <div>No access to Auth context</div>;
   }
 
-  const { login, authUser } = auth;
+  const { login } = auth;
 
   const validateForm = () => {
     let valid = true;
@@ -98,7 +98,8 @@ export default function Login() {
 
     if (result) {
       setIsLoading(false);
-      router.push("/");
+      // router.push("/");
+      router.push("/dashboard");
     }
 
     setIsLoading(false);
