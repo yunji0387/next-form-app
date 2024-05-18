@@ -7,6 +7,7 @@ import { useAuth } from "./context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/Footer";
+import { skillsIconList } from "@/public/skillsIconList";
 
 export default function Home() {
   const router = useRouter();
@@ -45,6 +46,7 @@ export default function Home() {
     <main className="flex w-full min-h-screen overflow-auto">
       <ToastContainer />
       <div className="flex flex-col items-center justify-between w-[28rem] h-screen bg-white dark:bg-gray-700">
+        <div className="w-full flex flex-col items-center">
         <Image
           src="/NextAdminLogoLight.svg"
           width={400}
@@ -59,15 +61,48 @@ export default function Home() {
           className="overflow-hidden transition-all dark:hidden pt-5"
           alt="logo"
         />
-        <p className="w-full text-center text-xl xs:text-2xl sm:text-3xl text-indigo-900 dark:text-white">
+        <p className="w-full text-center text-xl xs:text-2xl sm:text-3xl text-indigo-900 dark:text-white pt-2">
           Elevate Your Efficiency
         </p>
+          <p className="w-full pt-5 text-center text-sm">Our Tech Stack</p>
+          <div className="flex items-center justify-center w-full grayscale dark:invert">
+            {skillsIconList.map((icon, index) => (
+              <Image
+                key={index}
+                src={icon.icon}
+                width={40}
+                height={40}
+                alt={icon.title}
+                className="select-none p-2"
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-col w-full items-center justify-center">
+            <p className="text-sm">Our Features</p>
+            <div className="flex flex-col gap-2 w-full items-center justify-center">
+              <div className="flex flex-col items-center justify-center w-full p-2">
+                <p className="text-lg dark:text-gray-300">User Management</p>
+                <p className="text-sm dark:text-gray-300">Manage users and roles</p>
+              </div>
+              <div className="flex flex-col items-center justify-center w-full p-2">
+                <p className="text-lg dark:text-gray-300">Form Management</p>
+                <p className="text-sm dark:text-gray-300">Create and manage forms</p>
+              </div>
+              <div className="flex flex-col items-center justify-center w-full p-2">
+                <p className="text-lg dark:text-gray-300">Data Analytics</p>
+                <p className="text-sm dark:text-gray-300">Extract insights information</p>
+              </div>
+            </div>
+        </div>
+
         <div className="flex gap-3">
           <button
             onClick={() => {
               router.push("/register");
             }}
-            className="bg-indigo-500 dark:bg-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-700 text-indigo-900 dark:text-white font-bold px-4 py-2 rounded sm:text-xl"
+            className="bg-indigo-300 dark:bg-indigo-600 hover:bg-indigo-400 dark:hover:bg-indigo-700 text-indigo-900 dark:text-white font-bold px-4 py-2 rounded sm:text-xl"
           >
             Register
           </button>
