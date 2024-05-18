@@ -61,11 +61,11 @@ export default function Home() {
         <p className="text-indigo-900 dark:text-white">
           Elevate Your Efficiency
         </p>
-        <div>
-        <button className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mt-5">
+        <div className="flex gap-3">
+        <button className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-4 py-2  rounded">
           Register
         </button>
-        <button className= "text-indigo-900 dark:text-gray-100 dark:hover:text-white dark:hover:underline font-bold py-2 px-4 rounded mt-5">
+        <button className= "text-indigo-900 dark:text-gray-100 dark:hover:text-white dark:hover:underline font-bold px-4 py-2 rounded">
           Login
         </button>
         </div>
