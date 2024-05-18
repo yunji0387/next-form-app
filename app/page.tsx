@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useAuth } from "./context/AuthContext";
@@ -28,16 +27,10 @@ export default function Home() {
   const verifyUser = async () => {
     const result = await verify();
     if (result) {
-      // const loginMessage = sessionStorage.getItem("loginSuccessMessage");
-      // if (loginMessage) {
-      //   setTimeout(() => {
-      //     toast.success(loginMessage);
-      //     sessionStorage.removeItem("loginSuccessMessage"); // Clear the message so it doesn't reappear
-      //     toast(
-      //       `Welcome${authUser?.first_name ? `, ${authUser.first_name}` : ""}.`
-      //     );
-      //   }, 100); // Delay of 500 milliseconds
-      // }
+      sessionStorage.setItem(
+        "postRegistrationMessage",
+        "Registration successful. Please log in."
+      );
       router.push("/dashboard");
     }
   };
