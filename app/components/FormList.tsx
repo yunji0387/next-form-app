@@ -28,7 +28,6 @@ export function FormList() {
   const [loadError, setLoadError] = useState(false);
   const [forms, setForms] = useState<FormData[]>([]);
   const [verified, setVerified] = useState(false);
-  const [isLogoutLoading, setIsLogoutLoading] = useState(false);
   const router = useRouter();
 
   const auth = useAuth();
@@ -97,16 +96,6 @@ export function FormList() {
     }
   };
 
-  const handleLogout = async () => {
-    setIsLogoutLoading(true);
-    const result = await logout();
-    if (result) {
-      setIsLogoutLoading(false);
-      router.push("/login");
-    }
-    setIsLogoutLoading(false);
-  };
-
   return (
     <div className="flex w-full flex-col items-center justify-center overflow-auto">
       <ToastContainer />
@@ -115,21 +104,6 @@ export function FormList() {
           <div className="w-full flex flex-col">
             <div className="w-full flex items-center justify-between">
               <p className="font-bold text-3xl text-black">Form List</p>
-              <div className="">
-                <button
-                  onClick={handleLogout}
-                  disabled={isLogoutLoading}
-                  className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
-                >
-                  {isLogoutLoading ? (
-                    <div className="flex items-center justify-center">
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                    </div>
-                  ) : (
-                    "Log Out"
-                  )}
-                </button>
-              </div>
             </div>
             <div>
               <Link href="/form">
