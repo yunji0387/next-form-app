@@ -4,6 +4,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { ChevronLast, ChevronFirst, MoreVertical } from "lucide-react";
 import Image from "next/image";
 import { ThemeToggle } from "./ThemeToggle";
+import { useAuth } from "../context/AuthContext";
 
 type SideNavProps = {
   children: React.ReactNode;
@@ -15,9 +16,31 @@ const SideBarContext = createContext<{ expanded: boolean }>({
 
 export function SideBar({ children }: SideNavProps) {
   const [expanded, setExpanded] = useState(true);
+  const [showMoreButton, setShowMoreButton] = useState(false);
+  const [isLogoutLoading, setIsLogoutLoading] = useState(false);
+
+  const router = useRouter();
+  const auth = useAuth();
+
+  if (!auth) {
+    console.error("Auth context is not available");
+    return <div>No access to Auth context</div>;
+  }
+
+  const { logout } = auth;
+
+  const handleLogout = async () => {
+    setIsLogoutLoading(true);
+    const result = await logout();
+    if (result) {
+      setIsLogoutLoading(false);
+      router.push("/login");
+    }
+    setIsLogoutLoading(false);
+  };
 
   return (
-    <aside className="h-screen">
+    <aside className="z-50 h-screen min-h-[35rem]">
       <nav className="h-full flex flex-col bg-white dark:bg-gray-700 shadow-sm">
         <div
           className={`pb-2 flex items-center ${
@@ -39,7 +62,12 @@ export function SideBar({ children }: SideNavProps) {
             alt="logo"
           />
           <button
-            onClick={() => setExpanded(!expanded)}
+            onClick={() => {
+              setExpanded(!expanded);
+              if (!expanded) {
+                setShowMoreButton(false);
+              }
+            }}
             className="flex items-center justify-center rounded-md bg-gray-100 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 w-12 h-12"
           >
             {expanded ? <ChevronFirst /> : <ChevronLast />}
@@ -64,8 +92,8 @@ export function SideBar({ children }: SideNavProps) {
             alt="avatar"
           />
           <div
-            className={`flex items-center justify-between overflow-hidden transition-all ${
-              expanded ? "w-52 ml-3" : "w-0"
+            className={`flex items-center justify-between transition-all ${
+              expanded ? "w-52 ml-3" : "overflow-hidden w-0"
             } `}
           >
             <div className="leading-4">
@@ -74,7 +102,66 @@ export function SideBar({ children }: SideNavProps) {
                 johndoe@example.com
               </span>
             </div>
-            <MoreVertical size={24} />
+            <div className="z-50 relative flex">
+              <button
+                className="hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg"
+                onClick={() => setShowMoreButton(!showMoreButton)}
+              >
+                <MoreVertical size={38} />
+              </button>
+              {/* {showMoreButton && (
+                <div className="absolute bg-gray-300 dark:bg-white w-40 flex flex-col justify-around gap-[1px] border-2 -translate-y-20 duration-300 transition-all rounded">
+                  <button
+                    className="w-full px-3 py-1 font-medium bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500"
+                    onClick={handleLogout}
+                    disabled={isLogoutLoading}
+                  >
+                    {isLogoutLoading ? (
+                      <div className="flex items-center justify-center">
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                      </div>
+                    ) : (
+                      "Log Out"
+                    )}
+                  </button>
+                  <button
+                    className="w-full px-3 py-1 font-medium bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500"
+                    onClick={() => {
+                      // Handle profile settings logic here
+                      console.log("Profile settings");
+                    }}
+                  >
+                    Profile Settings
+                  </button>
+                </div>
+              )} */}
+              <div className={`
+              ${showMoreButton ? "opacity-100 visible -translate-y-20" : "opacity-0 invisible -translate-y-16"}
+              absolute bg-gray-300 dark:bg-white w-40 flex flex-col justify-around gap-[1px] border-2 duration-300 transition-all rounded`}>
+                <button
+                  className="w-full px-3 py-1 font-medium bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500"
+                  onClick={handleLogout}
+                  disabled={isLogoutLoading}
+                >
+                  {isLogoutLoading ? (
+                    <div className="flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                    </div>
+                  ) : (
+                    "Log Out"
+                  )}
+                </button>
+                <button
+                  className="w-full cursor-not-allowed px-3 py-1 font-medium bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500"
+                  onClick={() => {
+                    // Handle profile settings logic here
+                    console.log("Profile settings");
+                  }}
+                >
+                  Profile Settings
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </nav>
@@ -119,7 +206,7 @@ export function SibebarItem({ icon, title, link, active, alert }: any) {
 
         {!expanded && (
           <div
-            className={`absolute left-full rounded-md px-2 py-1 ml-6 bg-white text-indigo-800 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0`}
+            className={`absolute left-full rounded-md px-2 py-1 ml-6 bg-white dark:bg-gray-500 text-indigo-800 dark:text-gray-50 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0`}
           >
             {title}
           </div>

@@ -48,7 +48,7 @@ export default function FormItem({ formData }: FormItemProps) {
   const handleEdit = () => {
     const { _id, __v, ...rest } = formData; // Destructure to exclude _id and __v
     setCurrentFormData(rest);
-  }
+  };
 
   useEffect(() => {
     if (currentFormData?.formId === formData.formId) {
@@ -59,7 +59,7 @@ export default function FormItem({ formData }: FormItemProps) {
   return (
     <div className={`${isDeleted ? "hidden" : "flex flex-col"} w-full`}>
       <div
-        className="text-black w-full flex flex-col bg-gray-100 hover:bg-gray-200 cursor-pointer p-3 group"
+        className="text-black w-full flex flex-col rounded-lg bg-gray-100 hover:bg-gray-200 cursor-pointer p-3 group"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <div className="flex items-center justify-between h-6">
@@ -68,7 +68,7 @@ export default function FormItem({ formData }: FormItemProps) {
           </p>
           <div className="hidden group-hover:flex w-1/3 justify-end gap-2 select-none">
             <button
-              className="bg-gray-100 hover:bg-white w-[40%] min-w-fit max-w-[4rem] h-6 text-xs font-bold text-gray-800 border border-gray-700 rounded"
+              className="bg-gray-100 hover:bg-white w-[4rem] min-w-[4rem] h-6 text-xs font-bold text-gray-800 border border-gray-700 rounded"
               onClick={(e) => {
                 e.stopPropagation();
                 handleEdit();
@@ -77,7 +77,7 @@ export default function FormItem({ formData }: FormItemProps) {
               Edit
             </button>
             <button
-              className="bg-gray-100 hover:bg-white w-[40%] min-w-fit max-w-[4rem] h-6 text-xs font-bold text-gray-800 border border-gray-700 rounded"
+              className="bg-gray-100 hover:bg-white w-[4rem] min-w-[4rem] h-6 text-xs font-bold text-gray-800 border border-gray-700 rounded"
               onClick={(e) => {
                 e.stopPropagation();
                 setIsExpanded(!isExpanded);
@@ -86,7 +86,7 @@ export default function FormItem({ formData }: FormItemProps) {
               {isExpanded ? "Collapse" : "Expand"}
             </button>
             <button
-              className="bg-gray-100 hover:bg-white w-[40%] min-w-fit max-w-[4rem] h-6 text-xs font-bold text-gray-800 border border-gray-700 rounded"
+              className="bg-gray-100 hover:bg-white w-[4rem] min-w-[4rem] h-6 text-xs font-bold text-gray-800 border border-gray-700 rounded"
               onClick={(e) => {
                 e.stopPropagation();
                 setShowDeletePopup(true);

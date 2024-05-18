@@ -60,7 +60,7 @@ export default function Login() {
     return <div>No access to Auth context</div>;
   }
 
-  const { login, authUser } = auth;
+  const { login } = auth;
 
   const validateForm = () => {
     let valid = true;
@@ -98,20 +98,21 @@ export default function Login() {
 
     if (result) {
       setIsLoading(false);
-      router.push("/");
+      // router.push("/");
+      router.push("/dashboard");
     }
 
     setIsLoading(false);
   };
 
   return (
-    <div className="flex w-full min-w-[50rem] min-h-screen flex-col items-start justify-start overflow-auto">
+    <div className="flex w-full min-w-[18rem] min-h-screen flex-col items-start justify-start overflow-auto">
       <ToastContainer />
       <div className="bg-white flex flex-col gap-2 w-full h-screen max-w-md p-3 overflow-auto">
         <Image
           src="/NextAdminLogoDark.svg"
           width={400}
-          height={25}
+          height={100}
           className="overflow-hidden transition-all"
           alt="logo"
         />
