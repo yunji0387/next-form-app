@@ -40,7 +40,7 @@ export function SideBar({ children }: SideNavProps) {
   };
 
   return (
-    <aside className="z-50 h-screen">
+    <aside className="z-50 h-screen min-h-[35rem]">
       <nav className="h-full flex flex-col bg-white dark:bg-gray-700 shadow-sm">
         <div
           className={`pb-2 flex items-center ${

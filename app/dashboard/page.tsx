@@ -55,7 +55,7 @@ export default function Dashboard() {
   };
 
   return (
-    <main className="flex w-full min-h-screen items-center justify-start gap-3 overflow-auto">
+    <main className="flex w-full items-center justify-start gap-3 overflow-auto">
       <div className="">
         <SideBar>
           <SibebarItem
