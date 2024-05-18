@@ -58,6 +58,18 @@ export default function Home() {
           className="overflow-hidden transition-all dark:hidden pt-5"
           alt="logo"
         />
+        <p className="text-indigo-900 dark:text-white">
+          Elevate Your Efficiency
+        </p>
+        <div>
+        <button className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mt-5">
+          Register
+        </button>
+        <button className= "text-indigo-900 dark:text-gray-100 dark:hover:text-white dark:hover:underline font-bold py-2 px-4 rounded mt-5">
+          Login
+        </button>
+        </div>
+        <p>c 2024 Next Admin</p>
       </div>
     </main>
   );
