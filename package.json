@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "formik": "^2.4.5",
+    "formik": "^2.4.6",
     "lucide-react": "^0.378.0",
     "next": "14.2.2",
     "next-themes": "^0.3.0",
