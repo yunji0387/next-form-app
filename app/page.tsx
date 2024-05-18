@@ -88,11 +88,11 @@ export default function Home() {
               </div>
               <div className="flex flex-col items-center justify-center w-full p-2">
                 <p className="text-lg dark:text-gray-300">Form Management</p>
-                <p className="text-sm dark:text-gray-300">Create and manage forms</p>
+                <p className="text-sm dark:text-gray-300">Create and handle forms</p>
               </div>
               <div className="flex flex-col items-center justify-center w-full p-2">
                 <p className="text-lg dark:text-gray-300">Data Analytics</p>
-                <p className="text-sm dark:text-gray-300">Extract insights information</p>
+                <p className="text-sm dark:text-gray-300">Gain insights and information</p>
               </div>
             </div>
         </div>
