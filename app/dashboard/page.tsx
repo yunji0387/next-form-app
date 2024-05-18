@@ -55,7 +55,7 @@ export default function Dashboard() {
   };
 
   return (
-    <main className="flex w-full min-h-screen items-center justify-start gap-3">
+    <main className="flex w-full min-h-screen items-center justify-start gap-3 overflow-auto">
       <div className="">
         <SideBar>
           <SibebarItem
@@ -75,11 +75,7 @@ export default function Dashboard() {
           <SibebarItem icon={<Settings />} title="Settings" link="settings" />
         </SideBar>
       </div>
-      <div className="flex flex-col w-full p-5">
-        <h1 className="">Dashboard</h1>
-        <p className="text-blue-500 dark:text-pink-300">
-          Welcome to the dashboard
-        </p>
+      <div className="flex flex-col w-full min-w-[20rem] px-5">
         <FormList />
       </div>
     </main>
