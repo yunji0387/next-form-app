@@ -20,6 +20,21 @@ export default function Dashboard() {
     verifyUser();
   }, []); // Dependency array is empty, so this effect will run only once after the component mounts
 
+  useEffect(() => {
+    if (verified) {
+      const loginMessage = sessionStorage.getItem("loginSuccessMessage");
+      if (loginMessage) {
+        setTimeout(() => {
+          toast.success(loginMessage);
+          sessionStorage.removeItem("loginSuccessMessage"); // Clear the message so it doesn't reappear
+          toast(
+            `Welcome${authUser?.first_name ? `, ${authUser.first_name}` : ""}.`
+          );
+        }, 100); // Delay of 500 milliseconds
+      }
+    }
+  }, [verified]);
+
   if (!auth) {
     console.error("Auth context is not available");
     return <div>No access to Auth context</div>;

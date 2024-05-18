@@ -38,16 +38,6 @@ export function FormList() {
 
   useEffect(() => {
     if (verified) {
-      const loginMessage = sessionStorage.getItem("loginSuccessMessage");
-      if (loginMessage) {
-        setTimeout(() => {
-          toast.success(loginMessage);
-          sessionStorage.removeItem("loginSuccessMessage"); // Clear the message so it doesn't reappear
-          toast(
-            `Welcome${authUser?.first_name ? `, ${authUser.first_name}` : ""}.`
-          );
-        }, 100); // Delay of 500 milliseconds
-      }
       fetchForms();
     }
   }, [verified]);
