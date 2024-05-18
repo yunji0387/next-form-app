@@ -43,12 +43,19 @@ export default function Home() {
   return (
     <main className="flex w-full min-h-screen overflow-auto">
       <ToastContainer />
-      <div className="flex items-start justify-center w-[28rem] h-screen bg-white">
+      <div className="flex flex-col items-center justify-between w-[28rem] h-screen bg-white dark:bg-gray-700">
+        <Image
+          src="/NextAdminLogoLight.svg"
+          width={400}
+          height={25}
+          className="overflow-hidden transition-all hidden dark:block pt-5"
+          alt="logo"
+        />
         <Image
           src="/NextAdminLogoDark.svg"
           width={400}
           height={25}
-          className="overflow-hidden transition-all pt-5"
+          className="overflow-hidden transition-all dark:hidden pt-5"
           alt="logo"
         />
       </div>
