@@ -111,7 +111,7 @@ export default function Login() {
         <Image
           src="/NextAdminLogoDark.svg"
           width={400}
-          height={25}
+          height={100}
           className="overflow-hidden transition-all"
           alt="logo"
         />
