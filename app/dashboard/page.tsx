@@ -75,7 +75,7 @@ export default function Dashboard() {
           <SibebarItem icon={<Settings />} title="Settings" link="settings" />
         </SideBar>
       </div>
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full p-5">
         <h1 className="">Dashboard</h1>
         <p className="text-blue-500 dark:text-pink-300">
           Welcome to the dashboard
