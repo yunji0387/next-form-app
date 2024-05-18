@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "./context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "./components/Footer";
 
 export default function Home() {
   const router = useRouter();
@@ -69,7 +70,7 @@ export default function Home() {
           Login
         </button>
         </div>
-        <p>c 2024 Next Admin</p>
+        <Footer />
       </div>
     </main>
   );
