@@ -47,24 +47,59 @@ export default function Home() {
       <ToastContainer />
       <div className="flex flex-col items-center justify-between w-[28rem] h-screen bg-white dark:bg-gray-700">
         <div className="w-full flex flex-col items-center">
-        <Image
-          src="/NextAdminLogoLight.svg"
-          width={400}
-          height={25}
-          className="overflow-hidden transition-all hidden dark:block pt-5"
-          alt="logo"
-        />
-        <Image
-          src="/NextAdminLogoDark.svg"
-          width={400}
-          height={25}
-          className="overflow-hidden transition-all dark:hidden pt-5"
-          alt="logo"
-        />
-        <p className="w-full text-center text-xl xs:text-2xl sm:text-3xl text-indigo-900 dark:text-white pt-2">
-          Elevate Your Efficiency
-        </p>
-          <p className="w-full pt-5 text-center text-sm">Our Tech Stack</p>
+          <Image
+            src="/NextAdminLogoLight.svg"
+            width={400}
+            height={25}
+            className="overflow-hidden transition-all hidden dark:block pt-5"
+            alt="logo"
+          />
+          <Image
+            src="/NextAdminLogoDark.svg"
+            width={400}
+            height={25}
+            className="overflow-hidden transition-all dark:hidden pt-5"
+            alt="logo"
+          />
+          <p className="select-none w-full text-center text-xl xs:text-2xl sm:text-3xl text-indigo-900 dark:text-white pt-2">
+            Elevate Your Efficiency
+          </p>
+        </div>
+
+        <div className="select-none flex flex-col w-full items-center justify-center">
+          <p className="text-sm">Our Features</p>
+          <div className="flex flex-col w-full items-center justify-center">
+            <div className="flex flex-col items-center justify-center w-full p-2">
+              <p className="text-lg dark:text-gray-300">User Management</p>
+              <p className="text-sm dark:text-gray-300">
+                Manage users and roles
+              </p>
+            </div>
+            <div className="flex flex-col items-center justify-center w-full p-2">
+              <p className="text-lg dark:text-gray-300">Form Management</p>
+              <p className="text-sm dark:text-gray-300">
+                Create and handle forms
+              </p>
+            </div>
+            <div className="flex flex-col items-center justify-center w-full p-2">
+              <p className="text-lg dark:text-gray-300">Data Analytics</p>
+              <p className="text-sm dark:text-gray-300">
+                Gain insights and information
+              </p>
+            </div>
+            <div className="flex flex-col items-center justify-center w-full p-2">
+              <p className="text-lg dark:text-gray-300">
+                Customizable Dashboard
+              </p>
+              <p className="text-sm dark:text-gray-300">
+                Personalize your admin view
+              </p>
+            </div>
+          </div>
+
+          <p className="select-none w-full pt-5 text-center text-sm">
+            Our Tech Stack
+          </p>
           <div className="flex items-center justify-center w-full grayscale dark:invert">
             {skillsIconList.map((icon, index) => (
               <Image
@@ -77,24 +112,6 @@ export default function Home() {
               />
             ))}
           </div>
-        </div>
-
-        <div className="flex flex-col w-full items-center justify-center">
-            <p className="text-sm">Our Features</p>
-            <div className="flex flex-col gap-2 w-full items-center justify-center">
-              <div className="flex flex-col items-center justify-center w-full p-2">
-                <p className="text-lg dark:text-gray-300">User Management</p>
-                <p className="text-sm dark:text-gray-300">Manage users and roles</p>
-              </div>
-              <div className="flex flex-col items-center justify-center w-full p-2">
-                <p className="text-lg dark:text-gray-300">Form Management</p>
-                <p className="text-sm dark:text-gray-300">Create and handle forms</p>
-              </div>
-              <div className="flex flex-col items-center justify-center w-full p-2">
-                <p className="text-lg dark:text-gray-300">Data Analytics</p>
-                <p className="text-sm dark:text-gray-300">Gain insights and information</p>
-              </div>
-            </div>
         </div>
 
         <div className="flex gap-3">
