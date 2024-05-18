@@ -63,12 +63,22 @@ export default function Home() {
           Elevate Your Efficiency
         </p>
         <div className="flex gap-3">
-        <button className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-4 py-2 rounded sm:text-xl">
-          Register
-        </button>
-        <button className= "text-indigo-900 dark:text-gray-100 dark:hover:text-white dark:hover:underline font-bold px-4 py-2 rounded sm:text-xl">
-          Login
-        </button>
+          <button
+            onClick={() => {
+              router.push("/register");
+            }}
+            className="bg-indigo-500 dark:bg-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-700 text-indigo-900 dark:text-white font-bold px-4 py-2 rounded sm:text-xl"
+          >
+            Register
+          </button>
+          <button
+            onClick={() => {
+              router.push("/login");
+            }}
+            className="text-indigo-900 dark:text-gray-100 dark:hover:text-white dark:hover:underline font-bold px-4 py-2 rounded sm:text-xl"
+          >
+            Login
+          </button>
         </div>
         <Footer />
       </div>
