@@ -6,7 +6,7 @@ import { LoadingScreen } from "./LoadingScreen";
 import { SubmissionErrorContent } from "./SubmissionErrorContent";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../context/AuthContext";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // Define the structure of a form data object
@@ -47,7 +47,7 @@ export function FormList() {
     return <div>No access to Auth context</div>;
   }
 
-  const { authUser, logout, verify } = auth;
+  const { verify } = auth;
 
   const verifyUser = async () => {
     const result = await verify();
