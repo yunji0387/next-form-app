@@ -113,7 +113,7 @@ export function SideBar({ children }: SideNavProps) {
               ${showMoreButton ? "opacity-100 visible -translate-y-[6.5rem]" : "opacity-0 invisible -translate-y-16"}
               -translate-x-[7.5rem] absolute w-40 flex flex-col justify-around gap-3 duration-300 transition-all rounded`}>
                 <button
-                  className="w-full px-3 py-1 font-medium bg-indigo-200 dark:bg-gray-800 hover:bg-indigo-300 dark:hover:bg-gray-900 rounded"
+                  className="w-full px-3 py-1 font-medium bg-indigo-200 dark:bg-emerald-600 hover:bg-indigo-300 dark:hover:bg-emerald-500 rounded"
                   onClick={handleLogout}
                   disabled={isLogoutLoading}
                 >
@@ -126,7 +126,7 @@ export function SideBar({ children }: SideNavProps) {
                   )}
                 </button>
                 <button
-                  className="w-full cursor-not-allowed px-3 py-1 font-medium bg-indigo-200 dark:bg-gray-800 hover:bg-indigo-300 dark:hover:bg-gray-900 rounded"
+                  className="w-full cursor-not-allowed px-3 py-1 font-medium bg-indigo-200 dark:bg-emerald-600 hover:bg-indigo-300 dark:hover:bg-emerald-500 rounded"
                   onClick={() => {
                     // Handle profile settings logic here
                     console.log("Profile settings");
@@ -154,8 +154,8 @@ export function SibebarItem({ icon, title, link, active, alert }: any) {
         className={`relative flex items-center justify-start p-3 my-2 rounded-md font-medium cursor-pointer transition-colors group
         ${
           currentPath === "/" + link
-            ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 dark:from-gray-700 dark:to-gray-800 text-indigo-800 dark:text-white"
-            : "hover:bg-indigo-50 dark:hover:bg-gray-500 text-gray-600 dark:text-indigo-100"
+            ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 dark:from-emerald-500 dark:to-emerald-700 text-indigo-800 dark:text-white"
+            : "hover:bg-indigo-50 dark:hover:bg-emerald-800 text-gray-600 dark:text-indigo-100"
         }
         `}
         onClick={() => {
