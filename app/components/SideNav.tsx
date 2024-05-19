@@ -172,7 +172,7 @@ export function SibebarItem({ icon, title, link, active, alert }: any) {
         </span>
         {alert && (
           <div
-            className={`absolute right-2 w-2 h-2 rounded bg-indigo-400 dark:bg-indigo-200 ${
+            className={`absolute right-2 w-2 h-2 rounded bg-indigo-400 dark:bg-emerald-100 ${
               expanded ? "" : "top-2"
             }`}
           />
