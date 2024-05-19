@@ -27,7 +27,7 @@ export function SideBar({ children }: SideNavProps) {
     return <div>No access to Auth context</div>;
   }
 
-  const { logout } = auth;
+  const { authUser, logout } = auth;
 
   const handleLogout = async () => {
     setIsLogoutLoading(true);
@@ -97,9 +97,9 @@ export function SideBar({ children }: SideNavProps) {
             } `}
           >
             <div className="leading-4">
-              <h4 className="w-full font-semibold">John Doe</h4>
+              <h4 className="w-full font-semibold">{authUser?.first_name} {authUser?.last_name}</h4>
               <span className="w-full text-xs text-gray">
-                johndoe@example.com
+                {authUser?.email}
               </span>
             </div>
             <div className="z-50 relative flex">
