@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, createContext, useContext } from "react";
+import React, { useState, useEffect, createContext, useContext } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { ChevronLast, ChevronFirst, MoreVertical } from "lucide-react";
 import Image from "next/image";
@@ -22,12 +22,16 @@ export function SideBar({ children }: SideNavProps) {
   const router = useRouter();
   const auth = useAuth();
 
+  useEffect(() => {
+    userInfo();
+  }, []);
+
   if (!auth) {
     console.error("Auth context is not available");
     return <div>No access to Auth context</div>;
   }
 
-  const { authUser, logout } = auth;
+  const { userInfo, authUser, logout } = auth;
 
   const handleLogout = async () => {
     setIsLogoutLoading(true);

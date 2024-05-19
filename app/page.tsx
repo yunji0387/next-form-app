@@ -10,7 +10,6 @@ import { skillsIconList } from "@/public/skillsIconList";
 
 export default function Home() {
   const router = useRouter();
-
   const auth = useAuth();
 
   useEffect(() => {

@@ -9,6 +9,7 @@ interface AuthContextType {
   login: (userData: UserData) => Promise<boolean>;
   logout: () => Promise<boolean>;
   verify: () => Promise<boolean>;
+  userInfo: () => Promise<boolean>;
 }
 
 const AuthContext = createContext<AuthContextType>({
@@ -17,6 +18,7 @@ const AuthContext = createContext<AuthContextType>({
   logout: async () => false,
   register: async () => false,
   verify: async () => false,
+  userInfo: async () => false,
 });
 
 export function useAuth() {
@@ -153,8 +155,39 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const userInfo = async () => {
+    try {
+      const response = await fetch(`${endpoint}/user`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          // Include more headers if needed, such as Authentication headers
+        },
+        credentials: "include", // This ensures cookies are included with the request
+      });
+
+      if (!response.ok) {
+        const errorResponse = await response.json();
+        const errorMessage = errorResponse.error.message;
+        throw new Error(
+          errorMessage || `HTTP error! Status: ${response.status}`
+        );
+      }
+
+      const responseData = await response.json();
+      setAuthUser(responseData.user);
+
+      return true;
+    } catch (error: any) {
+      console.error("Error:", error.message || "An unexpected error occurred.");
+      return false;
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ authUser, register, login, logout, verify }}>
+    <AuthContext.Provider
+      value={{ authUser, register, login, logout, verify, userInfo }}
+    >
       {children}
     </AuthContext.Provider>
   );
