@@ -109,37 +109,11 @@ export function SideBar({ children }: SideNavProps) {
               >
                 <MoreVertical size={38} />
               </button>
-              {/* {showMoreButton && (
-                <div className="absolute bg-gray-300 dark:bg-white w-40 flex flex-col justify-around gap-[1px] border-2 -translate-y-20 duration-300 transition-all rounded">
-                  <button
-                    className="w-full px-3 py-1 font-medium bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500"
-                    onClick={handleLogout}
-                    disabled={isLogoutLoading}
-                  >
-                    {isLogoutLoading ? (
-                      <div className="flex items-center justify-center">
-                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                      </div>
-                    ) : (
-                      "Log Out"
-                    )}
-                  </button>
-                  <button
-                    className="w-full px-3 py-1 font-medium bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500"
-                    onClick={() => {
-                      // Handle profile settings logic here
-                      console.log("Profile settings");
-                    }}
-                  >
-                    Profile Settings
-                  </button>
-                </div>
-              )} */}
               <div className={`
-              ${showMoreButton ? "opacity-100 visible -translate-y-20" : "opacity-0 invisible -translate-y-16"}
-              absolute bg-gray-300 dark:bg-white w-40 flex flex-col justify-around gap-[1px] border-2 duration-300 transition-all rounded`}>
+              ${showMoreButton ? "opacity-100 visible -translate-y-[6.5rem]" : "opacity-0 invisible -translate-y-16"}
+              -translate-x-[7.5rem] absolute w-40 flex flex-col justify-around gap-3 duration-300 transition-all rounded`}>
                 <button
-                  className="w-full px-3 py-1 font-medium bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500"
+                  className="w-full px-3 py-1 font-medium bg-indigo-200 dark:bg-gray-800 hover:bg-indigo-300 dark:hover:bg-gray-900 rounded"
                   onClick={handleLogout}
                   disabled={isLogoutLoading}
                 >
@@ -152,7 +126,7 @@ export function SideBar({ children }: SideNavProps) {
                   )}
                 </button>
                 <button
-                  className="w-full cursor-not-allowed px-3 py-1 font-medium bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500"
+                  className="w-full cursor-not-allowed px-3 py-1 font-medium bg-indigo-200 dark:bg-gray-800 hover:bg-indigo-300 dark:hover:bg-gray-900 rounded"
                   onClick={() => {
                     // Handle profile settings logic here
                     console.log("Profile settings");
