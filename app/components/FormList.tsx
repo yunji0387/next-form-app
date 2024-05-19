@@ -89,7 +89,7 @@ export function FormList() {
   return (
     <div className="flex w-full flex-col items-center justify-center overflow-auto">
       <ToastContainer />
-      <div className="flex flex-col gap-2 bg-white w-full h-[35rem] p-3 overflow-auto">
+      <div className="flex flex-col gap-2 bg-white rounded-md w-full h-[35rem] p-3 overflow-auto">
         {verified && (
           <div className="w-full flex flex-col">
             <div className="w-full flex items-center justify-between">
