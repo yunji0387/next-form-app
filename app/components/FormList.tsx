@@ -89,15 +89,15 @@ export function FormList() {
   return (
     <div className="flex w-full flex-col items-center justify-center overflow-auto">
       <ToastContainer />
-      <div className="flex flex-col gap-2 bg-white rounded-md w-full h-[35rem] p-3 overflow-auto">
+      <div className="flex flex-col gap-2 bg-white dark:bg-gray-600 rounded-md w-full h-[35rem] p-3 overflow-auto">
         {verified && (
           <div className="w-full flex flex-col">
             <div className="w-full flex items-center justify-between">
-              <p className="font-bold text-3xl text-black">Form List</p>
+              <p className="font-bold text-3xl">Form List</p>
             </div>
             <div>
               <Link href="/form">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <button className="bg-indigo-500 dark:bg-emerald-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                   New Request
                 </button>
               </Link>
