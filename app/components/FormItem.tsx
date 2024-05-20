@@ -59,7 +59,7 @@ export default function FormItem({ formData }: FormItemProps) {
   return (
     <div className={`${isDeleted ? "hidden" : "flex flex-col"} w-full`}>
       <div
-        className="text-black w-full flex flex-col rounded-lg bg-gray-100 hover:bg-gray-200 cursor-pointer p-3 group"
+        className="text-black w-full flex flex-col rounded-md bg-gray-100 hover:bg-gray-200 cursor-pointer p-3 group"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <div className="flex items-center justify-between h-6">
@@ -133,15 +133,15 @@ export default function FormItem({ formData }: FormItemProps) {
             </p>
           </>
         )}
-      </div>
-      <div className="w-full bg-gray-100 p-1">
         {showDeletePopup && (
+        <div className="w-full bg-gray-100 p-1 rounded-b-md">
           <DeleteFormPopUp
             formId={formData.formId}
             onClose={() => setShowDeletePopup(false)}
             setIsDeleted={setIsDeleted}
           />
-        )}
+        </div>
+      )}
       </div>
     </div>
   );
