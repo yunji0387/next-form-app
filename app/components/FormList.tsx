@@ -97,7 +97,7 @@ export function FormList() {
             </div>
             <div>
               <Link href="/form">
-                <button className="bg-indigo-500 dark:bg-emerald-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <button className="bg-indigo-500 dark:bg-emerald-500 hover:bg-indigo-700 dark:hover:bg-emerald-400 text-white font-bold py-2 px-4 rounded">
                   New Request
                 </button>
               </Link>
