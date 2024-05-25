@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "../context/AuthContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useTheme } from "next-themes";
 
 // Define the structure of a form data object
 type FormData = {
@@ -31,6 +32,7 @@ export function FormList() {
   const router = useRouter();
 
   const auth = useAuth();
+  const { theme } = useTheme();
 
   useEffect(() => {
     verifyUser();
@@ -102,7 +104,7 @@ export function FormList() {
             </div>
           </div>
         )}
-        {isLoading && <LoadingScreen text="Loading ..." />}
+        {isLoading && <LoadingScreen text="Loading ..." color={theme === "dark" ? "FFFFFF" : "707070"} />}
         {loadError && (
           <SubmissionErrorContent
             headerText="Error Loading Form Data"

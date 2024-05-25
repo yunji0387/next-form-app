@@ -23,4 +23,3 @@ type SubmissionSuccessProps = {
       </div>
     </div>
   );
-  
