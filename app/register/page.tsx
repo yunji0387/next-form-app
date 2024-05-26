@@ -116,35 +116,42 @@ export default function Register() {
   return (
     <div className="flex w-full min-w-[18rem] min-h-screen h-full flex-col items-start justify-start overflow-auto">
       <ToastContainer />
-      <div className="bg-white flex flex-col gap-2 w-full h-screen max-w-md p-3 overflow-auto">
+      <div className="bg-white dark:bg-gray-700 flex flex-col gap-2 w-full h-screen max-w-md p-3 overflow-auto">
+        <Image
+          src="/NextAdminLogoLight.svg"
+          width={400}
+          height={100}
+          className="overflow-hidden transition-all hidden dark:block"
+          alt="logo"
+        />
         <Image
           src="/NextAdminLogoDark.svg"
           width={400}
           height={100}
-          className="transition-all"
+          className="overflow-hidden transition-all dark:hidden"
           alt="logo"
         />
-        <h2 className="text-black text-center font-medium text-2xl">
+        <h2 className="text-center font-medium text-2xl">
           Create your account
         </h2>
-        <p className="text-black">
+        <p className="">
           Have an account?{" "}
-          <span className="text-blue-500 underline font-medium">
+          <span className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 underline font-medium">
             <Link href="/login">Log in</Link>
           </span>
         </p>
 
-        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 text-gray-700 font-bold">
+        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 dark:border-gray-100 text-gray-700 dark:text-white font-bold rounded">
           <p>Google</p>
         </div>
-        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 text-gray-700 font-bold">
+        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 dark:border-gray-100 text-gray-700 dark:text-white font-bold rounded">
           <p>Microsoft</p>
         </div>
-        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 text-gray-700 font-bold">
+        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 dark:border-gray-100 text-gray-700 dark:text-white font-bold rounded">
           <p>Facebook</p>
         </div>
 
-        <p className="text-center text-gray-500 text-sm">
+        <p className="text-center text-gray-500 dark:text-gray-300 text-sm">
           Or with email and password
         </p>
 
@@ -158,10 +165,10 @@ export default function Register() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
-              className="bg-white text-black p-2 border border-gray-300 rounded focus:outline-gray-500"
+              className="bg-white dark:bg-gray-500 p-2 border border-gray-300 dark:border-gray-600 rounded focus:outline-gray-500 dark:placeholder:text-gray-300"
             />
             {errors.email && (
-              <p className="text-red-500 text-sm">{errors.email}</p>
+              <p className="text-red-500 dark:text-red-400 text-sm">{errors.email}</p>
             )}
           </div>
           <div className="flex flex-col">
@@ -173,10 +180,10 @@ export default function Register() {
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               placeholder="First Name"
-              className="bg-white text-black p-2 border border-gray-300 rounded focus:outline-gray-500"
+              className="bg-white dark:bg-gray-500 p-2 border border-gray-300 dark:border-gray-600 rounded focus:outline-gray-500 dark:placeholder:text-gray-300"
             />
             {errors.firstName && (
-              <p className="text-red-500 text-sm">{errors.firstName}</p>
+              <p className="text-red-500 dark:text-red-400 text-sm">{errors.firstName}</p>
             )}
           </div>
           <div className="flex flex-col">
@@ -188,10 +195,10 @@ export default function Register() {
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               placeholder="Last Name"
-              className="bg-white text-black p-2 border border-gray-300 rounded focus:outline-gray-500"
+              className="bg-white dark:bg-gray-500 p-2 border border-gray-300 dark:border-gray-600 rounded focus:outline-gray-500 dark:placeholder:text-gray-300"
             />
             {errors.lastName && (
-              <p className="text-red-500 text-sm">{errors.lastName}</p>
+              <p className="text-red-500 dark:text-red-400 text-sm">{errors.lastName}</p>
             )}
           </div>
           <div className="flex flex-col">
@@ -203,10 +210,10 @@ export default function Register() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
-              className="bg-white text-black p-2 border border-gray-300 rounded focus:outline-gray-500"
+              className="bg-white dark:bg-gray-500 p-2 border border-gray-300 dark:border-gray-600 rounded focus:outline-gray-500 dark:placeholder:text-gray-300"
             />
             {errors.password && (
-              <p className="text-red-500 text-sm">{errors.password}</p>
+              <p className="text-red-500 dark:text-red-400 text-sm">{errors.password}</p>
             )}
           </div>
           <div className="flex flex-col">
@@ -221,15 +228,15 @@ export default function Register() {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="Confirm Password"
-              className="bg-white text-black p-2 border border-gray-300 rounded focus:outline-gray-500"
+              className="bg-white dark:bg-gray-500 p-2 border border-gray-300 dark:border-gray-600 rounded focus:outline-gray-500 dark:placeholder:text-gray-300"
             />
             {errors.confirmPassword && (
-              <p className="text-red-500 text-sm">{errors.confirmPassword}</p>
+              <p className="text-red-500 dark:text-red-400 text-sm">{errors.confirmPassword}</p>
             )}
           </div>
           <button
             type="submit"
-            className="bg-indigo-500 hover:bg-indigo-600 font-bold text-white p-2 rounded mt-3"
+            className="bg-indigo-500 hover:bg-indigo-600 dark:bg-emerald-600 dark:hover:bg-emerald-500 font-bold text-white p-2 rounded mt-3"
             disabled={isLoading}
           >
             {isLoading ? (
