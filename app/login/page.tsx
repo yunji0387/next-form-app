@@ -153,7 +153,7 @@ export default function Login() {
               className="bg-white text-black p-2 border border-gray-300 rounded focus:outline-gray-500"
             />
             {errors.email && (
-              <div className="text-red-500 text-sm">{errors.email}</div>
+              <div className="text-red-500 dark:text-red-400 text-sm">{errors.email}</div>
             )}
           </div>
           <div className="flex flex-col">
@@ -168,7 +168,7 @@ export default function Login() {
               className="bg-white text-black p-2 border border-gray-300 rounded focus:outline-gray-500"
             />
             {errors.password && (
-              <div className="text-red-500 text-sm">{errors.password}</div>
+              <div className="text-red-500 dark:text-red-400 text-sm">{errors.password}</div>
             )}
           </div>
           <p className="text-blue-500 underline font-medium text-right">
