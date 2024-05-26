@@ -31,17 +31,17 @@ const deleteForm = async (formId: number, onClose: () => void, setIsDeleted: (de
 export default function DeleteFormPopUp({ formId, onClose, setIsDeleted  }: DeleteFormPopUpProps) {
   return (
     <div className="bg-white dark:bg-gray-600 flex flex-col justify-center items-center mt-3 p-3 cursor-auto select-none rounded">
-      <p className="">Confirm Deletion (Form ID: {formId})</p>
-      <p className="">Are you sure you want to delete this form?</p>
-      <div className="flex w-3/4 items-center justify-around p-3">
+      <p className="text-sm sm:text-base">Confirm Deletion (Form ID: {formId})</p>
+      <p className="text-sm sm:text-base">Are you sure you want to delete this form?</p>
+      <div className="flex gap-2 w-full max-w-[20rem] items-center justify-around p-3">
         <button
           onClick={onClose}
-          className="w-1/4 font-semibold text-indigo-800 bg-indigo-200 hover:bg-indigo-300 rounded"
+          className="w-[5rem] font-semibold text-indigo-800 bg-indigo-200 hover:bg-indigo-300 rounded"
         >
           Cancel
         </button>
         <button
-          className="w-1/4 font-semibold bg-red-500 hover:bg-red-600 text-white rounded"
+          className="w-[5rem] font-semibold bg-red-500 hover:bg-red-600 text-white rounded"
           onClick={() => deleteForm(formId, onClose, setIsDeleted)}
         >
           Delete
