@@ -108,7 +108,7 @@ export default function Login() {
   return (
     <div className="flex w-full min-w-[18rem] min-h-screen flex-col items-start justify-start overflow-auto">
       <ToastContainer />
-      <div className="bg-white flex flex-col gap-2 w-full h-screen max-w-md p-3 overflow-auto">
+      <div className="bg-white dark:bg-gray-700 flex flex-col gap-2 w-full h-screen max-w-md p-3 overflow-auto">
         <Image
           src="/NextAdminLogoDark.svg"
           width={400}
@@ -116,27 +116,27 @@ export default function Login() {
           className="transition-all"
           alt="logo"
         />
-        <h2 className="text-black text-center font-medium text-2xl">
+        <h2 className="text-center font-medium text-2xl">
           Log in to your account
         </h2>
-        <p className="text-black">
+        <p className="">
           Don&apos;t have an account?{" "}
           <span className="text-blue-500 underline font-medium">
             <Link href="/register">sign up</Link>
           </span>
         </p>
 
-        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 text-gray-700 font-bold">
+        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 text-gray-700 dark:text-white font-bold">
           <p>Google</p>
         </div>
-        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 text-gray-700 font-bold">
+        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 text-gray-700 dark:text-white font-bold">
           <p>Microsoft</p>
         </div>
-        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 text-gray-700 font-bold">
+        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 text-gray-700 dark:text-white font-bold">
           <p>Facebook</p>
         </div>
 
-        <p className="text-center text-gray-500 text-sm">
+        <p className="text-center text-gray-500 dark:text-gray-300 text-sm">
           Or with email and password
         </p>
 
