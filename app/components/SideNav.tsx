@@ -117,7 +117,7 @@ export function SideBar({ children }: SideNavProps) {
               ${showMoreButton ? "opacity-100 visible -translate-y-[6.5rem]" : "opacity-0 invisible -translate-y-16"}
               -translate-x-[7.5rem] absolute w-40 flex flex-col justify-around gap-3 duration-300 transition-all rounded`}>
                 <button
-                  className="w-full px-3 py-1 font-medium bg-indigo-200 dark:bg-emerald-600 hover:bg-indigo-300 dark:hover:bg-emerald-500 rounded"
+                  className="w-full px-3 py-1 font-medium text-indigo-800 dark:text-white bg-indigo-200 dark:bg-emerald-600 hover:bg-indigo-300 dark:hover:bg-emerald-500 rounded"
                   onClick={handleLogout}
                   disabled={isLogoutLoading}
                 >
@@ -130,7 +130,7 @@ export function SideBar({ children }: SideNavProps) {
                   )}
                 </button>
                 <button
-                  className="w-full cursor-not-allowed px-3 py-1 font-medium bg-indigo-200 dark:bg-emerald-600 hover:bg-indigo-300 dark:hover:bg-emerald-500 rounded"
+                  className="w-full cursor-not-allowed px-3 py-1 font-medium text-indigo-800 dark:text-white bg-indigo-200 dark:bg-emerald-600 hover:bg-indigo-300 dark:hover:bg-emerald-500 rounded"
                   onClick={() => {
                     // Handle profile settings logic here
                     console.log("Profile settings");
