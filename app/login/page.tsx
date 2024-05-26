@@ -126,13 +126,13 @@ export default function Login() {
           </span>
         </p>
 
-        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 text-gray-700 dark:text-white font-bold">
+        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 dark:border-gray-100 text-gray-700 dark:text-white font-bold">
           <p>Google</p>
         </div>
-        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 text-gray-700 dark:text-white font-bold">
+        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 dark:border-gray-100 text-gray-700 dark:text-white font-bold">
           <p>Microsoft</p>
         </div>
-        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 text-gray-700 dark:text-white font-bold">
+        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 dark:border-gray-100 text-gray-700 dark:text-white font-bold">
           <p>Facebook</p>
         </div>
 
