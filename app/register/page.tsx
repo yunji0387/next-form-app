@@ -168,7 +168,7 @@ export default function Register() {
               className="bg-white dark:bg-gray-500 p-2 border border-gray-300 dark:border-gray-600 rounded focus:outline-gray-500 dark:placeholder:text-gray-300"
             />
             {errors.email && (
-              <p className="text-red-500 text-sm">{errors.email}</p>
+              <p className="text-red-500 dark:text-red-400 text-sm">{errors.email}</p>
             )}
           </div>
           <div className="flex flex-col">
@@ -183,7 +183,7 @@ export default function Register() {
               className="bg-white dark:bg-gray-500 p-2 border border-gray-300 dark:border-gray-600 rounded focus:outline-gray-500 dark:placeholder:text-gray-300"
             />
             {errors.firstName && (
-              <p className="text-red-500 text-sm">{errors.firstName}</p>
+              <p className="text-red-500 dark:text-red-400 text-sm">{errors.firstName}</p>
             )}
           </div>
           <div className="flex flex-col">
@@ -198,7 +198,7 @@ export default function Register() {
               className="bg-white dark:bg-gray-500 p-2 border border-gray-300 dark:border-gray-600 rounded focus:outline-gray-500 dark:placeholder:text-gray-300"
             />
             {errors.lastName && (
-              <p className="text-red-500 text-sm">{errors.lastName}</p>
+              <p className="text-red-500 dark:text-red-400 text-sm">{errors.lastName}</p>
             )}
           </div>
           <div className="flex flex-col">
@@ -213,7 +213,7 @@ export default function Register() {
               className="bg-white dark:bg-gray-500 p-2 border border-gray-300 dark:border-gray-600 rounded focus:outline-gray-500 dark:placeholder:text-gray-300"
             />
             {errors.password && (
-              <p className="text-red-500 text-sm">{errors.password}</p>
+              <p className="text-red-500 dark:text-red-400 text-sm">{errors.password}</p>
             )}
           </div>
           <div className="flex flex-col">
@@ -231,7 +231,7 @@ export default function Register() {
               className="bg-white dark:bg-gray-500 p-2 border border-gray-300 dark:border-gray-600 rounded focus:outline-gray-500 dark:placeholder:text-gray-300"
             />
             {errors.confirmPassword && (
-              <p className="text-red-500 text-sm">{errors.confirmPassword}</p>
+              <p className="text-red-500 dark:text-red-400 text-sm">{errors.confirmPassword}</p>
             )}
           </div>
           <button
