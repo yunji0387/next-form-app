@@ -47,7 +47,7 @@ export default function DeleteFormPopUp({
       <div className="flex gap-2 w-full max-w-[20rem] items-center justify-around p-3">
         <button
           onClick={onClose}
-          className="w-[5rem] font-semibold text-indigo-800 bg-indigo-200 hover:bg-indigo-300 rounded"
+          className="w-[5rem] font-semibold text-indigo-800 dark:text-emerald-50 bg-indigo-200 hover:bg-indigo-300 dark:bg-emerald-500 dark:hover:bg-emerald-400 rounded"
         >
           Cancel
         </button>
