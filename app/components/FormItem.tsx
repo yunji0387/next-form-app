@@ -92,7 +92,7 @@ export default function FormItem({ formData }: FormItemProps) {
             Delete
           </button>
         </div>
-        <p className="w-full text-sm">
+        <p className="w-full text-sm sm:hidden">
           <span className="font-bold">Form ID:</span> {formId}
         </p>
         <p className="text-sm">
