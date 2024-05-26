@@ -131,10 +131,10 @@ export default function Register() {
           className="overflow-hidden transition-all dark:hidden"
           alt="logo"
         />
-        <h2 className="text-black text-center font-medium text-2xl">
+        <h2 className="text-center font-medium text-2xl">
           Create your account
         </h2>
-        <p className="text-black">
+        <p className="">
           Have an account?{" "}
           <span className="text-blue-500 underline font-medium">
             <Link href="/login">Log in</Link>
@@ -151,7 +151,7 @@ export default function Register() {
           <p>Facebook</p>
         </div>
 
-        <p className="text-center text-gray-500 text-sm">
+        <p className="text-center text-gray-500 dark:text-gray-300 text-sm">
           Or with email and password
         </p>
 
