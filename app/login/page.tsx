@@ -176,7 +176,7 @@ export default function Login() {
           </p>
           <button
             type="submit"
-            className="bg-indigo-500 hover:bg-indigo-600 font-bold text-white p-2 rounded mt-3"
+            className="bg-indigo-500 hover:bg-indigo-600 dark:bg-emerald-600 dark:hover:bg-emerald-500 font-bold text-white p-2 rounded mt-3"
             disabled={isLoading}
           >
             {isLoading ? (
