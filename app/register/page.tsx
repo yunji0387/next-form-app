@@ -118,10 +118,17 @@ export default function Register() {
       <ToastContainer />
       <div className="bg-white dark:bg-gray-700 flex flex-col gap-2 w-full h-screen max-w-md p-3 overflow-auto">
         <Image
+          src="/NextAdminLogoLight.svg"
+          width={400}
+          height={100}
+          className="overflow-hidden transition-all hidden dark:block"
+          alt="logo"
+        />
+        <Image
           src="/NextAdminLogoDark.svg"
           width={400}
           height={100}
-          className="transition-all"
+          className="overflow-hidden transition-all dark:hidden"
           alt="logo"
         />
         <h2 className="text-black text-center font-medium text-2xl">
