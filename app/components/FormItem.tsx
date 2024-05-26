@@ -131,7 +131,7 @@ export default function FormItem({ formData }: FormItemProps) {
             </p>
           </>
         )}
-        {showDeletePopup && (
+        {(showDeletePopup && isExpanded) && (
           <div className="w-full">
             <DeleteFormPopUp
               formId={formData.formId}
