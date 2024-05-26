@@ -116,7 +116,7 @@ export default function Register() {
   return (
     <div className="flex w-full min-w-[18rem] min-h-screen h-full flex-col items-start justify-start overflow-auto">
       <ToastContainer />
-      <div className="bg-white flex flex-col gap-2 w-full h-screen max-w-md p-3 overflow-auto">
+      <div className="bg-white dark:bg-gray-700 flex flex-col gap-2 w-full h-screen max-w-md p-3 overflow-auto">
         <Image
           src="/NextAdminLogoDark.svg"
           width={400}
