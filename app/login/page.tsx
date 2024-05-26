@@ -150,7 +150,7 @@ export default function Login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
-              className="bg-white text-black p-2 border border-gray-300 rounded focus:outline-gray-500"
+              className="bg-white dark:bg-gray-500 p-2 border border-gray-300 dark:border-gray-600 rounded focus:outline-gray-500 dark:placeholder:text-gray-300"
             />
             {errors.email && (
               <div className="text-red-500 dark:text-red-400 text-sm">{errors.email}</div>
@@ -165,7 +165,7 @@ export default function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
-              className="bg-white text-black p-2 border border-gray-300 rounded focus:outline-gray-500"
+              className="bg-white dark:bg-gray-500 p-2 border border-gray-300 dark:border-gray-600 rounded focus:outline-gray-500 dark:placeholder:text-gray-300"
             />
             {errors.password && (
               <div className="text-red-500 dark:text-red-400 text-sm">{errors.password}</div>
