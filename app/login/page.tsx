@@ -121,7 +121,7 @@ export default function Login() {
         </h2>
         <p className="">
           Don&apos;t have an account?{" "}
-          <span className="text-blue-500 underline font-medium">
+          <span className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 underline font-medium">
             <Link href="/register">sign up</Link>
           </span>
         </p>
@@ -171,7 +171,7 @@ export default function Login() {
               <div className="text-red-500 dark:text-red-400 text-sm">{errors.password}</div>
             )}
           </div>
-          <p className="text-blue-500 underline font-medium text-right">
+          <p className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 underline font-medium text-right">
             <Link href="/signup">Forgot you pasword?</Link>
           </p>
           <button
