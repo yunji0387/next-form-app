@@ -110,10 +110,17 @@ export default function Login() {
       <ToastContainer />
       <div className="bg-white dark:bg-gray-700 flex flex-col gap-2 w-full h-screen max-w-md p-3 overflow-auto">
         <Image
+          src="/NextAdminLogoLight.svg"
+          width={400}
+          height={100}
+          className="overflow-hidden transition-all hidden dark:block"
+          alt="logo"
+        />
+        <Image
           src="/NextAdminLogoDark.svg"
           width={400}
           height={100}
-          className="transition-all"
+          className="overflow-hidden transition-all dark:hidden"
           alt="logo"
         />
         <h2 className="text-center font-medium text-2xl">
@@ -153,7 +160,9 @@ export default function Login() {
               className="bg-white dark:bg-gray-500 p-2 border border-gray-300 dark:border-gray-600 rounded focus:outline-gray-500 dark:placeholder:text-gray-300"
             />
             {errors.email && (
-              <div className="text-red-500 dark:text-red-400 text-sm">{errors.email}</div>
+              <div className="text-red-500 dark:text-red-400 text-sm">
+                {errors.email}
+              </div>
             )}
           </div>
           <div className="flex flex-col">
@@ -168,7 +177,9 @@ export default function Login() {
               className="bg-white dark:bg-gray-500 p-2 border border-gray-300 dark:border-gray-600 rounded focus:outline-gray-500 dark:placeholder:text-gray-300"
             />
             {errors.password && (
-              <div className="text-red-500 dark:text-red-400 text-sm">{errors.password}</div>
+              <div className="text-red-500 dark:text-red-400 text-sm">
+                {errors.password}
+              </div>
             )}
           </div>
           <p className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 underline font-medium text-right">
