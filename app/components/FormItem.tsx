@@ -131,8 +131,8 @@ export default function FormItem({ formData }: FormItemProps) {
             </p>
           </>
         )}
-        {showDeletePopup && (
-          <div className="w-full bg-gray-100 p-1 rounded-b-md">
+        {(showDeletePopup && isExpanded) && (
+          <div className="w-full">
             <DeleteFormPopUp
               formId={formData.formId}
               onClose={() => setShowDeletePopup(false)}
