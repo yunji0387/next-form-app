@@ -39,7 +39,7 @@ export default function DeleteFormPopUp({
 }: DeleteFormPopUpProps) {
   return (
     <div className="bg-white dark:bg-gray-600 flex flex-col justify-center items-center mt-3 p-3 cursor-auto select-none rounded">
-      <p className="text-sm sm:text-base">Confirm Deletion</p>
+      <p className="text-sm sm:text-base font-medium">Confirm Deletion</p>
       <p className="text-sm sm:text-base font-bold">Form ID: {formId}</p>
       <p className="text-sm sm:text-base">
         Are you sure you want to delete this form?
