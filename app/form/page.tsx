@@ -218,7 +218,7 @@ export default function BoxDesignForm() {
         { verified && <>
           <div className="w-full grid grid-cols-8 items-center">
             <button
-              className="hover:border-b-4 hover:border-gray-700 col-span-1 font-bold text-gray-600"
+              className="hover:underline col-span-1 font-bold text-gray-600"
               onClick={() => {
                 router.push("/");
                 setCurrentFormData(null);
