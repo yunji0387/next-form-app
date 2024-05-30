@@ -296,4 +296,90 @@ export default function BoxDesignForm() {
       </div>
     </div>
   );
+
+  // return (
+  //   <div className="w-screen h-screen flex items-center justify-center">
+  //     <div className="flex flex-col items-center bg-white border-black border-2 w-[25rem] md:w-[35rem] lg:w-[50rem] min-h-[30rem] max-h-[45rem] h-auto rounded-lg p-2">
+  //       {isInitialLoading && <LoadingScreen text="Loading..." />}
+  //       { verified && <>
+  //         <div className="w-full grid grid-cols-8 items-center">
+  //           <button
+  //             className="hover:border-b-4 hover:border-gray-700 col-span-1 font-bold text-gray-600"
+  //             onClick={() => {
+  //               router.push("/");
+  //               setCurrentFormData(null);
+  //             }}
+  //           >
+  //             Home
+  //           </button>
+  //           <h1 className="col-span-6 w-full text-black text-center font-extrabold text-3xl p-2">
+  //             Box Design Form
+  //           </h1>
+  //         </div>
+  //         {isEditing && (
+  //           <>
+  //             <StepsIndication
+  //               currentStep={currStep + 1}
+  //               totalSteps={steps.length}
+  //               getFormNameByStep={getFormNameByStep}
+  //               goToStep={goToStep}
+  //               isStepComplete={isStepComplete}
+  //               setStepComplete={setStepComplete}
+  //             />
+  //             <p className="bg-gray-100 rounded-md text-gray-500 text-sm md:text-base mt-2 p-2 text-center w-[85%]">
+  //               {isLastStep
+  //                 ? "Please make sure you have enter the correct information."
+  //                 : "Please complete the form below and move to next step."}
+  //             </p>
+  //             <form
+  //               className="flex flex-col justify-center items-center w-full"
+  //               onSubmit={onSubmit}
+  //             >
+  //               {step.component}
+  //               <div className="w-full flex flex-row justify-around items-center mt-2 mb-2">
+  //                 {!isFirstStep && (
+  //                   <button
+  //                     type="button"
+  //                     onClick={prevStep}
+  //                     className="w-40 p-2 m-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700"
+  //                   >
+  //                     Prev
+  //                   </button>
+  //                 )}
+  //                 <button
+  //                   type="submit"
+  //                   className={`w-40 p-2 m-2 ${
+  //                     isLastStep
+  //                       ? "bg-green-600 hover:bg-green-700"
+  //                       : "bg-blue-600 hover:bg-blue-700"
+  //                   } text-white font-bold rounded-lg`}
+  //                 >
+  //                   {isLastStep ? "Finish" : "Next"}
+  //                 </button>
+  //               </div>
+  //             </form>
+  //           </>
+  //         )}
+  //         {isLoading && <LoadingScreen text="Submitting Form..." />}
+  //         {submitError && (
+  //           <SubmissionErrorContent
+  //             headerText="Submission Error"
+  //             contentText="An error occurred while submitting your form data. Please try again."
+  //             onRetry={() => {
+  //               setSubmitError(false);
+  //               setIsEditing(true);
+  //             }}
+  //           />
+  //         )}
+  //         {submitSuccess && (
+  //           <SubmissionSuccessContent
+  //             headerText="Submission Successful!"
+  //             contentText="Your form data has been successfully submitted."
+  //             onBackToHome={backToHomePage}
+  //           />
+  //         )}
+  //       </>}
+  //     </div>
+  //   </div>
+  // );
 }
