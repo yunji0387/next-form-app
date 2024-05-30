@@ -78,9 +78,9 @@ export function PrintingForm({
 
   return (
     <div className="custom-form-container">
-      <h2 className="text-black text-center font-bold text-xl p-1">Printing</h2>
+      <h2 className="text-center font-bold text-xl p-1">Printing</h2>
       <div className="w-full flex flex-col justify-center gap-5">
-        <label htmlFor="printType" className="text-black text-left w-full">
+        <label htmlFor="printType" className="text-left w-full">
           Print Type:
           <select
             id="printType"
@@ -99,7 +99,7 @@ export function PrintingForm({
           </select>
         </label>
 
-        <label htmlFor="printCustomerName" className="w-full text-black">
+        <label htmlFor="printCustomerName" className="w-full">
           <input
             type="checkbox"
             id="printCustomerName"
@@ -112,7 +112,7 @@ export function PrintingForm({
 
         <label
           htmlFor="printCustomText"
-          className="text-black text-left w-full"
+          className="text-left w-full"
         >
           <input
             type="checkbox"
@@ -127,9 +127,9 @@ export function PrintingForm({
             value={customTextField}
             onChange={handleCustomTextInputChange}
             placeholder={isCustomTextEnabled ? "Enter custom text..." : ""}
-            className={`w-full p-1 pl-2 border ${
-              isCustomTextEnabled ? "custom-form-text-field" : "bg-gray-50 border-gray-50"
-            } text-black`}
+            className={`w-full p-1 pl-2 ${
+              isCustomTextEnabled ? "custom-form-text-field" : ""
+            }`}
             disabled={!isCustomTextEnabled}
           />
         </label>
