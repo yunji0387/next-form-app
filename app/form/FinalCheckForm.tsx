@@ -42,11 +42,11 @@ export function FinalCheckForm(props: FinalFormDataProps) {
 
   return (
     <div className="custom-form-container">
-      <h2 className="text-black text-center font-bold text-xl p-1">
+      <h2 className="text-center font-bold text-xl p-1">
         Final Check
       </h2>
 
-      <div className="text-black w-full bg-gray-100 flex flex-col max-h-[20rem] overflow-auto">
+      <div className="w-full flex flex-col max-h-[20rem] overflow-auto">
       {formDataEntries.map(([key, value], index) => {
           // Determine how to display the value based on its type
           const displayElement = Array.isArray(value)
@@ -65,7 +65,7 @@ export function FinalCheckForm(props: FinalFormDataProps) {
               className="flex flex-row justify-between items-center p-2"
             >
               <p className="w-[40%] lg:w-[30%] text-sm lg:text-base">{displayKey}:</p>
-              <div className="w-[60%] lg:w-[70%] p-3 bg-gray-200 rounded-md overflow-y-auto horizontal-scrollbar">
+              <div className="w-[60%] lg:w-[70%] p-3 bg-gray-200 dark:bg-gray-700 rounded-md overflow-y-auto horizontal-scrollbar">
                 {typeof displayElement === 'string'
                   ? <p className="text-sm lg:text-base text-justify">{displayElement}</p>
                   : displayElement // This will be the JSX element for the list
