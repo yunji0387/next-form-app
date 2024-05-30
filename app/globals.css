@@ -39,11 +39,11 @@ body {
 }
 
 .custom-form-text-field {
-  @apply w-full border border-black rounded-md bg-white dark:focus:bg-white text-black p-1 pl-2;
+  @apply w-full bg-gray-200 dark:bg-gray-700 p-1 pl-2;
 }
 
 .custom-form-checkbox {
-  @apply bg-gray-100 border-gray-300 rounded focus:ring-blue-500;
+  @apply focus:ring-blue-500;
 }
 
 .custom-form-text-area {
