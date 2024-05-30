@@ -212,7 +212,7 @@ export default function BoxDesignForm() {
   }
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center">
+    <div className="bg-white w-screen h-screen flex items-center justify-center">
       <div className="flex flex-col items-center justify-center w-full">
         {isInitialLoading && <LoadingScreen text="Loading..." />}
         { verified && <>
@@ -240,7 +240,7 @@ export default function BoxDesignForm() {
                 isStepComplete={isStepComplete}
                 setStepComplete={setStepComplete}
               />
-              <p className="bg-gray-100 rounded-md text-gray-500 text-sm md:text-base mt-2 p-2 text-center w-[85%]">
+              <p className="rounded-md text-gray-500 text-sm md:text-base mt-2 p-2 text-center w-[85%]">
                 {isLastStep
                   ? "Please make sure you have enter the correct information."
                   : "Please complete the form below and move to next step."}
