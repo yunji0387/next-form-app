@@ -255,7 +255,7 @@ export default function BoxDesignForm() {
                     <button
                       type="button"
                       onClick={prevStep}
-                      className="w-40 p-2 m-2 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700"
+                      className="w-40 p-2 m-2 text-white font-bold rounded-lg bg-indigo-600 hover:bg-indigo-700 dark:bg-emerald-600 dark:hover:bg-emerald-700"
                     >
                       Prev
                     </button>
@@ -264,8 +264,8 @@ export default function BoxDesignForm() {
                     type="submit"
                     className={`w-40 p-2 m-2 ${
                       isLastStep
-                        ? "bg-emerald-600 hover:bg-emerald-700"
-                        : "bg-indigo-600 hover:bg-indigo-700"
+                        ? "bg-emerald-600 hover:bg-emerald-700 dark:bg-indigo-600 dark:hover:bg-indigo-700"
+                        : "bg-indigo-600 hover:bg-indigo-700 dark:bg-emerald-600 dark:hover:bg-emerald-700"
                     } text-white font-bold rounded-lg`}
                   >
                     {isLastStep ? "Finish" : "Next"}
