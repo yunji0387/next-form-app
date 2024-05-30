@@ -212,13 +212,13 @@ export default function BoxDesignForm() {
   }
 
   return (
-    <div className="bg-white w-screen h-screen flex items-center justify-center">
+    <div className="w-screen h-screen flex items-center justify-center">
       <div className="flex flex-col items-center justify-center w-full">
         {isInitialLoading && <LoadingScreen text="Loading..." />}
         { verified && <>
           <div className="w-full grid grid-cols-8 items-center">
             <button
-              className="hover:underline col-span-1 font-bold text-gray-600"
+              className="hover:underline col-span-1 font-bold text-xl"
               onClick={() => {
                 router.push("/");
                 setCurrentFormData(null);
@@ -226,7 +226,7 @@ export default function BoxDesignForm() {
             >
               Home
             </button>
-            <h1 className="col-span-6 w-full text-black text-center font-extrabold text-3xl p-2">
+            <h1 className="col-span-6 w-full text-center font-extrabold text-3xl p-2">
               Box Design Form
             </h1>
           </div>

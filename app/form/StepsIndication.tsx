@@ -17,8 +17,8 @@ export function StepsIndication({
   return (
     <div className="flex flex-col justify-center items-center w-full h-full">
       <div className="flex flex-row lg:hidden">
-        <p className="text-gray-600 font-bold">Step</p>
-        <p className="ml-2 text-gray-500">
+        <p className="text-gray-600 dark:text-gray-200 font-bold">Step</p>
+        <p className="ml-2 text-gray-500 dark:text-gray-300">
           {currentStep} of {totalSteps}
         </p>
       </div>
