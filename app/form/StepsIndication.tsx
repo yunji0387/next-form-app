@@ -32,11 +32,11 @@ export function StepsIndication({
 
           let isComplete = isStepComplete(index);
           if(isComplete) {
-            bgColor = "border-b-green-800 dark:hover:border-b-green-500";
+            bgColor = "border-b-green-800 hover:border-b-green-500 border-b-green-500 dark:hover:border-b-green-300";
           }
           if (stepNumber === currentStep) {
             // current step
-            bgColor = "border-b-blue-800";
+            bgColor = "border-b-blue-800 dark:border-b-blue-600";
             stepFont = "font-extrabold";
             formNameFont = "font-extrabold text-gray-600 dark:text-gray-300";
           }
