@@ -224,7 +224,7 @@ export default function BoxDesignForm() {
                 setCurrentFormData(null);
               }}
             >
-              Home
+              &#11013; Home
             </button>
             <h1 className="col-span-6 w-full text-center font-extrabold text-3xl p-2">
               Box Design Form
