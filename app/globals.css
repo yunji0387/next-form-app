@@ -39,15 +39,15 @@ body {
 }
 
 .custom-form-text-field {
-  @apply w-full border border-black rounded-md bg-white dark:focus:bg-white text-black p-1 pl-2;
+  @apply w-full bg-gray-200 dark:bg-gray-700 p-1 pl-2;
 }
 
 .custom-form-checkbox {
-  @apply bg-gray-100 border-gray-300 rounded focus:ring-blue-500;
+  @apply focus:ring-blue-500;
 }
 
 .custom-form-text-area {
-  @apply block p-2.5 w-full min-h-[10rem] text-black bg-white rounded-md border border-gray-500 focus:ring-blue-500 focus:border-blue-500;
+  @apply block p-2.5 w-full min-h-[10rem] bg-gray-200 dark:bg-gray-700;
 }
 
 /* Scrollbar style below

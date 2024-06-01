@@ -9,11 +9,11 @@ type DesignNotesFormProps = DesignNotesData & {
 export function NotesForm({ designNotes, updateForm }: DesignNotesFormProps) {
   return (
     <div className="custom-form-container">
-      <h2 className="text-black text-center font-bold text-xl p-1">Notes</h2>
+      <h2 className="text-center font-bold text-xl p-1">Notes</h2>
 
       <div className="w-full flex flex-col justify-center">
-        <label htmlFor="designNotes" className="text-black text-left w-full">
-          Design Notes <span className="text-sm text-gray-600">(optional)</span>:
+        <label htmlFor="designNotes" className="text-left w-full">
+          Design Notes <span className="text-sm text-gray-600 dark:text-gray-300">(optional)</span>:
         </label>
 
         <div className="w-full max-h-[22rem] overflow-auto pr-1">

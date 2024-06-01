@@ -53,17 +53,13 @@ export function MaterialForm({ materialID, updateForm }: MaterialFormProps) {
 
   return (
     <div className="custom-form-container">
-      <h2 className="text-black text-center font-bold text-xl p-1">Material</h2>
+      <h2 className="text-center font-bold text-xl p-1">Material</h2>
       <div className="w-full flex flex-col items-center justify-center">
-        <ul className="w-full text-black">
+        <ul className="w-full">
           {materials.map((material) => (
             <li
               key={material.materialID}
-              className={`w-full flex flex-row border border-gray-300 ${
-                selectedMaterials.has(material.materialID)
-                  ? "bg-gray-100"
-                  : "bg-white"
-              }`}
+              className={`w-full flex flex-row`}
             >
               <label
                 htmlFor={material.materialID}
@@ -90,5 +86,43 @@ export function MaterialForm({ materialID, updateForm }: MaterialFormProps) {
         </ul>
       </div>
     </div>
+    // <div className="custom-form-container">
+    //   <h2 className="text-center font-bold text-xl p-1">Material</h2>
+    //   <div className="w-full flex flex-col items-center justify-center">
+    //     <ul className="w-full text-black">
+    //       {materials.map((material) => (
+    //         <li
+    //           key={material.materialID}
+    //           className={`w-full flex flex-row border border-gray-300 ${
+    //             selectedMaterials.has(material.materialID)
+    //               ? "bg-gray-100"
+    //               : "bg-white"
+    //           }`}
+    //         >
+    //           <label
+    //             htmlFor={material.materialID}
+    //             className="w-full h-[2.5rem] grid grid-cols-12 items-center"
+    //           >
+    //             <div className="flex items-center justify-center col-span-1">
+    //               <input
+    //                 type="checkbox"
+    //                 id={material.materialID}
+    //                 checked={selectedMaterials.has(material.materialID)}
+    //                 onChange={() => handleCheckboxChange(material.materialID)}
+    //                 className="custom-form-checkbox"
+    //               />
+    //             </div>
+    //             <p className="text-center text-sm lg:text-base border-l border-gray col-span-2">
+    //               {material.materialID}
+    //             </p>
+    //             <p className="text-center text-sm lg:text-base border-l border-gray col-span-9">
+    //               {material.materialName}
+    //             </p>
+    //           </label>
+    //         </li>
+    //       ))}
+    //     </ul>
+    //   </div>
+    // </div>
   );
 }
