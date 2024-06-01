@@ -46,7 +46,7 @@ export function StepsIndication({
             <div
               key={stepNumber}
               onClick={(isClickable) ? () => goToStep(index) : undefined}
-              className={`flex flex-col justify-center items-center w-[20%] h-12 lg:h-16 ${bgColor} border-gray-400 border-b-4 select-none ${isClickable ? "cursor-pointer" : ""}`}
+              className={`flex flex-col justify-center items-center w-[20%] h-12 lg:h-16 ${bgColor} border-gray-300 dark:border-gray-400 border-b-4 select-none ${isClickable ? "cursor-pointer" : ""}`}
             >
               <p className={`${stepFont}`}>{stepNumber}</p>
               <div className="hidden lg:flex">
