@@ -32,7 +32,7 @@ export function StepsIndication({
 
           let isComplete = isStepComplete(index);
           if(isComplete) {
-            bgColor = "border-b-green-800 hover:border-b-green-500 dark:border-b-green-500 dark:hover:border-b-green-300";
+            bgColor = "border-b-green-600 hover:border-b-green-500 dark:border-b-green-500 dark:hover:border-b-green-300";
           }
           if (stepNumber === currentStep) {
             // current step
