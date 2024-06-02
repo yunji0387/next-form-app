@@ -17,8 +17,8 @@ export function StepsIndication({
   return (
     <div className="flex flex-col justify-center items-center w-full h-full">
       <div className="flex flex-row lg:hidden">
-        <p className="text-gray-600 dark:text-gray-200 font-bold">Step</p>
-        <p className="ml-2 text-gray-500 dark:text-gray-300">
+        <p className="text-gray-700 dark:text-gray-200 font-bold">Step</p>
+        <p className="ml-2 text-gray-600 dark:text-gray-300">
           {currentStep} of {totalSteps}
         </p>
       </div>
@@ -32,7 +32,7 @@ export function StepsIndication({
 
           let isComplete = isStepComplete(index);
           if(isComplete) {
-            bgColor = "border-b-green-600 hover:border-b-green-500 dark:border-b-green-500 dark:hover:border-b-green-300";
+            bgColor = "border-b-green-500 hover:border-b-green-600 dark:border-b-green-500 dark:hover:border-b-green-300";
           }
           if (stepNumber === currentStep) {
             // current step
