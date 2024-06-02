@@ -213,8 +213,8 @@ export default function BoxDesignForm() {
   }
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center">
-      <div className="flex flex-col items-center justify-center w-full">
+    <div className="w-screen h-screen overflow-auto flex flex-col items-center justify-center p-2">
+      {/* <div className="flex flex-col items-center justify-center w-full"> */}
         {isInitialLoading && <LoadingScreen text="Loading..." />}
         {verified && (
           <>
@@ -233,7 +233,7 @@ export default function BoxDesignForm() {
               </h1>
             </div>
             {isEditing && (
-              <>
+              <div className="flex flex-col w-full items-center justify-center">
                 <StepsIndication
                   currentStep={currStep + 1}
                   totalSteps={steps.length}
@@ -274,7 +274,7 @@ export default function BoxDesignForm() {
                     </button>
                   </div>
                 </form>
-              </>
+              </div>
             )}
             {isLoading && <LoadingScreen text="Submitting Form..." />}
             {submitError && (
@@ -296,7 +296,7 @@ export default function BoxDesignForm() {
             )}
           </>
         )}
-      </div>
+      {/* </div> */}
     </div>
   );
 
