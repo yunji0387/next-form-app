@@ -242,7 +242,7 @@ export default function BoxDesignForm() {
                   isStepComplete={isStepComplete}
                   setStepComplete={setStepComplete}
                 />
-                <p className="rounded-md text-gray-500 dark:text-gray-300 text-sm md:text-base mt-2 p-2 text-center w-[85%]">
+                <p className="rounded-md text-gray-600 dark:text-gray-300 text-sm md:text-base mt-2 p-2 text-center w-[85%]">
                   {isLastStep
                     ? "Please make sure you have enter the correct information."
                     : "Please complete the form below and move to next step."}
