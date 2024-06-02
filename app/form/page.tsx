@@ -13,6 +13,7 @@ import { SubmissionSuccessContent } from "../components/SubmissionSuccessContent
 import { StepsIndication } from "./StepsIndication";
 import { useFormData } from "../context/FormDataContext";
 import { useAuth } from "../context/AuthContext";
+import { Home } from 'lucide-react';
 
 type FormData = {
   jobName: string;
@@ -219,13 +220,13 @@ export default function BoxDesignForm() {
           <>
             <div className="w-full grid grid-cols-8 items-center">
               <button
-                className="hover:underline col-span-1 font-bold text-xl"
+                className="col-span-1 flex items-center justify-center hover:underline font-bold text-xl"
                 onClick={() => {
                   router.push("/");
                   setCurrentFormData(null);
                 }}
               >
-                Home
+                <Home size={30} />
               </button>
               <h1 className="col-span-6 w-full text-center font-extrabold text-3xl p-2">
                 Box Design Form
