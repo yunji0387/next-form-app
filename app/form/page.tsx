@@ -13,6 +13,7 @@ import { SubmissionSuccessContent } from "../components/SubmissionSuccessContent
 import { StepsIndication } from "./StepsIndication";
 import { useFormData } from "../context/FormDataContext";
 import { useAuth } from "../context/AuthContext";
+import { Home } from "lucide-react";
 
 type FormData = {
   jobName: string;
@@ -212,90 +213,92 @@ export default function BoxDesignForm() {
   }
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center">
-      <div className="flex flex-col items-center justify-center w-full">
-        {isInitialLoading && <LoadingScreen text="Loading..." />}
-        {verified && (
-          <>
-            <div className="w-full grid grid-cols-8 items-center">
+    <div className="w-screen h-screen overflow-auto flex flex-col items-center justify-center p-2">
+      {/* <div className="flex flex-col items-center justify-center w-full"> */}
+      {isInitialLoading && <LoadingScreen text="Loading..." />}
+      {verified && (
+        <>
+          <div className="w-full grid grid-cols-8 items-center">
+            <div className="col-span-1 w-full flex items-center justify-center">
               <button
-                className="hover:underline col-span-1 font-bold text-xl"
+                className="bg-gray-300 dark:bg-gray-700 flex items-center justify-center p-2 rounded-md hover:bg-gray-400 dark:hover:bg-gray-600 font-bold text-xl"
                 onClick={() => {
                   router.push("/");
                   setCurrentFormData(null);
                 }}
               >
-                Home
+                <Home size={30} />
               </button>
-              <h1 className="col-span-6 w-full text-center font-extrabold text-3xl p-2">
-                Box Design Form
-              </h1>
             </div>
-            {isEditing && (
-              <>
-                <StepsIndication
-                  currentStep={currStep + 1}
-                  totalSteps={steps.length}
-                  getFormNameByStep={getFormNameByStep}
-                  goToStep={goToStep}
-                  isStepComplete={isStepComplete}
-                  setStepComplete={setStepComplete}
-                />
-                <p className="rounded-md text-gray-500 dark:text-gray-300 text-sm md:text-base mt-2 p-2 text-center w-[85%]">
-                  {isLastStep
-                    ? "Please make sure you have enter the correct information."
-                    : "Please complete the form below and move to next step."}
-                </p>
-                <form
-                  className="flex flex-col justify-center items-center w-full"
-                  onSubmit={onSubmit}
-                >
-                  {step.component}
-                  <div className="w-full flex flex-row justify-around items-center mt-2 mb-2">
-                    {!isFirstStep && (
-                      <button
-                        type="button"
-                        onClick={prevStep}
-                        className="w-40 p-2 m-2 text-white font-bold rounded-lg bg-indigo-600 hover:bg-indigo-700 dark:bg-emerald-600 dark:hover:bg-emerald-700"
-                      >
-                        Prev
-                      </button>
-                    )}
+            <h1 className="col-span-6 w-full text-center font-extrabold text-3xl p-2">
+              Box Design Form
+            </h1>
+          </div>
+          {isEditing && (
+            <div className="flex flex-col w-full items-center justify-center">
+              <StepsIndication
+                currentStep={currStep + 1}
+                totalSteps={steps.length}
+                getFormNameByStep={getFormNameByStep}
+                goToStep={goToStep}
+                isStepComplete={isStepComplete}
+                setStepComplete={setStepComplete}
+              />
+              <p className="rounded-md text-gray-600 dark:text-gray-300 text-sm md:text-base mt-2 p-2 text-center w-[85%]">
+                {isLastStep
+                  ? "Please make sure you have enter the correct information."
+                  : "Please complete the form below and move to next step."}
+              </p>
+              <form
+                className="flex flex-col justify-center items-center w-full"
+                onSubmit={onSubmit}
+              >
+                {step.component}
+                <div className="w-full flex flex-row justify-around items-center mt-2 mb-2">
+                  {!isFirstStep && (
                     <button
-                      type="submit"
-                      className={`w-40 p-2 m-2 ${
-                        isLastStep
-                          ? "bg-emerald-600 hover:bg-emerald-700 dark:bg-indigo-600 dark:hover:bg-indigo-700"
-                          : "bg-indigo-600 hover:bg-indigo-700 dark:bg-emerald-600 dark:hover:bg-emerald-700"
-                      } text-white font-bold rounded-lg`}
+                      type="button"
+                      onClick={prevStep}
+                      className="w-40 p-2 m-2 text-white font-bold rounded-lg bg-indigo-600 hover:bg-indigo-700 dark:bg-emerald-600 dark:hover:bg-emerald-700"
                     >
-                      {isLastStep ? "Finish" : "Next"}
+                      Prev
                     </button>
-                  </div>
-                </form>
-              </>
-            )}
-            {isLoading && <LoadingScreen text="Submitting Form..." />}
-            {submitError && (
-              <SubmissionErrorContent
-                headerText="Submission Error"
-                contentText="An error occurred while submitting your form data. Please try again."
-                onRetry={() => {
-                  setSubmitError(false);
-                  setIsEditing(true);
-                }}
-              />
-            )}
-            {submitSuccess && (
-              <SubmissionSuccessContent
-                headerText="Submission Successful!"
-                contentText="Your form data has been successfully submitted."
-                onBackToHome={backToHomePage}
-              />
-            )}
-          </>
-        )}
-      </div>
+                  )}
+                  <button
+                    type="submit"
+                    className={`w-40 p-2 m-2 ${
+                      isLastStep
+                        ? "bg-emerald-600 hover:bg-emerald-700 dark:bg-indigo-600 dark:hover:bg-indigo-700"
+                        : "bg-indigo-600 hover:bg-indigo-700 dark:bg-emerald-600 dark:hover:bg-emerald-700"
+                    } text-white font-bold rounded-lg`}
+                  >
+                    {isLastStep ? "Finish" : "Next"}
+                  </button>
+                </div>
+              </form>
+            </div>
+          )}
+          {isLoading && <LoadingScreen text="Submitting Form..." />}
+          {submitError && (
+            <SubmissionErrorContent
+              headerText="Submission Error"
+              contentText="An error occurred while submitting your form data. Please try again."
+              onRetry={() => {
+                setSubmitError(false);
+                setIsEditing(true);
+              }}
+            />
+          )}
+          {submitSuccess && (
+            <SubmissionSuccessContent
+              headerText="Submission Successful!"
+              contentText="Your form data has been successfully submitted."
+              onBackToHome={backToHomePage}
+            />
+          )}
+        </>
+      )}
+      {/* </div> */}
     </div>
   );
 
