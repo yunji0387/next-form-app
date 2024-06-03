@@ -72,7 +72,7 @@ export function SideBar({ children }: SideNavProps) {
                 setShowMoreButton(false);
               }
             }}
-            className="flex items-center justify-center rounded-md bg-gray-100 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 w-12 h-12"
+            className="flex items-center justify-center rounded-md bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 w-12 h-12"
           >
             {expanded ? <ChevronFirst /> : <ChevronLast />}
           </button>
@@ -108,7 +108,7 @@ export function SideBar({ children }: SideNavProps) {
             </div>
             <div className="z-50 relative flex">
               <button
-                className="hover:bg-gray-100 dark:hover:bg-gray-600 p-1 rounded-lg"
+                className="hover:bg-gray-200 dark:hover:bg-gray-600 p-1 rounded-lg"
                 onClick={() => setShowMoreButton(!showMoreButton)}
               >
                 <MoreVertical size={38} />
