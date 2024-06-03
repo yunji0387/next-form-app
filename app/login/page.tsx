@@ -129,7 +129,7 @@ export default function Login() {
         <p className="">
           Don&apos;t have an account?{" "}
           <span className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 underline font-medium">
-            <Link href="/register">sign up</Link>
+            <Link href="/register">Sign up</Link>
           </span>
         </p>
 
@@ -183,7 +183,7 @@ export default function Login() {
             )}
           </div>
           <p className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 underline font-medium text-right">
-            <Link href="/signup">Forgot you pasword?</Link>
+            <Link href="/signup">Forgot your pasword?</Link>
           </p>
           <button
             type="submit"
