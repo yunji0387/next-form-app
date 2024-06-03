@@ -108,14 +108,14 @@ export function SideBar({ children }: SideNavProps) {
             </div>
             <div className="z-50 relative flex">
               <button
-                className="hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg"
+                className="hover:bg-gray-100 dark:hover:bg-gray-600 p-1 rounded-lg"
                 onClick={() => setShowMoreButton(!showMoreButton)}
               >
                 <MoreVertical size={38} />
               </button>
               <div className={`
               ${showMoreButton ? "opacity-100 visible -translate-y-[6.5rem]" : "opacity-0 invisible -translate-y-16"}
-              -translate-x-[7.5rem] absolute w-40 flex flex-col justify-around gap-3 duration-300 transition-all rounded`}>
+              -translate-x-[7.25rem] absolute w-40 flex flex-col justify-around gap-3 duration-300 transition-all rounded`}>
                 <button
                   className="w-full px-3 py-1 font-medium text-indigo-800 dark:text-white bg-indigo-200 dark:bg-emerald-600 hover:bg-indigo-300 dark:hover:bg-emerald-500 rounded"
                   onClick={handleLogout}
