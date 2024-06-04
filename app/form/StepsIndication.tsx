@@ -16,7 +16,7 @@ export function StepsIndication({
 }: StepsIndicationProps) {
   return (
     <div className="flex flex-col justify-center items-center w-full h-full">
-      <div className="flex flex-row lg:hidden">
+      <div className="flex flex-row sm:hidden">
         <p className="text-gray-700 dark:text-gray-200 font-bold">Step</p>
         <p className="ml-2 text-gray-600 dark:text-gray-300">
           {currentStep} of {totalSteps}
@@ -49,7 +49,7 @@ export function StepsIndication({
               className={`flex flex-col justify-center items-center w-[20%] h-12 lg:h-16 ${bgColor} border-gray-300 dark:border-gray-400 border-b-4 select-none ${isClickable ? "cursor-pointer" : ""}`}
             >
               <p className={`${stepFont}`}>{stepNumber}</p>
-              <div className="hidden lg:flex">
+              <div className="hidden sm:flex">
                 <p className={`${formNameFont}`}>{getFormNameByStep(index)}</p>
               </div>
             </div>
