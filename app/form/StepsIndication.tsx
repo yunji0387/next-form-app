@@ -27,8 +27,8 @@ export function StepsIndication({
         {Array.from({ length: totalSteps }, (_, index) => {
           const stepNumber = index + 1;
           let bgColor = "";
-          let stepFont = "font-normal";
-          let formNameFont = "font-normal text-gray-500 dark:text-gray-300";
+          let stepFont = "font-normal text-gray-800 dark:text-gray-400";
+          let formNameFont = "font-normal text-gray-800 dark:text-gray-400 text-sm md:text-base";
 
           let isComplete = isStepComplete(index);
           if(isComplete) {
@@ -37,8 +37,8 @@ export function StepsIndication({
           if (stepNumber === currentStep) {
             // current step
             bgColor = "border-b-blue-800 dark:border-b-blue-600";
-            stepFont = "font-extrabold";
-            formNameFont = "font-extrabold text-gray-600 dark:text-gray-300";
+            stepFont = "font-extrabold text-gray-900 dark:text-gray-300 ";
+            formNameFont = "font-extrabold text-gray-900 dark:text-gray-300 text-sm md:text-base";
           }
           let isClickable = isComplete || isStepComplete(index - 1);
 
@@ -46,7 +46,7 @@ export function StepsIndication({
             <div
               key={stepNumber}
               onClick={(isClickable) ? () => goToStep(index) : undefined}
-              className={`flex flex-col justify-center items-center w-[20%] h-12 lg:h-16 ${bgColor} border-gray-300 dark:border-gray-400 border-b-4 select-none ${isClickable ? "cursor-pointer" : ""}`}
+              className={`flex flex-col justify-center items-center w-[20%] h-12 sm:h-16 ${bgColor} border-gray-300 dark:border-gray-400 border-b-4 select-none ${isClickable ? "cursor-pointer" : ""}`}
             >
               <p className={`${stepFont}`}>{stepNumber}</p>
               <div className="hidden sm:flex">
