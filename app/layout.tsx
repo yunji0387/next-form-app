@@ -8,7 +8,7 @@ import { Providers } from "./providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Next Form App",
+  title: "Next Admin",
   description:
     "A multi-step form application built with Next.js and Tailwind CSS.",
   icons: {
