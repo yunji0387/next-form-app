@@ -127,7 +127,7 @@ export default function ResetPassword() {
           </span>
         </p>
 
-        <p className="text-center text-gray-500 dark:text-gray-300 text-sm">
+        <p className="text-left text-gray-500 dark:text-gray-300 text-sm my-3">
           To reset your password, enter your email below and submit. An email
           will be sent to you with instructions about how to complete the
           process.
