@@ -206,9 +206,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       const responseData = await response.json();
-      setAuthUser(responseData.data[0]);
+      // setAuthUser(null);
 
-      sessionStorage.setItem("resetPasswordSuccessMessage", "Reset password email successfully sent.");
+      sessionStorage.setItem("resetPasswordMessage", "Reset password email successfully sent.");
 
       return true;
     } catch (error: any) {

@@ -16,6 +16,7 @@ export default function ResetPassword() {
   const router = useRouter();
 
   useEffect(() => {
+    // const resetPasswordMessage = sessionStorage.getItem("resetPasswordMessage");
     const registrationMessage = sessionStorage.getItem(
       "postRegistrationMessage"
     );
@@ -26,31 +27,40 @@ export default function ResetPassword() {
     const homeUnauthorizedMessage = sessionStorage.getItem(
       "homeUnauthorizedMessage"
     );
+
+    // if (resetPasswordMessage) {
+    //   setTimeout(() => {
+    //     toast.success(resetPasswordMessage);
+    //     sessionStorage.removeItem("resetPasswordMessage"); // Clear the message so it doesn't reappear
+    //   }, 100); // Delay of 100 milliseconds
+    // }
+
     if (registrationMessage) {
       setTimeout(() => {
         toast.success(registrationMessage);
-        sessionStorage.removeItem("postRegistrationMessage"); // Clear the message so it doesn't reappear
-      }, 100); // Delay of 100 milliseconds
+        sessionStorage.removeItem("postRegistrationMessage");
+      }, 100);
     }
+
     if (logoutMessage) {
       setTimeout(() => {
         toast.success(logoutMessage);
-        sessionStorage.removeItem("postLogoutMessage"); // Clear the message so it doesn't reappear
-      }, 100); // Delay of 100 milliseconds
+        sessionStorage.removeItem("postLogoutMessage");
+      }, 100);
     }
 
     if (formUnauthorizedMessage) {
       setTimeout(() => {
         toast.error(formUnauthorizedMessage);
-        sessionStorage.removeItem("formUnauthorizedMessage"); // Clear the message so it doesn't reappear
-      }, 100); // Delay of 100 milliseconds
+        sessionStorage.removeItem("formUnauthorizedMessage");
+      }, 100);
     }
 
     if (homeUnauthorizedMessage) {
       setTimeout(() => {
         toast.error(homeUnauthorizedMessage);
-        sessionStorage.removeItem("homeUnauthorizedMessage"); // Clear the message so it doesn't reappear
-      }, 100); // Delay of 100 milliseconds
+        sessionStorage.removeItem("homeUnauthorizedMessage");
+      }, 100);
     }
   }, []);
 
@@ -92,6 +102,15 @@ export default function ResetPassword() {
 
     if (result) {
       setIsLoading(false);
+      const resetPasswordMessage = sessionStorage.getItem(
+        "resetPasswordMessage"
+      );
+      if (resetPasswordMessage) {
+        setTimeout(() => {
+          toast.success(resetPasswordMessage);
+          sessionStorage.removeItem("resetPasswordMessage"); // Clear the message so it doesn't reappear
+        }, 100); // Delay of 100 milliseconds
+      }
     }
 
     setIsLoading(false);
