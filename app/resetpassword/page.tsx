@@ -59,7 +59,7 @@ export default function ResetPassword() {
     return <div>No access to Auth context</div>;
   }
 
-  const { login } = auth;
+  const { resetPassword } = auth;
 
   const validateForm = () => {
     let valid = true;
@@ -88,13 +88,11 @@ export default function ResetPassword() {
       return;
     }
 
-    // const result = await login({ email: email });
+    const result = await resetPassword({ email: email });
 
-    // if (result) {
-    //   setIsLoading(false);
-    //   // router.push("/");
-    //   router.push("/dashboard");
-    // }
+    if (result) {
+      setIsLoading(false);
+    }
 
     setIsLoading(false);
   };
