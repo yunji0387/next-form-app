@@ -10,6 +10,7 @@ interface AuthContextType {
   logout: () => Promise<boolean>;
   verify: () => Promise<boolean>;
   userInfo: () => Promise<boolean>;
+  resetPassword: (userData: UserData) => Promise<boolean>;
 }
 
 const AuthContext = createContext<AuthContextType>({
@@ -19,6 +20,7 @@ const AuthContext = createContext<AuthContextType>({
   register: async () => false,
   verify: async () => false,
   userInfo: async () => false,
+  resetPassword: async () => false,
 });
 
 export function useAuth() {
@@ -184,9 +186,41 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const resetPassword = async (userData: UserData) => {
+    try {
+      const response = await fetch(`${endpoint}/request-reset-password`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+        credentials: "include", // Important for cookies to be handled correctly
+      });
+
+      if (!response.ok) {
+        const errorResponse = await response.json();
+        const errorMessage = errorResponse.error.message;
+        throw new Error(
+          errorMessage || `HTTP error! Status: ${response.status}`
+        ); // Use a generic error message if specific message isn't available
+      }
+
+      const responseData = await response.json();
+      setAuthUser(responseData.data[0]);
+
+      sessionStorage.setItem("resetPasswordSuccessMessage", "Reset password email successfully sent.");
+
+      return true;
+    } catch (error: any) {
+      console.log("Error: ", error.message);
+      toast.error(error.message || "An unexpected error occurred.");
+      return false;
+    }
+  };
+
   return (
     <AuthContext.Provider
-      value={{ authUser, register, login, logout, verify, userInfo }}
+      value={{ authUser, register, login, logout, verify, userInfo, resetPassword }}
     >
       {children}
     </AuthContext.Provider>
