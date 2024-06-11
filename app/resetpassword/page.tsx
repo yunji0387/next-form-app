@@ -127,18 +127,10 @@ export default function ResetPassword() {
           </span>
         </p>
 
-        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 dark:border-gray-100 text-gray-700 dark:text-white font-bold rounded">
-          <p>Google</p>
-        </div>
-        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 dark:border-gray-100 text-gray-700 dark:text-white font-bold rounded">
-          <p>Microsoft</p>
-        </div>
-        <div className="hover:cursor-not-allowed w-full p-2 flex items-center justify-center border border-gray-500 dark:border-gray-100 text-gray-700 dark:text-white font-bold rounded">
-          <p>Facebook</p>
-        </div>
-
         <p className="text-center text-gray-500 dark:text-gray-300 text-sm">
-          Or with email and password
+          To reset your password, enter your email below and submit. An email
+          will be sent to you with instructions about how to complete the
+          process.
         </p>
 
         <form className="flex flex-col gap-2 w-full" onSubmit={handleSubmit}>
