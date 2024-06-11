@@ -183,7 +183,7 @@ export default function Login() {
             )}
           </div>
           <p className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 underline font-medium text-right">
-            <Link href="/signup">Forgot your pasword?</Link>
+            <Link href="/resetpassword">Forgot your pasword?</Link>
           </p>
           <button
             type="submit"

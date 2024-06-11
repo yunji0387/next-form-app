@@ -118,7 +118,7 @@ export default function ResetPassword() {
           alt="logo"
         />
         <h2 className="text-center font-medium text-2xl">
-          Log in to your account
+          Reset your password
         </h2>
         <p className="">
           Don&apos;t have an account?{" "}
@@ -160,7 +160,7 @@ export default function ResetPassword() {
             )}
           </div>
           <p className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 underline font-medium text-right">
-            <Link href="/signup">Forgot your pasword?</Link>
+            <Link href="/login">Log in to your account</Link>
           </p>
           <button
             type="submit"
@@ -172,7 +172,7 @@ export default function ResetPassword() {
                 <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
               </div>
             ) : (
-              "Login"
+              "Send"
             )}
           </button>
         </form>
