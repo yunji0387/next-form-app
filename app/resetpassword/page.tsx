@@ -7,10 +7,9 @@ import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function Login() {
+export default function ResetPassword() {
   const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [errors, setErrors] = useState({ email: "", password: "" });
+  const [errors, setErrors] = useState({ email: "" });
   const [isLoading, setIsLoading] = useState(false);
 
   const auth = useAuth();
@@ -64,18 +63,13 @@ export default function Login() {
 
   const validateForm = () => {
     let valid = true;
-    let newErrors = { email: "", password: "" };
+    let newErrors = { email: "" };
 
     if (!email) {
       newErrors.email = "Email is required";
       valid = false;
     } else if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
       newErrors.email = "Please enter a valid email address";
-      valid = false;
-    }
-
-    if (!password) {
-      newErrors.password = "Password is required";
       valid = false;
     }
 
@@ -94,13 +88,13 @@ export default function Login() {
       return;
     }
 
-    const result = await login({ email: email, password: password });
+    // const result = await login({ email: email });
 
-    if (result) {
-      setIsLoading(false);
-      // router.push("/");
-      router.push("/dashboard");
-    }
+    // if (result) {
+    //   setIsLoading(false);
+    //   // router.push("/");
+    //   router.push("/dashboard");
+    // }
 
     setIsLoading(false);
   };
@@ -162,23 +156,6 @@ export default function Login() {
             {errors.email && (
               <div className="text-red-500 dark:text-red-400 text-sm">
                 {errors.email}
-              </div>
-            )}
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="password" className="text-left text-sm w-full">
-              Password:
-            </label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-              className="bg-white dark:bg-gray-500 p-2 border border-gray-300 dark:border-gray-600 rounded focus:outline-gray-500 dark:placeholder:text-gray-300"
-            />
-            {errors.password && (
-              <div className="text-red-500 dark:text-red-400 text-sm">
-                {errors.password}
               </div>
             )}
           </div>
