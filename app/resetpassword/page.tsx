@@ -16,7 +16,6 @@ export default function ResetPassword() {
   const router = useRouter();
 
   useEffect(() => {
-    // const resetPasswordMessage = sessionStorage.getItem("resetPasswordMessage");
     const registrationMessage = sessionStorage.getItem(
       "postRegistrationMessage"
     );
@@ -27,13 +26,6 @@ export default function ResetPassword() {
     const homeUnauthorizedMessage = sessionStorage.getItem(
       "homeUnauthorizedMessage"
     );
-
-    // if (resetPasswordMessage) {
-    //   setTimeout(() => {
-    //     toast.success(resetPasswordMessage);
-    //     sessionStorage.removeItem("resetPasswordMessage"); // Clear the message so it doesn't reappear
-    //   }, 100); // Delay of 100 milliseconds
-    // }
 
     if (registrationMessage) {
       setTimeout(() => {
