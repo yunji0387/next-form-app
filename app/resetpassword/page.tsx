@@ -186,20 +186,26 @@ export default function ResetPassword() {
           </p>
           <button
             type="submit"
-            className="bg-indigo-500 hover:bg-indigo-600 dark:bg-emerald-600 dark:hover:bg-emerald-500 font-bold text-white p-2 rounded mt-3"
-            disabled={isLoading}
+            className={`font-bold text-white p-2 rounded mt-3 ${
+              isLoading || hasSent
+                ? "bg-gray-500"
+                : "bg-indigo-500 hover:bg-indigo-600 dark:bg-emerald-600 dark:hover:bg-emerald-500"
+            }`}
+            disabled={isLoading || hasSent}
           >
             {isLoading ? (
               <div className="flex items-center justify-center">
                 <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
               </div>
+            ) : hasSent ? (
+              "Sent"
             ) : (
               "Send"
             )}
           </button>
         </form>
-        {hasSent && (
-          countdown === 0 ? (
+        {hasSent &&
+          (countdown === 0 ? (
             <button
               onClick={handleResend}
               className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 underline font-medium mt-3"
@@ -210,8 +216,7 @@ export default function ResetPassword() {
             <p className="text-gray-500 dark:text-gray-300 mt-3">
               Resend link available in {countdown} seconds
             </p>
-          )
-        )}
+          ))}
       </div>
     </div>
   );
