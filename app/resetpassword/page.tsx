@@ -186,10 +186,10 @@ export default function ResetPassword() {
           </p>
           <button
             type="submit"
-            className={`font-bold text-white p-2 rounded mt-3 ${
+            className={`font-semibold p-2 rounded mt-3 ${
               isLoading || hasSent
-                ? "bg-gray-500"
-                : "bg-indigo-500 hover:bg-indigo-600 dark:bg-emerald-600 dark:hover:bg-emerald-500"
+                ? "text-gray-600 dark:text-gray-300 bg-indigo-200 dark:bg-emerald-900"
+                : "text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-emerald-600 dark:hover:bg-emerald-500"
             }`}
             disabled={isLoading || hasSent}
           >
