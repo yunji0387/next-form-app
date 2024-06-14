@@ -11,12 +11,13 @@ export default function ResetPassword() {
   const [email, setEmail] = useState<string>("");
   const [errors, setErrors] = useState({ email: "" });
   const [isLoading, setIsLoading] = useState(false);
+  const [countdown, setCountdown] = useState(0);
+  const [hasSent, setHasSent] = useState(false);
 
   const auth = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    // const resetPasswordMessage = sessionStorage.getItem("resetPasswordMessage");
     const registrationMessage = sessionStorage.getItem(
       "postRegistrationMessage"
     );
@@ -27,13 +28,6 @@ export default function ResetPassword() {
     const homeUnauthorizedMessage = sessionStorage.getItem(
       "homeUnauthorizedMessage"
     );
-
-    // if (resetPasswordMessage) {
-    //   setTimeout(() => {
-    //     toast.success(resetPasswordMessage);
-    //     sessionStorage.removeItem("resetPasswordMessage"); // Clear the message so it doesn't reappear
-    //   }, 100); // Delay of 100 milliseconds
-    // }
 
     if (registrationMessage) {
       setTimeout(() => {
@@ -64,6 +58,13 @@ export default function ResetPassword() {
     }
   }, []);
 
+  useEffect(() => {
+    if (countdown > 0) {
+      const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [countdown]);
+
   if (!auth) {
     console.error("Auth context is not available");
     return <div>No access to Auth context</div>;
@@ -87,6 +88,26 @@ export default function ResetPassword() {
     return valid;
   };
 
+  const handlePasswordReset = async () => {
+    const result = await resetPassword({ email: email });
+
+    if (result) {
+      const resetPasswordMessage = sessionStorage.getItem(
+        "resetPasswordMessage"
+      );
+      if (resetPasswordMessage) {
+        setTimeout(() => {
+          toast.success(resetPasswordMessage);
+          sessionStorage.removeItem("resetPasswordMessage"); // Clear the message so it doesn't reappear
+        }, 100); // Delay of 100 milliseconds
+      }
+      setCountdown(10); // Start the countdown for the resend link
+      setHasSent(true); // Mark that the user has sent the request
+    }
+
+    setIsLoading(false);
+  };
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -98,22 +119,14 @@ export default function ResetPassword() {
       return;
     }
 
-    const result = await resetPassword({ email: email });
+    await handlePasswordReset();
+  };
 
-    if (result) {
-      setIsLoading(false);
-      const resetPasswordMessage = sessionStorage.getItem(
-        "resetPasswordMessage"
-      );
-      if (resetPasswordMessage) {
-        setTimeout(() => {
-          toast.success(resetPasswordMessage);
-          sessionStorage.removeItem("resetPasswordMessage"); // Clear the message so it doesn't reappear
-        }, 100); // Delay of 100 milliseconds
-      }
-    }
-
-    setIsLoading(false);
+  const handleResend = async () => {
+    setCountdown(10); // Reset the countdown when resend is clicked
+    setIsLoading(true);
+    await handlePasswordReset();
+    toast.info("Resend link will be available after 10 seconds");
   };
 
   return (
@@ -173,18 +186,37 @@ export default function ResetPassword() {
           </p>
           <button
             type="submit"
-            className="bg-indigo-500 hover:bg-indigo-600 dark:bg-emerald-600 dark:hover:bg-emerald-500 font-bold text-white p-2 rounded mt-3"
-            disabled={isLoading}
+            className={`font-semibold p-2 rounded mt-3 ${
+              isLoading || hasSent
+                ? "text-gray-600 dark:text-gray-300 bg-indigo-200 dark:bg-emerald-900"
+                : "text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-emerald-600 dark:hover:bg-emerald-500"
+            }`}
+            disabled={isLoading || hasSent}
           >
             {isLoading ? (
               <div className="flex items-center justify-center">
                 <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
               </div>
+            ) : hasSent ? (
+              "Sent"
             ) : (
               "Send"
             )}
           </button>
         </form>
+        {hasSent &&
+          (countdown === 0 ? (
+            <button
+              onClick={handleResend}
+              className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 underline font-medium mt-3"
+            >
+              Resend
+            </button>
+          ) : (
+            <p className="text-gray-500 dark:text-gray-300 mt-3">
+              Resend link available in {countdown} seconds
+            </p>
+          ))}
       </div>
     </div>
   );
