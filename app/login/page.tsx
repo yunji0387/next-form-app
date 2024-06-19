@@ -12,6 +12,7 @@ export default function Login() {
   const [password, setPassword] = useState<string>("");
   const [errors, setErrors] = useState({ email: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const auth = useAuth();
   const router = useRouter();
@@ -169,13 +170,22 @@ export default function Login() {
             <label htmlFor="password" className="text-left text-sm w-full">
               Password:
             </label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-              className="bg-white dark:bg-gray-500 p-2 border border-gray-300 dark:border-gray-600 rounded focus:outline-gray-500 dark:placeholder:text-gray-300"
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                className="bg-white dark:bg-gray-500 p-2 border border-gray-300 dark:border-gray-600 rounded focus:outline-gray-500 dark:placeholder:text-gray-300 w-full"
+              />
+              <button
+                type="button"
+                className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
+            </div>
             {errors.password && (
               <div className="text-red-500 dark:text-red-400 text-sm">
                 {errors.password}
@@ -183,7 +193,7 @@ export default function Login() {
             )}
           </div>
           <p className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 underline font-medium text-right">
-            <Link href="/resetpassword">Forgot your pasword?</Link>
+            <Link href="/resetpassword">Forgot your password?</Link>
           </p>
           <button
             type="submit"
