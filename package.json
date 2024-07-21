@@ -15,8 +15,8 @@
     "next-themes": "^0.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-spinners": "^0.14.0",
     "react-hook-form": "^7.52.0",
-    "react-spinners": "^0.13.8",
     "react-toastify": "^10.0.5",
     "yup": "^1.4.0"
   },
