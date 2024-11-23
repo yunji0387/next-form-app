@@ -24,6 +24,9 @@ export default function NotFound() {
           alt="logo"
         />
       </div>
+      <h2 className="mt-3 text-9xl font-black text-gray-800 dark:text-indigo-100">
+        404
+      </h2>
       <h2 className="my-3 text-3xl font-black text-gray-800 dark:text-indigo-100">
         OOPS! Page Not Found
       </h2>
