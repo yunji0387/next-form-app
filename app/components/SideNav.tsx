@@ -5,6 +5,7 @@ import { ChevronLast, ChevronFirst, MoreVertical } from "lucide-react";
 import Image from "next/image";
 import { ThemeToggle } from "./ThemeToggle";
 import { useAuth } from "../context/AuthContext";
+import { ToggleRight } from "lucide-react";
 
 type SideNavProps = {
   children: React.ReactNode;
@@ -81,8 +82,11 @@ export function SideBar({ children }: SideNavProps) {
         <SideBarContext.Provider value={{ expanded }}>
           <div className="flex-1 px-3">
             <ul>{children}</ul>
-            <div className={`flex justify-end p-3 ${!expanded && "hidden"}`}>
-              <div className="scale-125">
+            {/* <div className={`flex justify-end p-3 ${!expanded && "hidden"} bg-cyan-700`}> */}
+            <div className={`flex items-center justify-between p-3 ${!expanded && "hidden"}`}>
+              <div className="flex gap-3 select-none text-gray-600 dark:text-indigo-100 font-medium"><ToggleRight/>Theme</div>
+              {/* <div className="scale-125 bg-black"> */}
+              <div>
                 <ThemeToggle />
               </div>
             </div>
@@ -154,12 +158,24 @@ export function SibebarItem({ icon, title, link, active, alert }: any) {
 
   return (
     <li>
-      <button
+      {/* <button
         className={`relative flex items-center justify-start p-3 my-2 rounded-md font-medium cursor-pointer transition-colors group
         ${
           currentPath === "/" + link
             ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 dark:from-emerald-500 dark:to-emerald-700 text-indigo-800 dark:text-white"
             : "hover:bg-indigo-50 dark:hover:bg-emerald-800 text-gray-600 dark:text-indigo-100"
+        }
+        `}
+        onClick={() => {
+          router.push("/" + link);
+        }}
+      > */}
+      <button
+        className={`relative flex items-center justify-start p-3 my-2 rounded-md font-medium cursor-pointer transition-colors group
+        ${
+          currentPath === "/" + link
+            ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 dark:from-emerald-500 dark:to-emerald-700 text-indigo-800 dark:text-white"
+            : "hover:bg-indigo-100 dark:hover:bg-emerald-700 text-gray-600 dark:text-indigo-100"
         }
         `}
         onClick={() => {
