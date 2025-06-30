@@ -25,8 +25,8 @@ export function ThemeToggle() {
         onClick={toggleTheme}
         className={`relative flex items-center w-16 h-8 rounded-full shadow border ${
           theme === "dark"
-            ? "bg-gray-900 hover:bg-gray-700 border-white"
-            : "bg-gray-50 hover:bg-gray-100 border-gray-300"
+            ? "hover:bg-gray-600 border-white"
+            : "hover:bg-indigo-50 border-gray-300"
         } transition-all duration-200 ease-in-out`}
       >
         <div
