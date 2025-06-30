@@ -29,6 +29,12 @@ Before you begin, ensure you have met the following requirements:
    ```bash
    npm install
    ```
+   4. Create a `.env.local` file in the project root to store environment variables. For example:
+      ```env
+      NEXT_PUBLIC_FORM_SUBMISSION_URL=<next-form-app-backend-url>/forms
+      NEXT_PUBLIC_AUTH_URL=<next-form-app-auth-backend-url>/auth
+      ```
+      > **Note:** Do not commit `.env.local` to version control as it may contain sensitive information.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
@@ -51,6 +57,24 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Docker Setup
+
+You can run this project using Docker for easier setup and deployment.
+
+1. **Build the Docker image:**
+   ```bash
+   docker build -t next-admin-system .
+   ```
+
+2. **Run the Docker container:**
+   ```bash
+   docker run -p 3000:3000 next-admin-system
+   ```
+
+The application will be available at [http://localhost:3000](http://localhost:3000).
+
+> **Note:** Make sure to copy or create a `.env` file in the project root if your application requires environment variables.
 
 ## Learn More
 
