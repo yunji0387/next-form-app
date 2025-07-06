@@ -11,7 +11,11 @@ jest.mock('next/navigation', () => ({
 jest.mock('../context/AuthContext', () => ({
   useAuth: jest.fn()
 }));
-jest.mock('../components/Footer', () => () => <div data-testid="footer" />);
+jest.mock('../components/Footer', () => {
+  const MockFooter = () => <div data-testid="footer" />;
+  MockFooter.displayName = 'Footer';
+  return MockFooter;
+});
 jest.mock('../../public/skillsIconList', () => ({
   skillsIconList: [
     { icon: '/icon1.svg', title: 'Icon1' },
