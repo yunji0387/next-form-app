@@ -12,10 +12,6 @@ export default function Home() {
   const router = useRouter();
   const auth = useAuth();
 
-  useEffect(() => {
-    verifyUser();
-  }, []); // Dependency array is empty, so this effect will run only once after the component mounts
-
   if (!auth) {
     console.error("Auth context is not available");
     return <div>No access to Auth context</div>;
@@ -33,6 +29,10 @@ export default function Home() {
       router.push("/dashboard");
     }
   };
+
+  useEffect(() => {
+    verifyUser();
+  }, []); // Dependency array is empty, so this effect will run only once after the component mounts
 
   return (
     <main className="flex w-full min-h-screen overflow-auto">
