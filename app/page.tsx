@@ -12,8 +12,12 @@ export default function Home() {
   const router = useRouter();
   const auth = useAuth();
 
+  if (!auth) {
+    console.error("Auth context is not available");
+    return <div>No access to Auth context</div>;
+  }
+
   const verifyUser = async () => {
-    if (!auth) return;
     const result = await auth.verify();
     if (result) {
       sessionStorage.setItem(
@@ -26,12 +30,7 @@ export default function Home() {
 
   useEffect(() => {
     verifyUser();
-  }, []);
-
-  if (!auth) {
-    console.error("Auth context is not available");
-    return <div>No access to Auth context</div>;
-  }
+  }, [auth]);
 
   return (
     <main className="flex w-full min-h-screen overflow-auto">
