@@ -12,19 +12,9 @@ export default function Home() {
   const router = useRouter();
   const auth = useAuth();
 
-  useEffect(() => {
-    verifyUser();
-  }, []); // Dependency array is empty, so this effect will run only once after the component mounts
-
-  if (!auth) {
-    console.error("Auth context is not available");
-    return <div>No access to Auth context</div>;
-  }
-
-  const { verify } = auth;
-
   const verifyUser = async () => {
-    const result = await verify();
+    if (!auth) return;
+    const result = await auth.verify();
     if (result) {
       sessionStorage.setItem(
         "postRegistrationMessage",
@@ -33,6 +23,15 @@ export default function Home() {
       router.push("/dashboard");
     }
   };
+
+  useEffect(() => {
+    verifyUser();
+  }, []);
+
+  if (!auth) {
+    console.error("Auth context is not available");
+    return <div>No access to Auth context</div>;
+  }
 
   return (
     <main className="flex w-full min-h-screen overflow-auto">
